@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "sessionId": "485628d2-92bb-48bc-b0a5-4f237b9e6760",
+      "fullPath": "/root/.claude/projects/-workspace-clawd/485628d2-92bb-48bc-b0a5-4f237b9e6760.jsonl",
+      "fileMtime": 1769813911000,
+      "firstPrompt": "Persistence configured!",
+      "summary": "Invalid API key · Please run /login",
+      "messageCount": 2,
+      "created": "2026-01-30T22:53:26.666Z",
+      "modified": "2026-01-30T22:53:26.994Z",
+      "gitBranch": "",
+      "projectPath": "/workspace/clawd",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "4f29dfaf-377f-49f8-a1fe-8431713b69ab",
+      "fullPath": "/root/.claude/projects/-workspace-clawd/4f29dfaf-377f-49f8-a1fe-8431713b69ab.jsonl",
+      "fileMtime": 1769813911000,
+      "firstPrompt": "Say 'Hello! Claude Code is ready!'",
+      "summary": "Invalid API key · Please run /login",
+      "messageCount": 2,
+      "created": "2026-01-30T22:44:53.964Z",
+      "modified": "2026-01-30T22:44:54.113Z",
+      "gitBranch": "",
+      "projectPath": "/workspace/clawd",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "697840bb-37f9-4e1c-b555-a2548e063196",
+      "fullPath": "/root/.claude/projects/-workspace-clawd/697840bb-37f9-4e1c-b555-a2548e063196.jsonl",
+      "fileMtime": 1769813911000,
+      "firstPrompt": "Persistence test!",
+      "summary": "Invalid API key · Please run /login",
+      "messageCount": 2,
+      "created": "2026-01-30T22:51:32.800Z",
+      "modified": "2026-01-30T22:51:32.999Z",
+      "gitBranch": "",
+      "projectPath": "/workspace/clawd",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "6d5915ea-2b70-4665-b24f-d1cb765c5a3c",
+      "fullPath": "/root/.claude/projects/-workspace-clawd/6d5915ea-2b70-4665-b24f-d1cb765c5a3c.jsonl",
+      "fileMtime": 1769813911000,
+      "firstPrompt": "Test after restore",
+      "summary": "Invalid API key · Please run /login",
+      "messageCount": 2,
+      "created": "2026-01-30T22:53:34.766Z",
+      "modified": "2026-01-30T22:53:34.941Z",
+      "gitBranch": "",
+      "projectPath": "/workspace/clawd",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "8bb79c84-4656-4924-8599-f10651645893",
+      "fullPath": "/root/.claude/projects/-workspace-clawd/8bb79c84-4656-4924-8599-f10651645893.jsonl",
+      "fileMtime": 1769813911000,
+      "firstPrompt": "Say 'Claude Code ready!'",
+      "summary": "Invalid API key · Please run /login",
+      "messageCount": 2,
+      "created": "2026-01-30T22:50:45.361Z",
+      "modified": "2026-01-30T22:50:48.348Z",
+      "gitBranch": "",
+      "projectPath": "/workspace/clawd",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "932e87be-03d4-476e-8215-f819318077cd",
+      "fullPath": "/root/.claude/projects/-workspace-clawd/932e87be-03d4-476e-8215-f819318077cd.jsonl",
+      "fileMtime": 1769813911000,
+      "firstPrompt": "Restored from backup!",
+      "summary": "Invalid API key · Please run /login",
+      "messageCount": 2,
+      "created": "2026-01-30T22:53:48.038Z",
+      "modified": "2026-01-30T22:53:48.214Z",
+      "gitBranch": "",
+      "projectPath": "/workspace/clawd",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "d1318d1a-1091-4943-9cff-1975abb03e99",
+      "fullPath": "/root/.claude/projects/-workspace-clawd/d1318d1a-1091-4943-9cff-1975abb03e99.jsonl",
+      "fileMtime": 1769813911000,
+      "firstPrompt": "Say 'Ready to code!'",
+      "summary": "Invalid API key · Please run /login",
+      "messageCount": 2,
+      "created": "2026-01-30T22:45:35.464Z",
+      "modified": "2026-01-30T22:45:35.672Z",
+      "gitBranch": "",
+      "projectPath": "/workspace/clawd",
+      "isSidechain": false
+    }
+  ],
+  "originalPath": "/workspace/clawd"
+}

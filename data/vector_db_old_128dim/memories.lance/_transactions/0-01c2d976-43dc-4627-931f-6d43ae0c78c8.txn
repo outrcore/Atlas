@@ -1,0 +1,4 @@
+$01c2d976-43dc-4627-931f-6d43ae0c78c8²´id ÿÿÿÿÿÿÿÿÿ*string08"content ÿÿÿÿÿÿÿÿÿ*string08#category ÿÿÿÿÿÿÿÿÿ*string08#metadata ÿÿÿÿÿÿÿÿÿ*string08%
+created_at ÿÿÿÿÿÿÿÿÿ*string084vector ÿÿÿÿÿÿÿÿÿ*fixed_size_list:float:12808"!
+lance.auto_cleanup.interval20"'
+lance.auto_cleanup.older_than14days

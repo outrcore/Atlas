@@ -1,0 +1,156 @@
+2026-01-30T23:30:46.426Z [DEBUG] [init] configureGlobalMTLS starting
+2026-01-30T23:30:46.437Z [DEBUG] [init] configureGlobalMTLS complete
+2026-01-30T23:30:46.440Z [DEBUG] [init] configureGlobalAgents starting
+2026-01-30T23:30:46.443Z [DEBUG] [init] configureGlobalAgents complete
+2026-01-30T23:30:46.458Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-01-30T23:30:46.474Z [DEBUG] [ToolSearch:optimistic] mode=tst-auto, ENABLE_TOOL_SEARCH=undefined, result=true
+2026-01-30T23:30:46.479Z [DEBUG] [STARTUP] Running setup()...
+2026-01-30T23:30:46.483Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-01-30T23:30:46.498Z [DEBUG] Loading skills from: managed=/etc/claude-code/.claude/skills, user=/root/.claude/skills, project=[]
+2026-01-30T23:30:46.508Z [DEBUG] Error log sink initialized
+2026-01-30T23:30:46.525Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-01-30T23:30:46.529Z [DEBUG] Total plugin skills loaded: 0
+2026-01-30T23:30:46.532Z [DEBUG] Total plugin commands loaded: 0
+2026-01-30T23:30:46.535Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-01-30T23:30:46.541Z [DEBUG] [STARTUP] setup() completed in 59ms
+2026-01-30T23:30:46.545Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-01-30T23:30:46.549Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-01-30T23:30:46.552Z [DEBUG] [claudeai-mcp] Gate returned: false
+2026-01-30T23:30:46.556Z [DEBUG] [claudeai-mcp] Disabled via gate
+2026-01-30T23:30:46.563Z [DEBUG] Total plugin agents loaded: 0
+2026-01-30T23:30:46.567Z [DEBUG] Loaded 0 unique skills (managed: 0, user: 0, project: 0, legacy commands: 0)
+2026-01-30T23:30:46.570Z [DEBUG] getSkills returning: 0 skill dir commands, 0 plugin skills, 1 bundled skills
+2026-01-30T23:30:46.576Z [DEBUG] [STARTUP] Commands and agents loaded in 27ms
+2026-01-30T23:30:46.579Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-01-30T23:30:46.583Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-01-30T23:30:46.585Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-01-30T23:30:46.599Z [DEBUG] Total LSP servers loaded: 0
+2026-01-30T23:30:46.607Z [DEBUG] [STARTUP] MCP configs loaded in 145ms
+2026-01-30T23:30:46.610Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-01-30T23:30:46.615Z [DEBUG] LSP manager initialized with 0 servers
+2026-01-30T23:30:46.617Z [DEBUG] LSP server manager initialized successfully
+2026-01-30T23:30:46.620Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-01-30T23:30:46.633Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-01-30T23:30:46.637Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-01-30T23:30:46.641Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-01-30T23:30:46.667Z [DEBUG] Writing to temp file: /root/.claude/todos/34700e5b-bc0c-41b5-b10c-629c8c6c913d-agent-34700e5b-bc0c-41b5-b10c-629c8c6c913d.json.tmp.9374.1769815846667
+2026-01-30T23:30:46.676Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-01-30T23:30:46.679Z [DEBUG] Renaming /root/.claude/todos/34700e5b-bc0c-41b5-b10c-629c8c6c913d-agent-34700e5b-bc0c-41b5-b10c-629c8c6c913d.json.tmp.9374.1769815846667 to /root/.claude/todos/34700e5b-bc0c-41b5-b10c-629c8c6c913d-agent-34700e5b-bc0c-41b5-b10c-629c8c6c913d.json
+2026-01-30T23:30:46.683Z [DEBUG] File /root/.claude/todos/34700e5b-bc0c-41b5-b10c-629c8c6c913d-agent-34700e5b-bc0c-41b5-b10c-629c8c6c913d.json written atomically
+2026-01-30T23:30:46.821Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2026-01-30T23:30:46.824Z [DEBUG] Found 0 hook matchers in settings
+2026-01-30T23:30:46.826Z [DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+2026-01-30T23:30:46.837Z [DEBUG] Total plugin output styles loaded: 0
+2026-01-30T23:30:46.855Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/usr/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/x64-linux/rg)
+2026-01-30T23:30:46.862Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-30T23:30:46.864Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-30T23:30:46.867Z [DEBUG] Sending 1 skills via attachment (initial, 1 total sent)
+2026-01-30T23:30:46.870Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-30T23:30:46.874Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-30T23:30:46.878Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-01-30T23:30:46.881Z [DEBUG] Found 0 hook matchers in settings
+2026-01-30T23:30:46.885Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-30T23:30:46.906Z [DEBUG] Stats cache does not exist, returning empty cache
+2026-01-30T23:30:46.910Z [DEBUG] Stats cache empty, processing all historical data in background
+2026-01-30T23:30:46.925Z [DEBUG] Session index: added 1, updated 0, removed 0, summaries generated 0 (total: 1)
+2026-01-30T23:30:47.108Z [DEBUG] rg error (signal=undefined, code=ERR_CHILD_PROCESS_STDIO_MAXBUFFER, stderr: rg: /proc/9421/task/9421/ns: Permission denied (os error 13)
+rg: /proc/tty/driver: Permission denied (os error 13)
+rg: Invalid argument (os error 22)
+rg: /proc/48/fdinfo: Permission denied (os error 13)
+rg: /proc/9394/fd: Permission denied (os error 13)
+rg: Permission denied (os error 13)
+rg: /proc/9421/task/9421/fdinfo: No such file or directory (os error 2)
+rg: /proc/9421/task/9421/fd: No such file or directory (os error 2)
+rg: /proc/48/task/48/fdinfo: Permission denied (os error 13)
+rg: /proc/9394/ns: Permission denied (os error 13)
+rg: /proc/9394/fdinfo: No such file or directory (os error 2)
+rg: /proc/9394/map_files: No such file or directory (os error 2)
+rg: /proc/9402/attr/apparmor/current: No such file or directory (os error 2)
+rg: /proc/9402/net: No such file or directory (os error 2)
+rg: /proc/9402/task: No such file or directory (os error 2)
+rg: /proc/9401: No such file or directory (os error 2)
+rg: /proc/9400: No such file or directory (os error 2)
+rg: /proc/9402/attr/apparmor/prev: No such file or directory (os error 2)
+rg: /proc/9402/ns: No such file or directory (os error 2)
+rg: /proc/9396: No such file or directory (os error 2)
+rg: /proc/9402/map_files: No such file or directory (os error 2)
+rg: /proc/9402/fd: No such file or directory (os error 2)
+rg: /proc/9402/fdinfo: No such file or directory (os error 2)
+rg: /proc/9402/attr/smack: No such file or directory (os error 2)
+rg: /proc/9402/attr/apparmor/exec: No such file or directory (os error 2)
+rg: /proc/9407: No such file or directory (os error 2)
+rg: /proc/9403: No such file or directory (os error 2)
+), 234968 results
+2026-01-30T23:30:47.112Z [ERROR] RangeError: RangeError [ERR_CHILD_PROCESS_STDIO_MAXBUFFER]: stdout maxBuffer length exceeded
+    at Socket.onChildStdout (node:child_process:484:14)
+    at Socket.emit (node:events:519:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2026-01-30T23:30:47.137Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-01-30T23:30:47.141Z [DEBUG] [API:auth] OAuth token check starting
+2026-01-30T23:30:47.145Z [DEBUG] [API:auth] OAuth token check complete
+2026-01-30T23:30:47.161Z [ERROR] Error: Error: Could not resolve authentication method. Expected either apiKey or authToken to be set. Or for one of the "X-Api-Key" or "Authorization" headers to be explicitly omitted
+    at gy.validateHeaders (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:421:1008)
+    at gy.buildHeaders (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:421:8502)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gy.buildRequest (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:421:7560)
+    at async gy.makeRequest (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:421:3388)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3286:18631
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1027:2232
+    at async Sk9 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1026:17215)
+    at async Ls7 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1027:2165)
+    at async mF1 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3286:3684)
+2026-01-30T23:30:47.165Z [DEBUG] countTokensWithFallback: API returned null, trying haiku fallback (18 tools)
+2026-01-30T23:30:47.169Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-01-30T23:30:47.173Z [DEBUG] [API:auth] OAuth token check starting
+2026-01-30T23:30:47.176Z [DEBUG] [API:auth] OAuth token check complete
+2026-01-30T23:30:47.182Z [DEBUG] countTokensWithFallback: haiku fallback failed: Could not resolve authentication method. Expected either apiKey or authToken to be set. Or for one of the "X-Api-Key" or "Authorization" headers to be explicitly omitted
+2026-01-30T23:30:47.186Z [ERROR] Error: Error: Could not resolve authentication method. Expected either apiKey or authToken to be set. Or for one of the "X-Api-Key" or "Authorization" headers to be explicitly omitted
+    at gy.validateHeaders (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:421:1008)
+    at gy.buildHeaders (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:421:8502)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gy.buildRequest (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:421:7560)
+    at async gy.makeRequest (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:421:3388)
+    at async Ei4 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3286:19323)
+    at async mF1 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3286:3956)
+    at async vp (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3286:4380)
+    at async Lc4 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3132:554)
+2026-01-30T23:30:47.190Z [DEBUG] countToolDefinitionTokens returned null for 18 tools: Task, TaskOutput, Bash, Glob, Grep, ExitPlanMode, Read, Edit, Write, NotebookEdit, WebFetch, TodoWri...
+2026-01-30T23:30:47.217Z [DEBUG] Auto tool search disabled: 0 tokens (threshold: 20000, 10% of context) [source: query]
+2026-01-30T23:30:47.237Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.27.84b; cc_entrypoint=sdk-cli;
+2026-01-30T23:30:47.242Z [ERROR] ReferenceError: ReferenceError: Bun is not defined
+    at Z34 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1602:27809)
+    at f34 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1614:83)
+    at C5q (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4787:6330)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4787:3611
+    at async Z$A (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1027:2007)
+    at async pM1 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4787:3581)
+    at async mN (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3186:5201)
+    at async EGq.submitMessage (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:6213:5309)
+    at async kGq (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:6213:9425)
+2026-01-30T23:30:47.246Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-01-30T23:30:47.250Z [DEBUG] [API:auth] OAuth token check starting
+2026-01-30T23:30:47.256Z [DEBUG] [API:auth] OAuth token check complete
+2026-01-30T23:30:47.262Z [ERROR] API error (attempt 1/11): Could not resolve authentication method. Expected either apiKey or authToken to be set. Or for one of the "X-Api-Key" or "Authorization" headers to be explicitly omitted
+2026-01-30T23:30:47.265Z [ERROR] Error in non-streaming fallback: Could not resolve authentication method. Expected either apiKey or authToken to be set. Or for one of the "X-Api-Key" or "Authorization" headers to be explicitly omitted
+2026-01-30T23:30:47.268Z [ERROR] Error: Error: Could not resolve authentication method. Expected either apiKey or authToken to be set. Or for one of the "X-Api-Key" or "Authorization" headers to be explicitly omitted
+    at gy.validateHeaders (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:421:1008)
+    at gy.buildHeaders (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:421:8502)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async gy.buildRequest (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:421:7560)
+    at async gy.makeRequest (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:421:3388)
+2026-01-30T23:30:47.294Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-01-30T23:30:47.297Z [DEBUG] Found 0 hook matchers in settings
+2026-01-30T23:30:47.300Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-30T23:30:47.310Z [DEBUG] Getting matching hook commands for SessionEnd with query: other
+2026-01-30T23:30:47.314Z [DEBUG] Found 0 hook matchers in settings
+2026-01-30T23:30:47.318Z [DEBUG] Matched 0 unique hooks for query "other" (0 before deduplication)
+2026-01-30T23:30:47.327Z [DEBUG] LSP server manager shut down successfully
+2026-01-30T23:30:47.330Z [DEBUG] BigQuery metrics exporter flush complete
+2026-01-30T23:30:47.334Z [DEBUG] BigQuery metrics exporter flush complete
+2026-01-30T23:30:47.337Z [DEBUG] BigQuery metrics exporter shutdown complete
+2026-01-30T23:30:47.355Z [DEBUG] Successfully refreshed marketplace: claude-plugins-official
+2026-01-30T23:30:47.358Z [DEBUG] Plugin autoupdate: checking installed plugins

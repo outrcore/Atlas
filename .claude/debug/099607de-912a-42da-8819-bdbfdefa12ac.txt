@@ -1,0 +1,9 @@
+2026-01-31T12:52:16.239Z [DEBUG] [init] configureGlobalMTLS starting
+2026-01-31T12:52:16.239Z [DEBUG] [init] configureGlobalMTLS complete
+2026-01-31T12:52:16.239Z [DEBUG] [init] configureGlobalAgents starting
+2026-01-31T12:52:16.239Z [DEBUG] [init] configureGlobalAgents complete
+2026-01-31T12:52:16.251Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-01-31T12:52:16.264Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-01-31T12:52:16.264Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-01-31T12:52:16.265Z [DEBUG] [claudeai-mcp] Gate returned: false
+2026-01-31T12:52:16.265Z [DEBUG] [claudeai-mcp] Disabled via gate

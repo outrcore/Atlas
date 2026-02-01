@@ -1,0 +1,132 @@
+#!/usr/bin/env python3
+import sys
+import time
+import select
+import termios
+import tty
+from rich.console import Console
+from rich.live import Live
+from rich.panel import Panel
+from rich.progress import BarColumn, Progress, TextColumn
+from rich.table import Table
+from rich.text import Text
+
+WORK_DURATION = 25 * 60
+BREAK_DURATION = 5 * 60
+
+console = Console()
+
+
+def get_key_nonblocking():
+    """Check for keypress without blocking."""
+    if select.select([sys.stdin], [], [], 0)[0]:
+        return sys.stdin.read(1).lower()
+    return None
+
+
+def format_time(seconds):
+    """Format seconds as MM:SS."""
+    mins, secs = divmod(max(0, seconds), 60)
+    return f"{mins:02d}:{secs:02d}"
+
+
+def create_display(remaining, total, paused, completed, is_break):
+    """Create the timer display."""
+    table = Table.grid(padding=1)
+    table.add_column(justify="center")
+
+    session_type = "BREAK" if is_break else "WORK"
+    color = "green" if is_break else "red"
+
+    time_text = Text(format_time(remaining), style=f"bold {color}")
+    time_text.stylize("blink" if paused else "")
+
+    progress = Progress(
+        TextColumn("[bold blue]Progress"),
+        BarColumn(bar_width=40, complete_style=color),
+        TextColumn(f"{100 * (total - remaining) // total}%"),
+        expand=False,
+    )
+    task = progress.add_task("timer", total=total, completed=total - remaining)
+
+    status = "PAUSED" if paused else "RUNNING"
+    status_color = "yellow" if paused else "green"
+
+    table.add_row(Text(f"Pomodoro Timer - {session_type}", style=f"bold {color}"))
+    table.add_row(time_text)
+    table.add_row(progress)
+    table.add_row(Text(f"Status: {status}", style=status_color))
+    table.add_row(Text(f"Completed: {completed} pomodoros", style="cyan"))
+    table.add_row(Text("[p] pause  [r] reset  [q] quit", style="dim"))
+
+    return Panel(table, border_style=color)
+
+
+def run_timer():
+    """Main timer loop."""
+    old_settings = termios.tcgetattr(sys.stdin)
+    try:
+        tty.setcbreak(sys.stdin.fileno())
+
+        remaining = WORK_DURATION
+        total = WORK_DURATION
+        paused = False
+        completed = 0
+        is_break = False
+        last_tick = time.time()
+
+        with Live(
+            create_display(remaining, total, paused, completed, is_break),
+            refresh_per_second=4,
+            console=console,
+        ) as live:
+            while True:
+                key = get_key_nonblocking()
+
+                if key == "q":
+                    break
+                elif key == "p":
+                    paused = not paused
+                    last_tick = time.time()
+                elif key == "r":
+                    is_break = False
+                    remaining = WORK_DURATION
+                    total = WORK_DURATION
+                    paused = False
+                    last_tick = time.time()
+
+                if not paused:
+                    now = time.time()
+                    elapsed = now - last_tick
+                    if elapsed >= 1:
+                        remaining -= int(elapsed)
+                        last_tick = now
+
+                    if remaining <= 0:
+                        if not is_break:
+                            completed += 1
+                            is_break = True
+                            remaining = BREAK_DURATION
+                            total = BREAK_DURATION
+                            console.bell()
+                        else:
+                            is_break = False
+                            remaining = WORK_DURATION
+                            total = WORK_DURATION
+                            console.bell()
+                        last_tick = time.time()
+
+                live.update(
+                    create_display(remaining, total, paused, completed, is_break)
+                )
+                time.sleep(0.05)
+
+    finally:
+        termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
+        console.print("\n[bold]Goodbye! Completed pomodoros:[/bold]", completed)
+
+
+if __name__ == "__main__":
+    console.print("[bold]Starting Pomodoro Timer...[/bold]")
+    console.print("Press any key to begin\n")
+    run_timer()

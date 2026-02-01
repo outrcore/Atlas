@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "sessionId": "46c95c70-4b7f-4548-841e-83d2bcdb94c1",
+      "fullPath": "/root/.claude/projects/-workspace-projects-pomodoro/46c95c70-4b7f-4548-841e-83d2bcdb94c1.jsonl",
+      "fileMtime": 1769815913000,
+      "firstPrompt": "Create a simple Python hello world in main.py",
+      "summary": "Invalid API key · Please run /login",
+      "messageCount": 2,
+      "created": "2026-01-30T23:28:55.721Z",
+      "modified": "2026-01-30T23:28:55.979Z",
+      "gitBranch": "",
+      "projectPath": "/workspace/projects/pomodoro",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "5e6c7d15-6ea8-4cf8-bb07-4e3d7b93e976",
+      "fullPath": "/root/.claude/projects/-workspace-projects-pomodoro/5e6c7d15-6ea8-4cf8-bb07-4e3d7b93e976.jsonl",
+      "fileMtime": 1769815913000,
+      "firstPrompt": "Create a terminal Pomodoro timer using Python rich library with countdown, progress bar, keyboard controls (p/r/q), session counter. Single main.py + requirements.txt",
+      "summary": "Invalid API key · Please run /login",
+      "messageCount": 2,
+      "created": "2026-01-30T22:57:44.674Z",
+      "modified": "2026-01-30T22:57:44.918Z",
+      "gitBranch": "",
+      "projectPath": "/workspace/projects/pomodoro",
+      "isSidechain": false
+    }
+  ],
+  "originalPath": "/workspace/projects/pomodoro"
+}

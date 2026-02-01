@@ -1,0 +1,136 @@
+{
+  "numStartups": 1,
+  "cachedGrowthBookFeatures": {
+    "tengu_1p_event_batch_config": {
+      "scheduledDelayMillis": 5000,
+      "maxExportBatchSize": 200,
+      "maxQueueSize": 8192
+    },
+    "tengu_mcp_tool_search": true,
+    "tengu_scratch": false,
+    "tengu_brass_pebble": false,
+    "tengu_disable_bypass_permissions_mode": false,
+    "tengu_event_sampling_config": {},
+    "tengu_log_segment_events": false,
+    "tengu_log_datadog_events": true,
+    "tengu_marble_anvil": true,
+    "tengu_tool_pear": false,
+    "tengu_scarf_coffee": false,
+    "tengu_claudeai_mcp_connectors": false,
+    "tengu_keybinding_customization_release": true,
+    "tengu_thinkback": false,
+    "tengu_pid_based_version_locking": true,
+    "tengu_system_prompt_global_cache": true,
+    "tengu_coral_fern": false,
+    "tengu_marble_kite": false,
+    "enhanced_telemetry_beta": false,
+    "tengu_cache_plum_violet": true,
+    "tengu_streaming_tool_execution2": true,
+    "tengu_tool_search_unsupported_models": [
+      "haiku"
+    ],
+    "tengu_attribution_header": true,
+    "tengu_workout": false,
+    "tengu_c4w_usage_limit_notifications_enabled": true,
+    "tengu-top-of-feed-tip": {
+      "tip": "",
+      "color": ""
+    },
+    "tengu_react_vulnerability_warning": false,
+    "tengu_code_diff_cli": true,
+    "tengu_pr_status_cli": true,
+    "tengu_post_compact_survey": false
+  },
+  "userID": "bcaf17580e69a70b5d791fa36a9d2445b76cba19f721811462000e8fef544e5e",
+  "firstStartTime": "2026-01-30T22:44:53.655Z",
+  "sonnet45MigrationComplete": true,
+  "opus45MigrationComplete": true,
+  "opusProMigrationComplete": true,
+  "thinkingMigrationComplete": true,
+  "cachedChromeExtensionInstalled": false,
+  "changelogLastFetched": 1769813372719,
+  "oauthAccount": {
+    "accountUuid": "bd9e0f88-e990-4ddc-bf4b-9da877a302ea",
+    "emailAddress": "mythicalsouo@gmail.com",
+    "organizationUuid": "cc867727-aa95-4ef6-9fb9-858ff3bf7e6a",
+    "hasExtraUsageEnabled": true,
+    "displayName": "Matt",
+    "organizationRole": "admin",
+    "workspaceRole": null,
+    "organizationName": "mythicalsouo@gmail.com's Organization"
+  },
+  "claudeCodeFirstTokenDate": "2025-11-17T19:24:42.014967Z",
+  "hasCompletedOnboarding": true,
+  "lastOnboardingVersion": "2.1.27",
+  "lastReleaseNotesSeen": "2.1.27",
+  "projects": {
+    "/root": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": false,
+      "projectOnboardingSeenCount": 1,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": [],
+      "reactVulnerabilityCache": {
+        "detected": false,
+        "package": null,
+        "packageName": null,
+        "version": null,
+        "packageManager": null
+      },
+      "lastCost": 0,
+      "lastAPIDuration": 0,
+      "lastAPIDurationWithoutRetries": 0,
+      "lastToolDuration": 0,
+      "lastDuration": 189733,
+      "lastLinesAdded": 0,
+      "lastLinesRemoved": 0,
+      "lastTotalInputTokens": 0,
+      "lastTotalOutputTokens": 0,
+      "lastTotalCacheCreationInputTokens": 0,
+      "lastTotalCacheReadInputTokens": 0,
+      "lastTotalWebSearchRequests": 0,
+      "lastFpsAverage": 0.31,
+      "lastFpsLow1Pct": 274.25,
+      "lastModelUsage": {},
+      "lastSessionId": "0151b012-0dfa-4882-9b7c-f36f4a60fafc"
+    }
+  },
+  "hasShownOpus45Notice": {
+    "cc867727-aa95-4ef6-9fb9-858ff3bf7e6a": true
+  },
+  "groveConfigCache": {
+    "bd9e0f88-e990-4ddc-bf4b-9da877a302ea": {
+      "grove_enabled": true,
+      "timestamp": 1769813372691
+    }
+  },
+  "s1mAccessCache": {
+    "cc867727-aa95-4ef6-9fb9-858ff3bf7e6a": {
+      "hasAccess": false,
+      "hasAccessNotAsDefault": false,
+      "timestamp": 1769813372822
+    }
+  },
+  "passesEligibilityCache": {
+    "cc867727-aa95-4ef6-9fb9-858ff3bf7e6a": {
+      "eligible": true,
+      "referral_code_details": {
+        "code": "EpqqoVcCqw",
+        "campaign": "claude_code_guest_pass_a47c",
+        "referral_link": "https://claude.ai/referral/EpqqoVcCqw"
+      },
+      "referrer_reward": {
+        "amount_minor_units": 2000,
+        "currency": "USD"
+      },
+      "timestamp": 1769813373540
+    }
+  },
+  "officialMarketplaceAutoInstallAttempted": true,
+  "officialMarketplaceAutoInstalled": true
+}

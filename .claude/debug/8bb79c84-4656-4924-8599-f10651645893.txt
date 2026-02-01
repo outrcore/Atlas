@@ -1,0 +1,112 @@
+2026-01-30T22:50:44.867Z [DEBUG] [init] configureGlobalMTLS starting
+2026-01-30T22:50:44.867Z [DEBUG] [init] configureGlobalMTLS complete
+2026-01-30T22:50:44.867Z [DEBUG] [init] configureGlobalAgents starting
+2026-01-30T22:50:44.867Z [DEBUG] [init] configureGlobalAgents complete
+2026-01-30T22:50:44.873Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-01-30T22:50:44.883Z [DEBUG] [ToolSearch:optimistic] mode=tst-auto, ENABLE_TOOL_SEARCH=undefined, result=true
+2026-01-30T22:50:44.884Z [DEBUG] [STARTUP] Running setup()...
+2026-01-30T22:50:44.884Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-01-30T22:50:44.899Z [DEBUG] Loading skills from: managed=/etc/claude-code/.claude/skills, user=/root/.claude/skills, project=[]
+2026-01-30T22:50:44.899Z [DEBUG] Passes: Using fresh cached eligibility data
+2026-01-30T22:50:44.899Z [DEBUG] Error log sink initialized
+2026-01-30T22:50:44.901Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-01-30T22:50:44.901Z [DEBUG] Total plugin skills loaded: 0
+2026-01-30T22:50:44.901Z [DEBUG] Total plugin commands loaded: 0
+2026-01-30T22:50:44.901Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-01-30T22:50:44.909Z [DEBUG] [STARTUP] setup() completed in 25ms
+2026-01-30T22:50:44.909Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-01-30T22:50:44.910Z [DEBUG] [claudeai-mcp] Checking gate (cached)...
+2026-01-30T22:50:44.910Z [DEBUG] [claudeai-mcp] Gate returned: false
+2026-01-30T22:50:44.910Z [DEBUG] [claudeai-mcp] Disabled via gate
+2026-01-30T22:50:44.912Z [DEBUG] Total plugin agents loaded: 0
+2026-01-30T22:50:44.912Z [DEBUG] Loaded 0 unique skills (managed: 0, user: 0, project: 0, legacy commands: 0)
+2026-01-30T22:50:44.912Z [DEBUG] getSkills returning: 0 skill dir commands, 0 plugin skills, 1 bundled skills
+2026-01-30T22:50:44.912Z [DEBUG] [STARTUP] Commands and agents loaded in 3ms
+2026-01-30T22:50:44.912Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-01-30T22:50:44.912Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-01-30T22:50:44.912Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-01-30T22:50:44.913Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-01-30T22:50:44.913Z [DEBUG] [API:auth] OAuth token check starting
+2026-01-30T22:50:44.913Z [DEBUG] Passes: Using fresh cached eligibility data
+2026-01-30T22:50:44.922Z [DEBUG] Total LSP servers loaded: 0
+2026-01-30T22:50:44.922Z [DEBUG] [STARTUP] MCP configs loaded in 49ms
+2026-01-30T22:50:44.922Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-01-30T22:50:44.922Z [DEBUG] LSP manager initialized with 0 servers
+2026-01-30T22:50:44.922Z [DEBUG] LSP server manager initialized successfully
+2026-01-30T22:50:44.923Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-01-30T22:50:44.923Z [DEBUG] [API:auth] OAuth token check complete
+2026-01-30T22:50:44.931Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-01-30T22:50:44.931Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-01-30T22:50:44.931Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-01-30T22:50:44.941Z [DEBUG] Writing to temp file: /root/.claude/todos/8bb79c84-4656-4924-8599-f10651645893-agent-8bb79c84-4656-4924-8599-f10651645893.json.tmp.7033.1769813444941
+2026-01-30T22:50:44.941Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-01-30T22:50:44.941Z [DEBUG] Renaming /root/.claude/todos/8bb79c84-4656-4924-8599-f10651645893-agent-8bb79c84-4656-4924-8599-f10651645893.json.tmp.7033.1769813444941 to /root/.claude/todos/8bb79c84-4656-4924-8599-f10651645893-agent-8bb79c84-4656-4924-8599-f10651645893.json
+2026-01-30T22:50:44.942Z [DEBUG] File /root/.claude/todos/8bb79c84-4656-4924-8599-f10651645893-agent-8bb79c84-4656-4924-8599-f10651645893.json written atomically
+2026-01-30T22:50:44.942Z [DEBUG] Grove: Using fresh cached config
+2026-01-30T22:50:44.984Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/usr/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/x64-linux/rg)
+2026-01-30T22:50:44.996Z [DEBUG] Stats cache does not exist, returning empty cache
+2026-01-30T22:50:44.996Z [DEBUG] Stats cache empty, processing all historical data in background
+2026-01-30T22:50:45.000Z [DEBUG] Session index: added 1, updated 0, removed 0, summaries generated 0 (total: 2)
+2026-01-30T22:50:45.018Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-01-30T22:50:45.020Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-01-30T22:50:45.020Z [DEBUG] [API:auth] OAuth token check starting
+2026-01-30T22:50:45.021Z [DEBUG] [API:auth] OAuth token check complete
+2026-01-30T22:50:45.149Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-01-30T22:50:45.149Z [DEBUG] [API:auth] OAuth token check starting
+2026-01-30T22:50:45.149Z [DEBUG] [API:auth] OAuth token check complete
+2026-01-30T22:50:45.260Z [DEBUG] Writing to temp file: /root/.claude.json.tmp.7033.1769813445260
+2026-01-30T22:50:45.260Z [DEBUG] Preserving file permissions: 100600
+2026-01-30T22:50:45.260Z [DEBUG] Temp file written successfully, size: 3789 bytes
+2026-01-30T22:50:45.260Z [DEBUG] Applied original permissions to temp file
+2026-01-30T22:50:45.260Z [DEBUG] Renaming /root/.claude.json.tmp.7033.1769813445260 to /root/.claude.json
+2026-01-30T22:50:45.260Z [DEBUG] File /root/.claude.json written atomically
+2026-01-30T22:50:45.261Z [DEBUG] Writing to temp file: /root/.claude.json.tmp.7033.1769813445261
+2026-01-30T22:50:45.261Z [DEBUG] Preserving file permissions: 100600
+2026-01-30T22:50:45.261Z [DEBUG] Temp file written successfully, size: 3788 bytes
+2026-01-30T22:50:45.261Z [DEBUG] Applied original permissions to temp file
+2026-01-30T22:50:45.261Z [DEBUG] Renaming /root/.claude.json.tmp.7033.1769813445261 to /root/.claude.json
+2026-01-30T22:50:45.261Z [DEBUG] File /root/.claude.json written atomically
+2026-01-30T22:50:45.341Z [DEBUG] Successfully refreshed marketplace: claude-plugins-official
+2026-01-30T22:50:45.341Z [DEBUG] Plugin autoupdate: checking installed plugins
+2026-01-30T22:50:45.348Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2026-01-30T22:50:45.348Z [DEBUG] Found 0 hook matchers in settings
+2026-01-30T22:50:45.348Z [DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+2026-01-30T22:50:45.356Z [DEBUG] Total plugin output styles loaded: 0
+2026-01-30T22:50:45.360Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-30T22:50:45.360Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-30T22:50:45.360Z [DEBUG] Sending 1 skills via attachment (initial, 1 total sent)
+2026-01-30T22:50:45.360Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-30T22:50:45.360Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-30T22:50:45.361Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-01-30T22:50:45.361Z [DEBUG] Found 0 hook matchers in settings
+2026-01-30T22:50:45.361Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-30T22:50:45.363Z [DEBUG] Writing to temp file: /root/.claude.json.tmp.7033.1769813445363
+2026-01-30T22:50:45.363Z [DEBUG] Preserving file permissions: 100600
+2026-01-30T22:50:45.364Z [DEBUG] Temp file written successfully, size: 3787 bytes
+2026-01-30T22:50:45.364Z [DEBUG] Applied original permissions to temp file
+2026-01-30T22:50:45.364Z [DEBUG] Renaming /root/.claude.json.tmp.7033.1769813445363 to /root/.claude.json
+2026-01-30T22:50:45.364Z [DEBUG] File /root/.claude.json written atomically
+2026-01-30T22:50:45.364Z [DEBUG] Auto tool search disabled: 0 tokens (threshold: 20000, 10% of context) [source: query]
+2026-01-30T22:50:45.366Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.27.84b; cc_entrypoint=sdk-cli;
+2026-01-30T22:50:45.377Z [ERROR] ReferenceError: ReferenceError: Bun is not defined
+    at Z34 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1602:27809)
+    at f34 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1614:83)
+    at C5q (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4787:6330)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4787:3611
+    at async Z$A (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:1027:2007)
+    at async pM1 (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:4787:3581)
+    at async mN (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:3186:5201)
+    at async EGq.submitMessage (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:6213:5309)
+    at async kGq (file:///usr/lib/node_modules/@anthropic-ai/claude-code/cli.js:6213:9425)
+2026-01-30T22:50:45.377Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-01-30T22:50:45.377Z [DEBUG] [API:auth] OAuth token check starting
+2026-01-30T22:50:45.378Z [DEBUG] [API:auth] OAuth token check complete
+2026-01-30T22:50:45.924Z [DEBUG] Stream started - received first chunk
+2026-01-30T22:50:48.223Z [DEBUG] Stream started - received first chunk
+2026-01-30T22:50:48.384Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-01-30T22:50:48.384Z [DEBUG] Found 0 hook matchers in settings
+2026-01-30T22:50:48.384Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-30T22:50:48.385Z [DEBUG] Getting matching hook commands for SessionEnd with query: other
+2026-01-30T22:50:48.385Z [DEBUG] Found 0 hook matchers in settings
+2026-01-30T22:50:48.385Z [DEBUG] Matched 0 unique hooks for query "other" (0 before deduplication)

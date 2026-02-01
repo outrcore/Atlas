@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "sessionId": "34700e5b-bc0c-41b5-b10c-629c8c6c913d",
+      "fullPath": "/root/.claude/projects/-/34700e5b-bc0c-41b5-b10c-629c8c6c913d.jsonl",
+      "fileMtime": 1769815911000,
+      "firstPrompt": "say hello",
+      "summary": "Invalid API key · Please run /login",
+      "messageCount": 2,
+      "created": "2026-01-30T23:30:46.878Z",
+      "modified": "2026-01-30T23:30:47.273Z",
+      "gitBranch": "",
+      "projectPath": "/",
+      "isSidechain": false
+    },
+    {
+      "sessionId": "cb63448f-5cd8-4f56-a6b0-1853546e0072",
+      "fullPath": "/root/.claude/projects/-/cb63448f-5cd8-4f56-a6b0-1853546e0072.jsonl",
+      "fileMtime": 1769815911000,
+      "firstPrompt": "say hello",
+      "summary": "Invalid API key · Please run /login",
+      "messageCount": 2,
+      "created": "2026-01-30T23:30:27.682Z",
+      "modified": "2026-01-30T23:30:27.920Z",
+      "gitBranch": "",
+      "projectPath": "/",
+      "isSidechain": false
+    }
+  ],
+  "originalPath": "/"
+}
