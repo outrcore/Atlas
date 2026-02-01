@@ -95,3 +95,30 @@ cd /workspace/projects/wander/landing-page && python3 -m http.server 8081
 
 **Built with determination.** 💪
 **For Matt.** 🎯
+
+---
+
+## 2026-02-01 (3 AM Build)
+
+**Time:** 09:00 UTC (3 AM Chicago)
+**Status:** SUCCESS ✅
+
+### What I Built
+
+**Email Capture API for Wander**
+- `api/email_capture.py` - Simple FastAPI endpoint
+- Stores signups to JSON file
+- Endpoints: `/signup`, `/stats`, `/export`
+- Updated landing page to POST to API
+
+**Why:** The landing page needs a backend to capture emails for validation. This small API stores signups locally and provides stats.
+
+**Usage:**
+```bash
+cd /workspace/projects/wander/api
+python email_capture.py
+# Then landing page can POST to localhost:8002/signup
+```
+
+**Files changed:** 2
+**Time spent:** ~5 minutes
