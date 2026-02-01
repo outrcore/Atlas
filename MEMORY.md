@@ -184,7 +184,33 @@ Run daemon: `python -m brain.daemon --mode daemon`
 
 ---
 
-*Last updated: 2026-01-31*
+*Last updated: 2026-02-01*
+
+### Wander Project (Feb 1, 2026)
+- **What:** AI-powered narrative walking tour app
+- **Location:** `/workspace/projects/wander/`
+- **Status:** MVP validation package complete
+- **Market:** $310B TAM, clear gap (no AI + narrative + walking)
+- **Cost:** ~$0.06 per route generation, 96% margins
+- **Timeline:** 8-10 weeks for solo dev MVP
+- **Validation goal:** 100 signups at <$2 CAC
+
+**Delivered:**
+- Competitive analysis (Komoot, AllTrails, VoiceMap, etc.)
+- Market research (TAM/SAM/SOM)
+- Technical feasibility & stack recommendations
+- Landing page (HTML/CSS)
+- Ad campaign (5 variants, $200 budget)
+- 3 sample routes (Hemingway Paris, Boston Freedom, Chicago Secrets)
+- Technical spec document
+- Route generation API prototype
+- Email capture API
+
+### ATLAS Tools (Feb 1, 2026)
+- `tools/health_check.py` - System health monitoring
+- `tools/morning_brief.py` - Morning briefing for Matt
+- `start-atlas.sh` - Persistent gateway startup
+- `dashboard/index.html` - Web dashboard UI
 
 ### Live Activity Sync (Jan 31, 2026)
 - **Activity file:** `/workspace/clawd/.activity.json`
