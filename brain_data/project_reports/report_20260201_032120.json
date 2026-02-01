@@ -1,0 +1,283 @@
+{
+  "summary": {
+    "checked_at": "2026-02-01T03:21:20.572831",
+    "project_count": 6,
+    "average_health": 93.3,
+    "projects_with_uncommitted_changes": [
+      "pomodoro"
+    ],
+    "total_todos": 13
+  },
+  "projects": {
+    "shorty-storys-generator": {
+      "name": "shorty-storys-generator",
+      "exists": true,
+      "path": "/workspace/projects/shorty-storys-generator",
+      "description": "RLM-powered horror story generator for @ShortyStorys",
+      "type": "python",
+      "github": "https://github.com/outrcore/shorty-storys-gen",
+      "checked_at": "2026-02-01T03:21:15.445965",
+      "git": {
+        "tracked": true,
+        "branch": "main",
+        "uncommitted_changes": 0,
+        "changes": [],
+        "last_commit": {
+          "hash": "518ad21f",
+          "message": "Initial commit: ShortyStorys Generator",
+          "date": "2026-02-01 01:04:34 +0000"
+        },
+        "ahead_of_remote": false,
+        "behind_remote": false
+      },
+      "activity": {
+        "active": true,
+        "last_modified": "2026-02-01T01:04:23",
+        "last_modified_ago": "2 hours ago",
+        "last_modified_file": "stories/20260201_010423_demo_The_Staging.md"
+      },
+      "todos": [],
+      "python": {
+        "has_requirements": false,
+        "has_tests": false,
+        "has_readme": true,
+        "python_files": 4
+      },
+      "health_score": 100
+    },
+    "atlas-voice": {
+      "name": "atlas-voice",
+      "exists": true,
+      "path": "/workspace/projects/atlas-voice",
+      "description": "ATLAS voice interface and web UI",
+      "type": "python",
+      "github": null,
+      "checked_at": "2026-02-01T03:21:15.988960",
+      "git": {
+        "tracked": true,
+        "branch": "main",
+        "uncommitted_changes": 0,
+        "changes": [],
+        "last_commit": {
+          "hash": "bf85d1a7",
+          "message": "Add pre-roll buffer to capture start of speech",
+          "date": "2026-01-31 23:37:12 +0000"
+        },
+        "ahead_of_remote": false,
+        "behind_remote": false
+      },
+      "activity": {
+        "active": true,
+        "last_modified": "2026-01-31T23:37:08",
+        "last_modified_ago": "3 hours ago",
+        "last_modified_file": "__pycache__/config.cpython-311.pyc"
+      },
+      "todos": [
+        {
+          "file": "agents/mind.py",
+          "line": 227,
+          "text": "# TODO: Integrate with weather API"
+        },
+        {
+          "file": "agents/voice.py",
+          "line": 297,
+          "text": "# TODO: Send to audio output"
+        }
+      ],
+      "python": {
+        "has_requirements": true,
+        "requirements_file": "requirements.txt",
+        "has_tests": true,
+        "has_readme": false,
+        "python_files": 29
+      },
+      "health_score": 90
+    },
+    "atlas-discord": {
+      "name": "atlas-discord",
+      "exists": true,
+      "path": "/workspace/projects/atlas-discord",
+      "description": "Unified Discord bot for ATLAS",
+      "type": "python",
+      "github": null,
+      "checked_at": "2026-02-01T03:21:17.831610",
+      "git": {
+        "tracked": false
+      },
+      "activity": {
+        "active": true,
+        "last_modified": "2026-01-31T21:41:06",
+        "last_modified_ago": "5 hours ago",
+        "last_modified_file": "bot.py"
+      },
+      "todos": [],
+      "python": {
+        "has_requirements": false,
+        "has_tests": false,
+        "has_readme": false,
+        "python_files": 2
+      },
+      "health_score": 70
+    },
+    "rlm": {
+      "name": "rlm",
+      "exists": true,
+      "path": "/workspace/projects/rlm",
+      "description": "Recursive Language Models library",
+      "type": "python",
+      "github": "https://github.com/alexzhang13/rlm",
+      "checked_at": "2026-02-01T03:21:17.847855",
+      "git": {
+        "tracked": true,
+        "branch": "main",
+        "uncommitted_changes": 0,
+        "changes": [],
+        "last_commit": {
+          "hash": "3a63ff43",
+          "message": "fix: use greedy matching in FINAL pattern to handle nested parentheses (#75)",
+          "date": "2026-01-29 19:23:16 +0300"
+        },
+        "ahead_of_remote": false,
+        "behind_remote": false
+      },
+      "activity": {
+        "active": true,
+        "last_modified": "2026-02-01T01:03:43",
+        "last_modified_ago": "2 hours ago",
+        "last_modified_file": "rlm.egg-info/PKG-INFO"
+      },
+      "todos": [
+        {
+          "file": "rlm/utils/parsing.py",
+          "line": 102,
+          "text": "# TODO: Remove and refactor these soon"
+        },
+        {
+          "file": "rlm/core/comms_utils.py",
+          "line": 57,
+          "text": "depth=data.get(\"depth\", -1),  # TODO: Default should throw an error"
+        },
+        {
+          "file": "CONTRIBUTING.md",
+          "line": 7,
+          "text": "## Urgent TODOs"
+        },
+        {
+          "file": "CONTRIBUTING.md",
+          "line": 13,
+          "text": "Low-hanging fruit of the urgent TODOs:"
+        },
+        {
+          "file": "CONTRIBUTING.md",
+          "line": 17,
+          "text": "## Would-be-nice TODOs"
+        },
+        {
+          "file": "CONTRIBUTING.md",
+          "line": 23,
+          "text": "## \"If you can tackle these, thanks LOL\" TODOs"
+        }
+      ],
+      "python": {
+        "has_requirements": true,
+        "requirements_file": "pyproject.toml",
+        "has_tests": true,
+        "has_readme": true,
+        "python_files": 47
+      },
+      "health_score": 100
+    },
+    "personaplex": {
+      "name": "personaplex",
+      "exists": true,
+      "path": "/workspace/projects/personaplex",
+      "description": "NVIDIA PersonaPlex voice model",
+      "type": "python",
+      "github": null,
+      "checked_at": "2026-02-01T03:21:19.052497",
+      "git": {
+        "tracked": true,
+        "branch": "main",
+        "uncommitted_changes": 0,
+        "changes": [],
+        "last_commit": {
+          "hash": "b62355ae",
+          "message": "Merge pull request #18 from tsdocode/fix/init-oom",
+          "date": "2026-01-24 14:46:36 -0800"
+        },
+        "ahead_of_remote": false,
+        "behind_remote": false
+      },
+      "activity": {
+        "active": true,
+        "last_modified": "2026-01-31T02:50:58",
+        "last_modified_ago": "1 days ago",
+        "last_modified_file": "moshi/moshi_personaplex.egg-info/PKG-INFO"
+      },
+      "todos": [
+        {
+          "file": "moshi/build/lib/moshi/modules/transformer.py",
+          "line": 381,
+          "text": "# TODO: the following estimation will not work great with FSDP."
+        },
+        {
+          "file": "moshi/moshi/modules/transformer.py",
+          "line": 381,
+          "text": "# TODO: the following estimation will not work great with FSDP."
+        },
+        {
+          "file": "client/src/protocol/encoder.ts",
+          "line": 61,
+          "text": "//TODO: log this and don't throw"
+        },
+        {
+          "file": "client/src/pages/Queue/api/validators.ts",
+          "line": 14,
+          "text": "// TODO: add more statuses"
+        },
+        {
+          "file": "client/src/pages/Conversation/hooks/useUserAudio.ts",
+          "line": 35,
+          "text": "//TODO: Fix any type for recorder"
+        }
+      ],
+      "python": {
+        "has_requirements": false,
+        "has_tests": false,
+        "has_readme": true,
+        "python_files": 52
+      },
+      "health_score": 100
+    },
+    "pomodoro": {
+      "name": "pomodoro",
+      "exists": true,
+      "path": "/workspace/projects/pomodoro",
+      "description": "Pomodoro timer web app",
+      "type": "web",
+      "github": null,
+      "checked_at": "2026-02-01T03:21:20.372179",
+      "git": {
+        "tracked": true,
+        "branch": "master",
+        "uncommitted_changes": 3,
+        "changes": [
+          "?? __pycache__/",
+          "?? main.py",
+          "?? requirements.txt"
+        ],
+        "last_commit": null,
+        "ahead_of_remote": false,
+        "behind_remote": false
+      },
+      "activity": {
+        "active": true,
+        "last_modified": "2026-01-30T23:34:08",
+        "last_modified_ago": "1 days ago",
+        "last_modified_file": "__pycache__/main.cpython-311.pyc"
+      },
+      "todos": [],
+      "health_score": 100
+    }
+  }
+}

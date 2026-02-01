@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wander - AI-Powered Walking Tours That Tell Your Story</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="hero">
+        <nav class="nav">
+            <div class="logo">Wander</div>
+        </nav>
+        
+        <div class="hero-content">
+            <h1>Walk any city through the eyes of your favorite author, historical era, or personal interests</h1>
+            <p class="subtitle">AI-powered walking routes that make the journey the destination</p>
+            
+            <form class="signup-form" id="waitlist-form">
+                <input type="email" placeholder="Enter your email" required id="email-input">
+                <button type="submit">Get Early Access</button>
+            </form>
+            <p class="form-note">Join the waitlist → Get 3 free custom routes when we launch</p>
+        </div>
+    </header>
+
+    <section class="routes-section">
+        <h2>Imagine walking through...</h2>
+        
+        <div class="routes-grid">
+            <div class="route-card">
+                <div class="route-icon">📚</div>
+                <h3>Hemingway's Paris</h3>
+                <p>Retrace the steps of the Lost Generation through Montparnasse cafés, bookshops, and the apartments where masterpieces were written.</p>
+                <span class="route-meta">2.5 hours • 3.2 miles • 8 stops</span>
+            </div>
+            
+            <div class="route-card">
+                <div class="route-icon">🎺</div>
+                <h3>Chicago's Jazz History Walk</h3>
+                <p>From Maxwell Street to the Green Mill, discover where Chicago blues was born and where legends like Louis Armstrong made history.</p>
+                <span class="route-meta">2 hours • 2.8 miles • 7 stops</span>
+            </div>
+            
+            <div class="route-card">
+                <div class="route-icon">🍜</div>
+                <h3>Portland Like Bourdain</h3>
+                <p>The irreverent, authentic Portland that Anthony would have loved—dive bars, immigrant-owned gems, and stories behind each door.</p>
+                <span class="route-meta">3 hours • 2.5 miles • 9 stops</span>
+            </div>
+            
+            <div class="route-card">
+                <div class="route-icon">🏛️</div>
+                <h3>2-Hour Architecture + Coffee</h3>
+                <p>Art Deco, Brutalist, Victorian—whatever your style, paired with the best local coffee shops along the way.</p>
+                <span class="route-meta">2 hours • 1.8 miles • 6 stops</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <h2>How Wander Works</h2>
+        
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Tell us what you love</h3>
+                <p>"I'm into jazz history and want to find great coffee along the way"</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>AI crafts your route</h3>
+                <p>Our AI researches the city and creates a narrative journey just for you</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Walk & discover</h3>
+                <p>Turn-by-turn navigation with rich stories at every stop</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Be the first to explore</h2>
+        <p>We're launching soon with routes in 20+ cities worldwide</p>
+        
+        <form class="signup-form" id="waitlist-form-bottom">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Join the Waitlist</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="logo">Wander</div>
+            <p>Making every walk a story worth telling</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple form handling - sends to a webhook or logs for now
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = form.querySelector('input[type="email"]').value;
+                
+                // For now, just show success - hook up to backend later
+                const button = form.querySelector('button');
+                const originalText = button.textContent;
+                button.textContent = '✓ You\'re on the list!';
+                button.disabled = true;
+                
+                // Log to console for testing
+                console.log('Waitlist signup:', email);
+                
+                // You can POST to a webhook here:
+                // await fetch('YOUR_WEBHOOK_URL', {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify({ email, source: 'landing-page' })
+                // });
+                
+                setTimeout(() => {
+                    form.querySelector('input').value = '';
+                    button.textContent = originalText;
+                    button.disabled = false;
+                }, 3000);
+            });
+        });
+    </script>
+</body>
+</html>

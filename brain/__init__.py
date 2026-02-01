@@ -29,6 +29,19 @@ from .suggester import ProactiveSuggester
 from .memory_sync import MemorySync
 from . import hooks
 
+# Optional RLM integration (requires /workspace/projects/rlm)
+try:
+    from .rlm_integration import RLMBrain, create_rlm_brain
+    RLM_AVAILABLE = True
+except ImportError:
+    RLMBrain = None
+    create_rlm_brain = None
+    RLM_AVAILABLE = False
+
+# Task planning and reflection
+from .task_planner import TaskPlanner, TaskPlan, TaskStep, TaskStatus
+from .reflection import SelfReflector, Reflection, quick_reflect
+
 __version__ = "0.1.0"
 __all__ = [
     "Brain",
@@ -39,4 +52,16 @@ __all__ = [
     "ProactiveSuggester",
     "MemorySync",
     "hooks",
+    # RLM integration
+    "RLMBrain",
+    "create_rlm_brain",
+    "RLM_AVAILABLE",
+    # Task planning & reflection
+    "TaskPlanner",
+    "TaskPlan",
+    "TaskStep",
+    "TaskStatus",
+    "SelfReflector",
+    "Reflection",
+    "quick_reflect",
 ]

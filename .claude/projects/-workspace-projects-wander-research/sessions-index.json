@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "sessionId": "eacb6bf9-ac9e-4c51-bb8d-af3c33d77945",
+      "fullPath": "/root/.claude/projects/-workspace-projects-wander-research/eacb6bf9-ac9e-4c51-bb8d-af3c33d77945.jsonl",
+      "fileMtime": 1769931467000,
+      "firstPrompt": "# Task: Competitive Landscape Analysis  Research and analyze competitors in the walking tour / narrative navigation space.  ## Research these apps: - Komoot - features, pricing, reviews - AllTrails -…",
+      "messageCount": 1,
+      "created": "2026-02-01T07:37:42.252Z",
+      "modified": "2026-02-01T07:37:47.278Z",
+      "gitBranch": "",
+      "projectPath": "/workspace/projects/wander/research",
+      "isSidechain": false
+    }
+  ],
+  "originalPath": "/workspace/projects/wander/research"
+}

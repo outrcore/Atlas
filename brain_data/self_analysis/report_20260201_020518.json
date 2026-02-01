@@ -1,0 +1,2108 @@
+{
+  "generated_at": "2026-02-01T02:05:17.779746",
+  "capabilities": {
+    "memory": {
+      "short_term": {
+        "description": "Activity logging for conversations",
+        "exists": true,
+        "status": "\u2705"
+      },
+      "long_term": {
+        "description": "MEMORY.md and daily notes",
+        "exists": true,
+        "status": "\u2705"
+      },
+      "semantic": {
+        "description": "Vector DB semantic search",
+        "exists": true,
+        "status": "\u2705"
+      },
+      "extraction": {
+        "description": "Insight extraction from conversations",
+        "exists": true,
+        "status": "\u2705"
+      }
+    },
+    "reasoning": {
+      "rlm": {
+        "description": "Recursive Language Models integration",
+        "exists": true,
+        "status": "\u2705"
+      },
+      "planning": {
+        "description": "Multi-step task planning",
+        "exists": false,
+        "status": "\u274c"
+      },
+      "reflection": {
+        "description": "Self-reflection on outputs",
+        "exists": false,
+        "status": "\u274c"
+      }
+    },
+    "perception": {
+      "vision": {
+        "description": "Image analysis",
+        "exists": true,
+        "status": "\u2705"
+      },
+      "voice": {
+        "description": "Speech recognition",
+        "exists": true,
+        "status": "\u2705"
+      },
+      "screen": {
+        "description": "Screen capture/analysis",
+        "exists": true,
+        "status": "\u2705"
+      }
+    },
+    "action": {
+      "code": {
+        "description": "Write and execute code",
+        "exists": true,
+        "status": "\u2705"
+      },
+      "browse": {
+        "description": "Web browsing",
+        "exists": true,
+        "status": "\u2705"
+      },
+      "message": {
+        "description": "Send messages across platforms",
+        "exists": true,
+        "status": "\u2705"
+      },
+      "file": {
+        "description": "File operations",
+        "exists": true,
+        "status": "\u2705"
+      }
+    },
+    "proactive": {
+      "heartbeat": {
+        "description": "Periodic check-ins",
+        "exists": true,
+        "status": "\u2705"
+      },
+      "monitoring": {
+        "description": "System/project monitoring",
+        "exists": true,
+        "status": "\u2705"
+      },
+      "suggestions": {
+        "description": "Proactive suggestions",
+        "exists": true,
+        "status": "\u2705"
+      }
+    }
+  },
+  "improvements": [
+    {
+      "type": "missing_capability",
+      "priority": "high",
+      "title": "Add Multi-step task planning",
+      "category": "reasoning",
+      "capability": "planning"
+    },
+    {
+      "type": "missing_capability",
+      "priority": "high",
+      "title": "Add Self-reflection on outputs",
+      "category": "reasoning",
+      "capability": "reflection"
+    },
+    {
+      "type": "code_quality",
+      "priority": "low",
+      "title": "rlm_integration.py: Function '__init__' has 8 args (consider refactoring)",
+      "category": "refactoring"
+    },
+    {
+      "type": "code_quality",
+      "priority": "low",
+      "title": "rlm_integration.py: Function 'analyze_document' is 53 lines (consider splitting)",
+      "category": "refactoring"
+    },
+    {
+      "type": "code_quality",
+      "priority": "low",
+      "title": "rlm_integration.py: Function 'synthesize_memories' is 62 lines (consider splitting)",
+      "category": "refactoring"
+    },
+    {
+      "type": "code_quality",
+      "priority": "low",
+      "title": "rlm_integration.py: Function 'deep_research' is 69 lines (consider splitting)",
+      "category": "refactoring"
+    },
+    {
+      "type": "code_quality",
+      "priority": "low",
+      "title": "rlm_integration.py: Function 'solve_problem' is 63 lines (consider splitting)",
+      "category": "refactoring"
+    },
+    {
+      "type": "integration",
+      "priority": "medium",
+      "title": "Integrate sag skill more deeply",
+      "category": "skills"
+    },
+    {
+      "type": "integration",
+      "priority": "medium",
+      "title": "Integrate spotify-player skill more deeply",
+      "category": "skills"
+    },
+    {
+      "type": "integration",
+      "priority": "medium",
+      "title": "Integrate github skill more deeply",
+      "category": "skills"
+    }
+  ],
+  "code_analysis": {
+    "brain": {
+      "path": "/workspace/clawd/brain",
+      "file_count": 15,
+      "files": {
+        "rlm_integration.py": {
+          "path": "/workspace/clawd/brain/rlm_integration.py",
+          "lines": 415,
+          "functions": [
+            {
+              "name": "create_rlm_brain",
+              "args": 0,
+              "lines": 3,
+              "has_docstring": true
+            },
+            {
+              "name": "__init__",
+              "args": 8,
+              "lines": 33,
+              "has_docstring": false
+            },
+            {
+              "name": "_create_rlm",
+              "args": 3,
+              "lines": 22,
+              "has_docstring": true
+            },
+            {
+              "name": "analyze_document",
+              "args": 4,
+              "lines": 53,
+              "has_docstring": true
+            },
+            {
+              "name": "synthesize_memories",
+              "args": 4,
+              "lines": 62,
+              "has_docstring": true
+            },
+            {
+              "name": "deep_research",
+              "args": 4,
+              "lines": 69,
+              "has_docstring": true
+            },
+            {
+              "name": "solve_problem",
+              "args": 3,
+              "lines": 63,
+              "has_docstring": true
+            },
+            {
+              "name": "analyze_conversation_history",
+              "args": 3,
+              "lines": 25,
+              "has_docstring": true
+            },
+            {
+              "name": "get_status",
+              "args": 1,
+              "lines": 11,
+              "has_docstring": true
+            }
+          ],
+          "classes": [
+            {
+              "name": "RLMBrain",
+              "methods": 8,
+              "has_docstring": true
+            }
+          ],
+          "imports": [
+            "os",
+            "sys",
+            "asyncio",
+            "pathlib",
+            "datetime",
+            "typing",
+            "rlm",
+            "rlm.logger"
+          ],
+          "todos": [],
+          "complexity_hints": [
+            "Function '__init__' has 8 args (consider refactoring)",
+            "Function 'analyze_document' is 53 lines (consider splitting)",
+            "Function 'synthesize_memories' is 62 lines (consider splitting)",
+            "Function 'deep_research' is 69 lines (consider splitting)",
+            "Function 'solve_problem' is 63 lines (consider splitting)"
+          ],
+          "metrics": {
+            "function_count": 9,
+            "class_count": 1,
+            "avg_function_size": 37.888888888888886,
+            "docstring_coverage": 0.8888888888888888,
+            "todo_count": 0
+          }
+        },
+        "linker.py": {
+          "path": "/workspace/clawd/brain/linker.py",
+          "lines": 268,
+          "functions": [
+            {
+              "name": "simple_hash_embedding",
+              "args": 2,
+              "lines": 19,
+              "has_docstring": true
+            },
+            {
+              "name": "__init__",
+              "args": 3,
+              "lines": 16,
+              "has_docstring": false
+            },
+            {
+              "name": "_load_encoder",
+              "args": 1,
+              "lines": 11,
+              "has_docstring": true
+            },
+            {
+              "name": "_embed",
+              "args": 2,
+              "lines": 6,
+              "has_docstring": true
+            },
+            {
+              "name": "_embed_batch",
+              "args": 2,
+              "lines": 6,
+              "has_docstring": true
+            },
+            {
+              "name": "count",
+              "args": 1,
+              "lines": 5,
+              "has_docstring": true
+            }
+          ],
+          "classes": [
+            {
+              "name": "SemanticLinker",
+              "methods": 5,
+              "has_docstring": true
+            }
+          ],
+          "imports": [
+            "os",
+            "json",
+            "uuid",
+            "pathlib",
+            "datetime",
+            "typing",
+            "lancedb",
+            "pyarrow",
+            "hashlib",
+            "sentence_transformers"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 6,
+            "class_count": 1,
+            "avg_function_size": 10.5,
+            "docstring_coverage": 0.8333333333333334,
+            "todo_count": 0
+          }
+        },
+        "utils.py": {
+          "path": "/workspace/clawd/brain/utils.py",
+          "lines": 72,
+          "functions": [
+            {
+              "name": "get_anthropic_api_key",
+              "args": 0,
+              "lines": 44,
+              "has_docstring": true
+            },
+            {
+              "name": "get_openai_api_key",
+              "args": 0,
+              "lines": 3,
+              "has_docstring": true
+            },
+            {
+              "name": "ensure_api_key",
+              "args": 0,
+              "lines": 11,
+              "has_docstring": true
+            }
+          ],
+          "classes": [],
+          "imports": [
+            "os",
+            "json",
+            "pathlib",
+            "typing"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 3,
+            "class_count": 0,
+            "avg_function_size": 19.333333333333332,
+            "docstring_coverage": 1.0,
+            "todo_count": 0
+          }
+        },
+        "memory_sync.py": {
+          "path": "/workspace/clawd/brain/memory_sync.py",
+          "lines": 230,
+          "functions": [
+            {
+              "name": "sync_brain_to_memory",
+              "args": 2,
+              "lines": 12,
+              "has_docstring": true
+            },
+            {
+              "name": "__init__",
+              "args": 2,
+              "lines": 7,
+              "has_docstring": false
+            },
+            {
+              "name": "get_today_file",
+              "args": 1,
+              "lines": 4,
+              "has_docstring": true
+            },
+            {
+              "name": "append_to_daily",
+              "args": 3,
+              "lines": 21,
+              "has_docstring": true
+            },
+            {
+              "name": "append_facts_to_memory",
+              "args": 3,
+              "lines": 42,
+              "has_docstring": true
+            },
+            {
+              "name": "append_preferences_to_memory",
+              "args": 2,
+              "lines": 42,
+              "has_docstring": true
+            },
+            {
+              "name": "log_action_items",
+              "args": 2,
+              "lines": 15,
+              "has_docstring": true
+            },
+            {
+              "name": "log_session_summary",
+              "args": 4,
+              "lines": 26,
+              "has_docstring": true
+            },
+            {
+              "name": "get_recent_learnings",
+              "args": 2,
+              "lines": 30,
+              "has_docstring": true
+            }
+          ],
+          "classes": [
+            {
+              "name": "MemorySync",
+              "methods": 8,
+              "has_docstring": true
+            }
+          ],
+          "imports": [
+            "os",
+            "re",
+            "pathlib",
+            "datetime",
+            "typing",
+            "datetime"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 9,
+            "class_count": 1,
+            "avg_function_size": 22.11111111111111,
+            "docstring_coverage": 0.8888888888888888,
+            "todo_count": 0
+          }
+        },
+        "test_brain.py": {
+          "path": "/workspace/clawd/brain/test_brain.py",
+          "lines": 205,
+          "functions": [],
+          "classes": [],
+          "imports": [
+            "os",
+            "sys",
+            "asyncio",
+            "pathlib",
+            "brain.activity",
+            "brain.linker",
+            "brain.extractor",
+            "brain.predictor",
+            "brain"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 0,
+            "class_count": 0,
+            "avg_function_size": 0.0,
+            "docstring_coverage": 0.0,
+            "todo_count": 0
+          }
+        },
+        "hooks.py": {
+          "path": "/workspace/clawd/brain/hooks.py",
+          "lines": 212,
+          "functions": [
+            {
+              "name": "get_brain",
+              "args": 0,
+              "lines": 9,
+              "has_docstring": true
+            },
+            {
+              "name": "_append_to_daily_memory",
+              "args": 1,
+              "lines": 7,
+              "has_docstring": true
+            },
+            {
+              "name": "sync_log_activity",
+              "args": 3,
+              "lines": 7,
+              "has_docstring": true
+            }
+          ],
+          "classes": [],
+          "imports": [
+            "os",
+            "asyncio",
+            "typing",
+            "datetime",
+            "pathlib",
+            ""
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 3,
+            "class_count": 0,
+            "avg_function_size": 7.666666666666667,
+            "docstring_coverage": 1.0,
+            "todo_count": 0
+          }
+        },
+        "daemon.py": {
+          "path": "/workspace/clawd/brain/daemon.py",
+          "lines": 206,
+          "functions": [
+            {
+              "name": "__init__",
+              "args": 3,
+              "lines": 10,
+              "has_docstring": false
+            },
+            {
+              "name": "_handle_signal",
+              "args": 3,
+              "lines": 4,
+              "has_docstring": true
+            },
+            {
+              "name": "_log_prediction",
+              "args": 2,
+              "lines": 13,
+              "has_docstring": true
+            },
+            {
+              "name": "show_status",
+              "args": 1,
+              "lines": 16,
+              "has_docstring": true
+            }
+          ],
+          "classes": [
+            {
+              "name": "BrainDaemon",
+              "methods": 4,
+              "has_docstring": true
+            }
+          ],
+          "imports": [
+            "os",
+            "sys",
+            "asyncio",
+            "argparse",
+            "signal",
+            "datetime",
+            "pathlib",
+            "brain"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 4,
+            "class_count": 1,
+            "avg_function_size": 10.75,
+            "docstring_coverage": 0.75,
+            "todo_count": 0
+          }
+        },
+        "suggester.py": {
+          "path": "/workspace/clawd/brain/suggester.py",
+          "lines": 239,
+          "functions": [
+            {
+              "name": "__init__",
+              "args": 4,
+              "lines": 12,
+              "has_docstring": false
+            },
+            {
+              "name": "_get_time_based_suggestions",
+              "args": 1,
+              "lines": 42,
+              "has_docstring": true
+            },
+            {
+              "name": "_search_knowledge",
+              "args": 3,
+              "lines": 29,
+              "has_docstring": true
+            },
+            {
+              "name": "get_knowledge_summary",
+              "args": 2,
+              "lines": 19,
+              "has_docstring": true
+            }
+          ],
+          "classes": [
+            {
+              "name": "ProactiveSuggester",
+              "methods": 4,
+              "has_docstring": true
+            }
+          ],
+          "imports": [
+            "os",
+            "json",
+            "pathlib",
+            "datetime",
+            "typing",
+            "linker"
+          ],
+          "todos": [
+            {
+              "line": 151,
+              "text": "recent = await self.linker.search(\"action item TODO\", limit=10)"
+            }
+          ],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 4,
+            "class_count": 1,
+            "avg_function_size": 25.5,
+            "docstring_coverage": 0.75,
+            "todo_count": 1
+          }
+        },
+        "predictor.py": {
+          "path": "/workspace/clawd/brain/predictor.py",
+          "lines": 204,
+          "functions": [
+            {
+              "name": "__init__",
+              "args": 2,
+              "lines": 6,
+              "has_docstring": false
+            },
+            {
+              "name": "_format_activities",
+              "args": 2,
+              "lines": 14,
+              "has_docstring": true
+            },
+            {
+              "name": "_empty_prediction",
+              "args": 2,
+              "lines": 13,
+              "has_docstring": true
+            }
+          ],
+          "classes": [
+            {
+              "name": "IntentPredictor",
+              "methods": 3,
+              "has_docstring": true
+            }
+          ],
+          "imports": [
+            "os",
+            "json",
+            "typing",
+            "datetime",
+            "anthropic"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 3,
+            "class_count": 1,
+            "avg_function_size": 11.0,
+            "docstring_coverage": 0.6666666666666666,
+            "todo_count": 0
+          }
+        },
+        "extractor.py": {
+          "path": "/workspace/clawd/brain/extractor.py",
+          "lines": 196,
+          "functions": [
+            {
+              "name": "__init__",
+              "args": 2,
+              "lines": 6,
+              "has_docstring": false
+            },
+            {
+              "name": "_empty_extraction",
+              "args": 2,
+              "lines": 15,
+              "has_docstring": true
+            }
+          ],
+          "classes": [
+            {
+              "name": "MemoryExtractor",
+              "methods": 2,
+              "has_docstring": true
+            }
+          ],
+          "imports": [
+            "os",
+            "json",
+            "typing",
+            "datetime",
+            "anthropic"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 2,
+            "class_count": 1,
+            "avg_function_size": 10.5,
+            "docstring_coverage": 0.5,
+            "todo_count": 0
+          }
+        },
+        "activity.py": {
+          "path": "/workspace/clawd/brain/activity.py",
+          "lines": 190,
+          "functions": [
+            {
+              "name": "__init__",
+              "args": 2,
+              "lines": 10,
+              "has_docstring": false
+            },
+            {
+              "name": "_get_log_path",
+              "args": 2,
+              "lines": 4,
+              "has_docstring": true
+            },
+            {
+              "name": "_load_processed_ids",
+              "args": 1,
+              "lines": 5,
+              "has_docstring": true
+            },
+            {
+              "name": "_save_processed_ids",
+              "args": 1,
+              "lines": 4,
+              "has_docstring": true
+            },
+            {
+              "name": "log",
+              "args": 4,
+              "lines": 41,
+              "has_docstring": true
+            },
+            {
+              "name": "load_recent",
+              "args": 2,
+              "lines": 16,
+              "has_docstring": true
+            },
+            {
+              "name": "get_recent",
+              "args": 2,
+              "lines": 9,
+              "has_docstring": true
+            },
+            {
+              "name": "get_unprocessed",
+              "args": 1,
+              "lines": 6,
+              "has_docstring": true
+            },
+            {
+              "name": "mark_processed",
+              "args": 2,
+              "lines": 4,
+              "has_docstring": true
+            },
+            {
+              "name": "get_by_type",
+              "args": 3,
+              "lines": 7,
+              "has_docstring": true
+            },
+            {
+              "name": "search",
+              "args": 3,
+              "lines": 8,
+              "has_docstring": true
+            },
+            {
+              "name": "count",
+              "args": 1,
+              "lines": 3,
+              "has_docstring": true
+            },
+            {
+              "name": "cleanup",
+              "args": 2,
+              "lines": 11,
+              "has_docstring": true
+            },
+            {
+              "name": "get_summary",
+              "args": 2,
+              "lines": 16,
+              "has_docstring": true
+            },
+            {
+              "name": "export_for_analysis",
+              "args": 2,
+              "lines": 13,
+              "has_docstring": true
+            }
+          ],
+          "classes": [
+            {
+              "name": "ActivityLogger",
+              "methods": 15,
+              "has_docstring": true
+            }
+          ],
+          "imports": [
+            "os",
+            "json",
+            "uuid",
+            "pathlib",
+            "datetime",
+            "typing"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 15,
+            "class_count": 1,
+            "avg_function_size": 10.466666666666667,
+            "docstring_coverage": 0.9333333333333333,
+            "todo_count": 0
+          }
+        },
+        "core.py": {
+          "path": "/workspace/clawd/brain/core.py",
+          "lines": 288,
+          "functions": [
+            {
+              "name": "__init__",
+              "args": 3,
+              "lines": 34,
+              "has_docstring": false
+            },
+            {
+              "name": "log_activity",
+              "args": 4,
+              "lines": 19,
+              "has_docstring": true
+            },
+            {
+              "name": "get_status",
+              "args": 1,
+              "lines": 14,
+              "has_docstring": true
+            }
+          ],
+          "classes": [
+            {
+              "name": "Brain",
+              "methods": 3,
+              "has_docstring": true
+            }
+          ],
+          "imports": [
+            "os",
+            "json",
+            "asyncio",
+            "pathlib",
+            "datetime",
+            "typing",
+            "activity",
+            "extractor",
+            "linker",
+            "predictor",
+            "suggester",
+            "utils"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 3,
+            "class_count": 1,
+            "avg_function_size": 22.333333333333332,
+            "docstring_coverage": 0.6666666666666666,
+            "todo_count": 0
+          }
+        },
+        "__init__.py": {
+          "path": "/workspace/clawd/brain/__init__.py",
+          "lines": 56,
+          "functions": [],
+          "classes": [],
+          "imports": [
+            "core",
+            "activity",
+            "extractor",
+            "linker",
+            "predictor",
+            "suggester",
+            "memory_sync",
+            "",
+            "rlm_integration"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 0,
+            "class_count": 0,
+            "avg_function_size": 0.0,
+            "docstring_coverage": 0.0,
+            "todo_count": 0
+          }
+        },
+        "examples/__init__.py": {
+          "path": "/workspace/clawd/brain/examples/__init__.py",
+          "lines": 1,
+          "functions": [],
+          "classes": [],
+          "imports": [],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 0,
+            "class_count": 0,
+            "avg_function_size": 0.0,
+            "docstring_coverage": 0.0,
+            "todo_count": 0
+          }
+        },
+        "examples/basic_usage.py": {
+          "path": "/workspace/clawd/brain/examples/basic_usage.py",
+          "lines": 110,
+          "functions": [],
+          "classes": [],
+          "imports": [
+            "os",
+            "sys",
+            "asyncio",
+            "pathlib",
+            "brain"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 0,
+            "class_count": 0,
+            "avg_function_size": 0.0,
+            "docstring_coverage": 0.0,
+            "todo_count": 0
+          }
+        }
+      },
+      "aggregate": {
+        "total_lines": 2892,
+        "total_functions": 61,
+        "total_classes": 9,
+        "total_todos": 1,
+        "complexity_issues": [
+          "rlm_integration.py: Function '__init__' has 8 args (consider refactoring)",
+          "rlm_integration.py: Function 'analyze_document' is 53 lines (consider splitting)",
+          "rlm_integration.py: Function 'synthesize_memories' is 62 lines (consider splitting)",
+          "rlm_integration.py: Function 'deep_research' is 69 lines (consider splitting)",
+          "rlm_integration.py: Function 'solve_problem' is 63 lines (consider splitting)"
+        ]
+      }
+    },
+    "tools": {
+      "path": "/workspace/clawd/tools",
+      "file_count": 5,
+      "files": {
+        "self_analyzer.py": {
+          "path": "/workspace/clawd/tools/self_analyzer.py",
+          "lines": 388,
+          "functions": [
+            {
+              "name": "main",
+              "args": 0,
+              "lines": 33,
+              "has_docstring": false
+            },
+            {
+              "name": "__init__",
+              "args": 2,
+              "lines": 4,
+              "has_docstring": false
+            },
+            {
+              "name": "analyze_python_file",
+              "args": 2,
+              "lines": 69,
+              "has_docstring": true
+            },
+            {
+              "name": "analyze_directory",
+              "args": 2,
+              "lines": 36,
+              "has_docstring": true
+            },
+            {
+              "name": "check_capabilities",
+              "args": 1,
+              "lines": 16,
+              "has_docstring": true
+            },
+            {
+              "name": "_check_capability_exists",
+              "args": 2,
+              "lines": 22,
+              "has_docstring": true
+            },
+            {
+              "name": "identify_improvements",
+              "args": 1,
+              "lines": 56,
+              "has_docstring": true
+            },
+            {
+              "name": "generate_report",
+              "args": 1,
+              "lines": 34,
+              "has_docstring": true
+            },
+            {
+              "name": "format_report",
+              "args": 2,
+              "lines": 37,
+              "has_docstring": true
+            }
+          ],
+          "classes": [
+            {
+              "name": "SelfAnalyzer",
+              "methods": 8,
+              "has_docstring": true
+            }
+          ],
+          "imports": [
+            "os",
+            "sys",
+            "json",
+            "ast",
+            "pathlib",
+            "datetime",
+            "typing",
+            "collections",
+            "argparse"
+          ],
+          "todos": [
+            {
+              "line": 87,
+              "text": "\"todos\": [],"
+            },
+            {
+              "line": 127,
+              "text": "# Find TODOs"
+            },
+            {
+              "line": 129,
+              "text": "if \"TODO\" in line.upper() or \"FIXME\" in line.upper():"
+            },
+            {
+              "line": 130,
+              "text": "analysis[\"todos\"].append({\"line\": i, \"text\": line.strip()[:80]})"
+            },
+            {
+              "line": 138,
+              "text": "\"todo_count\": len(analysis[\"todos\"]),"
+            },
+            {
+              "line": 159,
+              "text": "\"total_todos\": 0,"
+            },
+            {
+              "line": 173,
+              "text": "analysis[\"aggregate\"][\"total_todos\"] += file_analysis[\"metrics\"][\"todo_count\"]"
+            },
+            {
+              "line": 248,
+              "text": "if brain_analysis[\"aggregate\"][\"total_todos\"] > 5:"
+            },
+            {
+              "line": 252,
+              "text": "\"title\": f\"Address {brain_analysis['aggregate']['total_todos']} TODOs in brain m"
+            }
+          ],
+          "complexity_hints": [
+            "Function 'analyze_python_file' is 69 lines (consider splitting)",
+            "Function 'identify_improvements' is 56 lines (consider splitting)"
+          ],
+          "metrics": {
+            "function_count": 9,
+            "class_count": 1,
+            "avg_function_size": 34.111111111111114,
+            "docstring_coverage": 0.7777777777777778,
+            "todo_count": 9
+          }
+        },
+        "content_ideas.py": {
+          "path": "/workspace/clawd/tools/content_ideas.py",
+          "lines": 330,
+          "functions": [
+            {
+              "name": "main",
+              "args": 0,
+              "lines": 29,
+              "has_docstring": true
+            },
+            {
+              "name": "__init__",
+              "args": 2,
+              "lines": 11,
+              "has_docstring": false
+            },
+            {
+              "name": "generate_tech_ideas",
+              "args": 3,
+              "lines": 65,
+              "has_docstring": true
+            },
+            {
+              "name": "generate_horror_ideas",
+              "args": 3,
+              "lines": 62,
+              "has_docstring": true
+            },
+            {
+              "name": "save_ideas",
+              "args": 3,
+              "lines": 6,
+              "has_docstring": true
+            },
+            {
+              "name": "get_recent_ideas",
+              "args": 3,
+              "lines": 16,
+              "has_docstring": true
+            },
+            {
+              "name": "format_ideas",
+              "args": 2,
+              "lines": 36,
+              "has_docstring": true
+            }
+          ],
+          "classes": [
+            {
+              "name": "ContentIdeaGenerator",
+              "methods": 6,
+              "has_docstring": true
+            }
+          ],
+          "imports": [
+            "os",
+            "sys",
+            "json",
+            "random",
+            "pathlib",
+            "datetime",
+            "typing",
+            "anthropic",
+            "argparse"
+          ],
+          "todos": [],
+          "complexity_hints": [
+            "Function 'generate_tech_ideas' is 65 lines (consider splitting)",
+            "Function 'generate_horror_ideas' is 62 lines (consider splitting)"
+          ],
+          "metrics": {
+            "function_count": 7,
+            "class_count": 1,
+            "avg_function_size": 32.142857142857146,
+            "docstring_coverage": 0.8571428571428571,
+            "todo_count": 0
+          }
+        },
+        "project_monitor.py": {
+          "path": "/workspace/clawd/tools/project_monitor.py",
+          "lines": 417,
+          "functions": [
+            {
+              "name": "main",
+              "args": 0,
+              "lines": 20,
+              "has_docstring": true
+            },
+            {
+              "name": "__init__",
+              "args": 2,
+              "lines": 4,
+              "has_docstring": false
+            },
+            {
+              "name": "check_git_status",
+              "args": 2,
+              "lines": 63,
+              "has_docstring": true
+            },
+            {
+              "name": "find_todos",
+              "args": 3,
+              "lines": 27,
+              "has_docstring": true
+            },
+            {
+              "name": "check_python_project",
+              "args": 2,
+              "lines": 31,
+              "has_docstring": true
+            },
+            {
+              "name": "get_activity",
+              "args": 2,
+              "lines": 30,
+              "has_docstring": true
+            },
+            {
+              "name": "check_project",
+              "args": 3,
+              "lines": 43,
+              "has_docstring": true
+            },
+            {
+              "name": "check_all",
+              "args": 1,
+              "lines": 35,
+              "has_docstring": true
+            },
+            {
+              "name": "get_alerts",
+              "args": 2,
+              "lines": 30,
+              "has_docstring": true
+            },
+            {
+              "name": "format_report",
+              "args": 2,
+              "lines": 57,
+              "has_docstring": true
+            }
+          ],
+          "classes": [
+            {
+              "name": "ProjectMonitor",
+              "methods": 9,
+              "has_docstring": true
+            }
+          ],
+          "imports": [
+            "os",
+            "json",
+            "subprocess",
+            "pathlib",
+            "datetime",
+            "typing",
+            "argparse"
+          ],
+          "todos": [
+            {
+              "line": 24,
+              "text": "- TODOs and FIXMEs in code"
+            },
+            {
+              "line": 132,
+              "text": "def find_todos(self, project_path: Path, extensions: List[str] = None) -> List[D"
+            },
+            {
+              "line": 133,
+              "text": "\"\"\"Find TODOs and FIXMEs in code.\"\"\""
+            },
+            {
+              "line": 137,
+              "text": "todos = []"
+            },
+            {
+              "line": 147,
+              "text": "if \"TODO\" in line_upper or \"FIXME\" in line_upper:"
+            },
+            {
+              "line": 148,
+              "text": "todos.append({"
+            },
+            {
+              "line": 158,
+              "text": "return todos[:20]  # Limit to 20"
+            },
+            {
+              "line": 247,
+              "text": "report[\"todos\"] = self.find_todos(path)"
+            },
+            {
+              "line": 260,
+              "text": "if len(report.get(\"todos\", [])) > 10:"
+            },
+            {
+              "line": 282,
+              "text": "total_todos = sum(len(r.get(\"todos\", [])) for r in reports.values())"
+            },
+            {
+              "line": 289,
+              "text": "\"total_todos\": total_todos,"
+            },
+            {
+              "line": 322,
+              "text": "todos = project.get(\"todos\", [])"
+            },
+            {
+              "line": 323,
+              "text": "if len(todos) > 5:"
+            },
+            {
+              "line": 324,
+              "text": "alerts.append(f\"\ud83d\udccc {name}: {len(todos)} TODOs/FIXMEs\")"
+            },
+            {
+              "line": 348,
+              "text": "lines.append(f\"- **Total TODOs:** {s['total_todos']}\")"
+            }
+          ],
+          "complexity_hints": [
+            "Function 'check_git_status' is 63 lines (consider splitting)",
+            "Function 'format_report' is 57 lines (consider splitting)"
+          ],
+          "metrics": {
+            "function_count": 10,
+            "class_count": 1,
+            "avg_function_size": 34.0,
+            "docstring_coverage": 0.9,
+            "todo_count": 15
+          }
+        },
+        "scary_story_gen.py": {
+          "path": "/workspace/clawd/tools/scary_story_gen.py",
+          "lines": 231,
+          "functions": [
+            {
+              "name": "generate_story",
+              "args": 5,
+              "lines": 72,
+              "has_docstring": true
+            },
+            {
+              "name": "save_story",
+              "args": 2,
+              "lines": 31,
+              "has_docstring": true
+            },
+            {
+              "name": "main",
+              "args": 0,
+              "lines": 52,
+              "has_docstring": false
+            }
+          ],
+          "classes": [],
+          "imports": [
+            "os",
+            "sys",
+            "argparse",
+            "json",
+            "datetime",
+            "pathlib",
+            "anthropic",
+            "anthropic"
+          ],
+          "todos": [],
+          "complexity_hints": [
+            "Function 'generate_story' is 72 lines (consider splitting)",
+            "Function 'main' is 52 lines (consider splitting)"
+          ],
+          "metrics": {
+            "function_count": 3,
+            "class_count": 0,
+            "avg_function_size": 51.666666666666664,
+            "docstring_coverage": 0.6666666666666666,
+            "todo_count": 0
+          }
+        },
+        "rlm_research.py": {
+          "path": "/workspace/clawd/tools/rlm_research.py",
+          "lines": 158,
+          "functions": [
+            {
+              "name": "create_research_rlm",
+              "args": 1,
+              "lines": 16,
+              "has_docstring": true
+            },
+            {
+              "name": "analyze_document",
+              "args": 3,
+              "lines": 23,
+              "has_docstring": true
+            },
+            {
+              "name": "research_topic",
+              "args": 3,
+              "lines": 19,
+              "has_docstring": true
+            },
+            {
+              "name": "compare_items",
+              "args": 3,
+              "lines": 14,
+              "has_docstring": true
+            },
+            {
+              "name": "main",
+              "args": 0,
+              "lines": 58,
+              "has_docstring": false
+            }
+          ],
+          "classes": [],
+          "imports": [
+            "os",
+            "sys",
+            "argparse",
+            "pathlib",
+            "rlm"
+          ],
+          "todos": [],
+          "complexity_hints": [
+            "Function 'main' is 58 lines (consider splitting)"
+          ],
+          "metrics": {
+            "function_count": 5,
+            "class_count": 0,
+            "avg_function_size": 26.0,
+            "docstring_coverage": 0.8,
+            "todo_count": 0
+          }
+        }
+      },
+      "aggregate": {
+        "total_lines": 1524,
+        "total_functions": 34,
+        "total_classes": 3,
+        "total_todos": 24,
+        "complexity_issues": [
+          "self_analyzer.py: Function 'analyze_python_file' is 69 lines (consider splitting)",
+          "self_analyzer.py: Function 'identify_improvements' is 56 lines (consider splitting)",
+          "content_ideas.py: Function 'generate_tech_ideas' is 65 lines (consider splitting)",
+          "content_ideas.py: Function 'generate_horror_ideas' is 62 lines (consider splitting)",
+          "project_monitor.py: Function 'check_git_status' is 63 lines (consider splitting)",
+          "project_monitor.py: Function 'format_report' is 57 lines (consider splitting)",
+          "scary_story_gen.py: Function 'generate_story' is 72 lines (consider splitting)",
+          "scary_story_gen.py: Function 'main' is 52 lines (consider splitting)",
+          "rlm_research.py: Function 'main' is 58 lines (consider splitting)"
+        ]
+      }
+    },
+    "scripts": {
+      "path": "/workspace/clawd/scripts",
+      "file_count": 15,
+      "files": {
+        "activity.py": {
+          "path": "/workspace/clawd/scripts/activity.py",
+          "lines": 39,
+          "functions": [
+            {
+              "name": "set_activity",
+              "args": 2,
+              "lines": 9,
+              "has_docstring": true
+            },
+            {
+              "name": "get_activity",
+              "args": 0,
+              "lines": 9,
+              "has_docstring": true
+            }
+          ],
+          "classes": [],
+          "imports": [
+            "sys",
+            "json",
+            "pathlib",
+            "datetime"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 2,
+            "class_count": 0,
+            "avg_function_size": 9.0,
+            "docstring_coverage": 1.0,
+            "todo_count": 0
+          }
+        },
+        "brain_extract_session.py": {
+          "path": "/workspace/clawd/scripts/brain_extract_session.py",
+          "lines": 163,
+          "functions": [
+            {
+              "name": "get_recent_session_messages",
+              "args": 2,
+              "lines": 45,
+              "has_docstring": true
+            }
+          ],
+          "classes": [],
+          "imports": [
+            "os",
+            "sys",
+            "json",
+            "asyncio",
+            "argparse",
+            "pathlib",
+            "datetime",
+            "brain.utils",
+            "brain"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 1,
+            "class_count": 0,
+            "avg_function_size": 45.0,
+            "docstring_coverage": 1.0,
+            "todo_count": 0
+          }
+        },
+        "brain_maintain.py": {
+          "path": "/workspace/clawd/scripts/brain_maintain.py",
+          "lines": 77,
+          "functions": [],
+          "classes": [],
+          "imports": [
+            "os",
+            "sys",
+            "asyncio",
+            "argparse",
+            "pathlib",
+            "brain"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 0,
+            "class_count": 0,
+            "avg_function_size": 0.0,
+            "docstring_coverage": 0.0,
+            "todo_count": 0
+          }
+        },
+        "local_embeddings.py": {
+          "path": "/workspace/clawd/scripts/local_embeddings.py",
+          "lines": 124,
+          "functions": [
+            {
+              "name": "create_memu_agent_with_local_embeddings",
+              "args": 0,
+              "lines": 19,
+              "has_docstring": true
+            },
+            {
+              "name": "__init__",
+              "args": 2,
+              "lines": 16,
+              "has_docstring": true
+            },
+            {
+              "name": "embed",
+              "args": 2,
+              "lines": 12,
+              "has_docstring": true
+            },
+            {
+              "name": "embed_batch",
+              "args": 2,
+              "lines": 12,
+              "has_docstring": true
+            },
+            {
+              "name": "get_embedding_dimension",
+              "args": 1,
+              "lines": 3,
+              "has_docstring": true
+            },
+            {
+              "name": "cosine_similarity",
+              "args": 2,
+              "lines": 2,
+              "has_docstring": false
+            }
+          ],
+          "classes": [
+            {
+              "name": "LocalEmbeddingClient",
+              "methods": 4,
+              "has_docstring": true
+            }
+          ],
+          "imports": [
+            "typing",
+            "numpy",
+            "memu",
+            "memu.memory.embeddings",
+            "numpy",
+            "numpy.linalg",
+            "sentence_transformers"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 6,
+            "class_count": 1,
+            "avg_function_size": 10.666666666666666,
+            "docstring_coverage": 0.8333333333333334,
+            "todo_count": 0
+          }
+        },
+        "memu_agent.py": {
+          "path": "/workspace/clawd/scripts/memu_agent.py",
+          "lines": 207,
+          "functions": [
+            {
+              "name": "get_llm_client",
+              "args": 0,
+              "lines": 18,
+              "has_docstring": true
+            },
+            {
+              "name": "create_agent",
+              "args": 0,
+              "lines": 20,
+              "has_docstring": true
+            },
+            {
+              "name": "log_activity",
+              "args": 1,
+              "lines": 8,
+              "has_docstring": true
+            },
+            {
+              "name": "add_memory",
+              "args": 3,
+              "lines": 18,
+              "has_docstring": true
+            },
+            {
+              "name": "run_theory_of_mind",
+              "args": 1,
+              "lines": 8,
+              "has_docstring": true
+            },
+            {
+              "name": "generate_suggestions",
+              "args": 1,
+              "lines": 8,
+              "has_docstring": true
+            },
+            {
+              "name": "cluster_memories",
+              "args": 1,
+              "lines": 8,
+              "has_docstring": true
+            },
+            {
+              "name": "main",
+              "args": 0,
+              "lines": 38,
+              "has_docstring": false
+            }
+          ],
+          "classes": [],
+          "imports": [
+            "os",
+            "sys",
+            "json",
+            "asyncio",
+            "argparse",
+            "datetime",
+            "pathlib",
+            "memu",
+            "memu"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 8,
+            "class_count": 0,
+            "avg_function_size": 15.75,
+            "docstring_coverage": 0.875,
+            "todo_count": 0
+          }
+        },
+        "setup_icloud.py": {
+          "path": "/workspace/clawd/scripts/setup_icloud.py",
+          "lines": 122,
+          "functions": [
+            {
+              "name": "setup_himalaya",
+              "args": 2,
+              "lines": 13,
+              "has_docstring": true
+            },
+            {
+              "name": "test_email_connection",
+              "args": 0,
+              "lines": 14,
+              "has_docstring": true
+            },
+            {
+              "name": "setup_caldav",
+              "args": 2,
+              "lines": 24,
+              "has_docstring": true
+            },
+            {
+              "name": "main",
+              "args": 0,
+              "lines": 19,
+              "has_docstring": false
+            }
+          ],
+          "classes": [],
+          "imports": [
+            "os",
+            "argparse",
+            "pathlib",
+            "subprocess",
+            "caldav"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 4,
+            "class_count": 0,
+            "avg_function_size": 17.5,
+            "docstring_coverage": 0.75,
+            "todo_count": 0
+          }
+        },
+        "morning_brief.py": {
+          "path": "/workspace/clawd/scripts/morning_brief.py",
+          "lines": 91,
+          "functions": [
+            {
+              "name": "get_weather",
+              "args": 1,
+              "lines": 10,
+              "has_docstring": true
+            },
+            {
+              "name": "get_system_status",
+              "args": 0,
+              "lines": 15,
+              "has_docstring": true
+            },
+            {
+              "name": "get_recent_memos",
+              "args": 1,
+              "lines": 13,
+              "has_docstring": true
+            },
+            {
+              "name": "generate_briefing",
+              "args": 0,
+              "lines": 36,
+              "has_docstring": true
+            }
+          ],
+          "classes": [],
+          "imports": [
+            "subprocess",
+            "datetime",
+            "json",
+            "urllib.request",
+            "pathlib"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 4,
+            "class_count": 0,
+            "avg_function_size": 18.5,
+            "docstring_coverage": 1.0,
+            "todo_count": 0
+          }
+        },
+        "status.py": {
+          "path": "/workspace/clawd/scripts/status.py",
+          "lines": 94,
+          "functions": [
+            {
+              "name": "check_voice_api",
+              "args": 2,
+              "lines": 9,
+              "has_docstring": true
+            },
+            {
+              "name": "check_tunnel",
+              "args": 0,
+              "lines": 10,
+              "has_docstring": true
+            },
+            {
+              "name": "check_gpu",
+              "args": 0,
+              "lines": 13,
+              "has_docstring": true
+            },
+            {
+              "name": "check_screens",
+              "args": 0,
+              "lines": 8,
+              "has_docstring": true
+            },
+            {
+              "name": "main",
+              "args": 0,
+              "lines": 35,
+              "has_docstring": false
+            }
+          ],
+          "classes": [],
+          "imports": [
+            "subprocess",
+            "urllib.request",
+            "json",
+            "os",
+            "re"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 5,
+            "class_count": 0,
+            "avg_function_size": 15.0,
+            "docstring_coverage": 0.8,
+            "todo_count": 0
+          }
+        },
+        "oauth_step2.py": {
+          "path": "/workspace/clawd/scripts/oauth_step2.py",
+          "lines": 55,
+          "functions": [],
+          "classes": [],
+          "imports": [
+            "json",
+            "sys",
+            "requests"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 0,
+            "class_count": 0,
+            "avg_function_size": 0.0,
+            "docstring_coverage": 0.0,
+            "todo_count": 0
+          }
+        },
+        "oauth_step1.py": {
+          "path": "/workspace/clawd/scripts/oauth_step1.py",
+          "lines": 45,
+          "functions": [
+            {
+              "name": "generate_pkce",
+              "args": 0,
+              "lines": 5,
+              "has_docstring": false
+            },
+            {
+              "name": "generate_state",
+              "args": 0,
+              "lines": 2,
+              "has_docstring": false
+            }
+          ],
+          "classes": [],
+          "imports": [
+            "secrets",
+            "hashlib",
+            "base64",
+            "json",
+            "urllib.parse"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 2,
+            "class_count": 0,
+            "avg_function_size": 3.5,
+            "docstring_coverage": 0.0,
+            "todo_count": 0
+          }
+        },
+        "oauth_manual.py": {
+          "path": "/workspace/clawd/scripts/oauth_manual.py",
+          "lines": 137,
+          "functions": [
+            {
+              "name": "generate_pkce",
+              "args": 0,
+              "lines": 9,
+              "has_docstring": true
+            },
+            {
+              "name": "generate_state",
+              "args": 0,
+              "lines": 3,
+              "has_docstring": true
+            },
+            {
+              "name": "build_auth_url",
+              "args": 2,
+              "lines": 13,
+              "has_docstring": true
+            },
+            {
+              "name": "exchange_code",
+              "args": 2,
+              "lines": 16,
+              "has_docstring": true
+            },
+            {
+              "name": "save_credentials",
+              "args": 2,
+              "lines": 13,
+              "has_docstring": true
+            },
+            {
+              "name": "main",
+              "args": 0,
+              "lines": 55,
+              "has_docstring": false
+            }
+          ],
+          "classes": [],
+          "imports": [
+            "secrets",
+            "hashlib",
+            "base64",
+            "json",
+            "sys",
+            "urllib.parse",
+            "requests"
+          ],
+          "todos": [],
+          "complexity_hints": [
+            "Function 'main' is 55 lines (consider splitting)"
+          ],
+          "metrics": {
+            "function_count": 6,
+            "class_count": 0,
+            "avg_function_size": 18.166666666666668,
+            "docstring_coverage": 0.8333333333333334,
+            "todo_count": 0
+          }
+        },
+        "oauth_automated.py": {
+          "path": "/workspace/clawd/scripts/oauth_automated.py",
+          "lines": 123,
+          "functions": [],
+          "classes": [],
+          "imports": [
+            "asyncio",
+            "json",
+            "sys",
+            "pathlib",
+            "urllib.parse",
+            "playwright.async_api"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 0,
+            "class_count": 0,
+            "avg_function_size": 0.0,
+            "docstring_coverage": 0.0,
+            "todo_count": 0
+          }
+        },
+        "claude_oauth.py": {
+          "path": "/workspace/clawd/scripts/claude_oauth.py",
+          "lines": 51,
+          "functions": [],
+          "classes": [],
+          "imports": [
+            "sys",
+            "asyncio",
+            "pathlib",
+            "playwright.async_api"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 0,
+            "class_count": 0,
+            "avg_function_size": 0.0,
+            "docstring_coverage": 0.0,
+            "todo_count": 0
+          }
+        },
+        "search_knowledge.py": {
+          "path": "/workspace/clawd/scripts/search_knowledge.py",
+          "lines": 67,
+          "functions": [
+            {
+              "name": "search",
+              "args": 3,
+              "lines": 25,
+              "has_docstring": true
+            },
+            {
+              "name": "main",
+              "args": 0,
+              "lines": 23,
+              "has_docstring": false
+            }
+          ],
+          "classes": [],
+          "imports": [
+            "sys",
+            "pathlib",
+            "lancedb",
+            "sentence_transformers"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 2,
+            "class_count": 0,
+            "avg_function_size": 24.0,
+            "docstring_coverage": 0.5,
+            "todo_count": 0
+          }
+        },
+        "index_knowledge.py": {
+          "path": "/workspace/clawd/scripts/index_knowledge.py",
+          "lines": 110,
+          "functions": [
+            {
+              "name": "chunk_text",
+              "args": 3,
+              "lines": 9,
+              "has_docstring": true
+            },
+            {
+              "name": "get_file_hash",
+              "args": 1,
+              "lines": 3,
+              "has_docstring": true
+            },
+            {
+              "name": "index_directory",
+              "args": 4,
+              "lines": 26,
+              "has_docstring": true
+            },
+            {
+              "name": "main",
+              "args": 0,
+              "lines": 46,
+              "has_docstring": false
+            }
+          ],
+          "classes": [],
+          "imports": [
+            "os",
+            "hashlib",
+            "pathlib",
+            "datetime",
+            "lancedb",
+            "sentence_transformers"
+          ],
+          "todos": [],
+          "complexity_hints": [],
+          "metrics": {
+            "function_count": 4,
+            "class_count": 0,
+            "avg_function_size": 21.0,
+            "docstring_coverage": 0.75,
+            "todo_count": 0
+          }
+        }
+      },
+      "aggregate": {
+        "total_lines": 1505,
+        "total_functions": 44,
+        "total_classes": 1,
+        "total_todos": 0,
+        "complexity_issues": [
+          "oauth_manual.py: Function 'main' is 55 lines (consider splitting)"
+        ]
+      }
+    }
+  },
+  "scores": {
+    "capability_coverage": 88.2,
+    "improvement_count": 10,
+    "high_priority_improvements": 2
+  }
+}

@@ -1,5 +1,10 @@
 {
-  "numStartups": 1,
+  "numStartups": 6,
+  "installMethod": "global",
+  "tipsHistory": {
+    "new-user-warmup": 6,
+    "plan-mode-for-complex-tasks": 6
+  },
   "cachedGrowthBookFeatures": {
     "tengu_1p_event_batch_config": {
       "scheduledDelayMillis": 5000,
@@ -39,7 +44,11 @@
     "tengu_react_vulnerability_warning": false,
     "tengu_code_diff_cli": true,
     "tengu_pr_status_cli": true,
-    "tengu_post_compact_survey": false
+    "tengu_post_compact_survey": false,
+    "tengu_session_memory": false,
+    "tengu_permission_explainer": true,
+    "tengu_cork_m4q": false,
+    "tengu_plank_river_frost": "user_intent"
   },
   "userID": "bcaf17580e69a70b5d791fa36a9d2445b76cba19f721811462000e8fef544e5e",
   "firstStartTime": "2026-01-30T22:44:53.655Z",
@@ -48,7 +57,7 @@
   "opusProMigrationComplete": true,
   "thinkingMigrationComplete": true,
   "cachedChromeExtensionInstalled": false,
-  "changelogLastFetched": 1769813372719,
+  "changelogLastFetched": 1769915665909,
   "oauthAccount": {
     "accountUuid": "bd9e0f88-e990-4ddc-bf4b-9da877a302ea",
     "emailAddress": "mythicalsouo@gmail.com",
@@ -62,7 +71,7 @@
   "claudeCodeFirstTokenDate": "2025-11-17T19:24:42.014967Z",
   "hasCompletedOnboarding": true,
   "lastOnboardingVersion": "2.1.27",
-  "lastReleaseNotesSeen": "2.1.27",
+  "lastReleaseNotesSeen": "2.1.29",
   "projects": {
     "/root": {
       "allowedTools": [],
@@ -98,6 +107,129 @@
       "lastFpsLow1Pct": 274.25,
       "lastModelUsage": {},
       "lastSessionId": "0151b012-0dfa-4882-9b7c-f36f4a60fafc"
+    },
+    "/workspace/projects/rlm-trading-research": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "reactVulnerabilityCache": {
+        "detected": false,
+        "package": null,
+        "packageName": null,
+        "version": null,
+        "packageManager": null
+      }
+    },
+    "/workspace/projects/atlas-dashboard": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 1,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "reactVulnerabilityCache": {
+        "detected": false,
+        "package": null,
+        "packageName": null,
+        "version": null,
+        "packageManager": null
+      }
+    },
+    "/workspace/projects/youtube-automator": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "reactVulnerabilityCache": {
+        "detected": false,
+        "package": null,
+        "packageName": null,
+        "version": null,
+        "packageManager": null
+      }
+    },
+    "/workspace/projects/promptwizz-tools": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "reactVulnerabilityCache": {
+        "detected": false,
+        "package": null,
+        "packageName": null,
+        "version": null,
+        "packageManager": null
+      }
+    },
+    "/": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "reactVulnerabilityCache": {
+        "detected": false,
+        "package": null,
+        "packageName": null,
+        "version": null,
+        "packageManager": null
+      },
+      "lastCost": 0.032487499999999996,
+      "lastAPIDuration": 10052,
+      "lastAPIDurationWithoutRetries": 10000,
+      "lastToolDuration": 0,
+      "lastDuration": 41713,
+      "lastLinesAdded": 0,
+      "lastLinesRemoved": 0,
+      "lastTotalInputTokens": 517,
+      "lastTotalOutputTokens": 143,
+      "lastTotalCacheCreationInputTokens": 1826,
+      "lastTotalCacheReadInputTokens": 34966,
+      "lastTotalWebSearchRequests": 0,
+      "lastFpsAverage": 3.61,
+      "lastFpsLow1Pct": 279.28,
+      "lastModelUsage": {
+        "claude-haiku-4-5-20251001": {
+          "inputTokens": 497,
+          "outputTokens": 29,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
+          "webSearchRequests": 0,
+          "costUSD": 0.000642
+        },
+        "claude-opus-4-5-20251101": {
+          "inputTokens": 20,
+          "outputTokens": 114,
+          "cacheReadInputTokens": 34966,
+          "cacheCreationInputTokens": 1826,
+          "webSearchRequests": 0,
+          "costUSD": 0.0318455
+        }
+      },
+      "lastSessionId": "7502bc4d-81ee-4f6b-b960-fce0f83157cc"
     }
   },
   "hasShownOpus45Notice": {
@@ -106,14 +238,14 @@
   "groveConfigCache": {
     "bd9e0f88-e990-4ddc-bf4b-9da877a302ea": {
       "grove_enabled": true,
-      "timestamp": 1769813372691
+      "timestamp": 1769915640023
     }
   },
   "s1mAccessCache": {
     "cc867727-aa95-4ef6-9fb9-858ff3bf7e6a": {
       "hasAccess": false,
       "hasAccessNotAsDefault": false,
-      "timestamp": 1769813372822
+      "timestamp": 1769931462144
     }
   },
   "passesEligibilityCache": {
@@ -128,9 +260,13 @@
         "amount_minor_units": 2000,
         "currency": "USD"
       },
-      "timestamp": 1769813373540
+      "remaining_passes": 3,
+      "timestamp": 1769931462839
     }
   },
   "officialMarketplaceAutoInstallAttempted": true,
-  "officialMarketplaceAutoInstalled": true
+  "officialMarketplaceAutoInstalled": true,
+  "passesUpsellSeenCount": 0,
+  "hasVisitedPasses": false,
+  "passesLastSeenCampaign": "claude_code_guest_pass_a47c"
 }

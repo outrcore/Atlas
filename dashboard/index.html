@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATLAS Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --bg-hover: #1a1a25;
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.3);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --text: #e5e5e5;
+            --text-dim: #9ca3af;
+            --border: #2a2a3a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent), #8b5cf6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--text-dim);
+            font-size: 0.875rem;
+            font-weight: 400;
+        }
+        
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--success);
+            border-radius: 50px;
+            font-size: 0.875rem;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 30px var(--accent-glow);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .card-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .card-icon {
+            font-size: 1.25rem;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .stat-label {
+            color: var(--text-dim);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        
+        .project-list {
+            list-style: none;
+        }
+        
+        .project-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .project-item:last-child {
+            border-bottom: none;
+        }
+        
+        .project-name {
+            font-weight: 500;
+        }
+        
+        .project-status {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+        }
+        
+        .weather-display {
+            text-align: center;
+            padding: 1rem 0;
+        }
+        
+        .weather-temp {
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .weather-condition {
+            color: var(--text-dim);
+            margin-top: 0.5rem;
+        }
+        
+        .weather-location {
+            font-size: 0.875rem;
+            color: var(--text-dim);
+            margin-top: 0.25rem;
+        }
+        
+        .activity-log {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .log-entry {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .log-time {
+            color: var(--text-dim);
+            white-space: nowrap;
+        }
+        
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+        
+        .action-btn {
+            background: var(--bg-hover);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .action-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        
+        .wide-card {
+            grid-column: span 2;
+        }
+        
+        @media (max-width: 768px) {
+            .wide-card {
+                grid-column: span 1;
+            }
+            
+            body {
+                padding: 1rem;
+            }
+        }
+        
+        .motivational {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-dim);
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05));
+            border-radius: 12px;
+            margin-top: 0.5rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-dim);
+            font-size: 0.875rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">🌐</div>
+                <div>
+                    <h1>ATLAS</h1>
+                    <span>Personal AI Assistant</span>
+                </div>
+            </div>
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                Online
+            </div>
+        </header>
+        
+        <div class="grid">
+            <!-- Weather Card -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Chicago Weather</span>
+                    <span class="card-icon">🌡️</span>
+                </div>
+                <div class="weather-display">
+                    <div class="weather-temp" id="temp">--°F</div>
+                    <div class="weather-condition" id="condition">Loading...</div>
+                    <div class="weather-location">Chicago, IL</div>
+                </div>
+            </div>
+            
+            <!-- System Status -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">System Status</span>
+                    <span class="card-icon">💻</span>
+                </div>
+                <div class="stat-value" id="uptime">Active</div>
+                <div class="stat-label">Gateway running in screen</div>
+                <div style="margin-top: 1rem; font-size: 0.875rem; color: var(--text-dim);">
+                    <div>Memory: <span id="memory">--</span></div>
+                    <div>Screens: <span id="screens">--</span></div>
+                </div>
+            </div>
+            
+            <!-- Active Projects -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Active Projects</span>
+                    <span class="card-icon">📁</span>
+                </div>
+                <ul class="project-list">
+                    <li class="project-item">
+                        <span class="project-name">🚶 Wander</span>
+                        <span class="project-status">MVP Ready</span>
+                    </li>
+                    <li class="project-item">
+                        <span class="project-name">📺 YouTube Automator</span>
+                        <span class="project-status">In Progress</span>
+                    </li>
+                    <li class="project-item">
+                        <span class="project-name">🧠 ATLAS Brain</span>
+                        <span class="project-status">Active</span>
+                    </li>
+                    <li class="project-item">
+                        <span class="project-name">🎤 Voice Interface</span>
+                        <span class="project-status">Running</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Quick Actions</span>
+                    <span class="card-icon">⚡</span>
+                </div>
+                <div class="quick-actions">
+                    <button class="action-btn" onclick="runBrief()">🌅 Morning Brief</button>
+                    <button class="action-btn" onclick="healthCheck()">🏥 Health Check</button>
+                    <button class="action-btn" onclick="viewLogs()">📜 View Logs</button>
+                    <button class="action-btn" onclick="openWander()">🚶 Wander Demo</button>
+                </div>
+            </div>
+            
+            <!-- Recent Activity -->
+            <div class="card wide-card">
+                <div class="card-header">
+                    <span class="card-title">Recent Activity</span>
+                    <span class="card-icon">📋</span>
+                </div>
+                <div class="activity-log" id="activity-log">
+                    <div class="log-entry">
+                        <span class="log-time">08:14</span>
+                        <span>Morning briefing tool created and tested</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">08:12</span>
+                        <span>Wander API prototype completed</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">08:04</span>
+                        <span>Gateway moved to persistent screen session</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">07:58</span>
+                        <span>Crash analysis completed - stability fixes applied</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">07:42</span>
+                        <span>Wander landing page HTML/CSS completed</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">06:01</span>
+                        <span>Wander project started - market research initiated</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Motivational -->
+            <div class="card wide-card">
+                <div class="card-header">
+                    <span class="card-title">The Directive</span>
+                    <span class="card-icon">🎯</span>
+                </div>
+                <div class="motivational">
+                    "We should be the best duo on the planet. We are smart enough to move up in this world and make a name for ourselves."
+                    <br><br>
+                    — Matt, February 2026
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>ATLAS v1.0 · Born January 30, 2026 · Built for Matt Campbell</p>
+            <p style="margin-top: 0.5rem;">Running on <a href="#">RunPod 4090</a> · Powered by Claude</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Fetch weather (mock for now - would need backend)
+        async function fetchWeather() {
+            try {
+                // In production, this would call our backend
+                document.getElementById('temp').textContent = '17°F';
+                document.getElementById('condition').textContent = 'Overcast · Feels like 12°F';
+            } catch (e) {
+                console.error('Weather fetch failed:', e);
+            }
+        }
+        
+        // Mock system stats
+        function updateStats() {
+            document.getElementById('memory').textContent = '21GB / 251GB';
+            document.getElementById('screens').textContent = '6 active';
+        }
+        
+        // Action handlers
+        function runBrief() {
+            alert('Run this in terminal:\npython /workspace/clawd/tools/morning_brief.py');
+        }
+        
+        function healthCheck() {
+            alert('Run this in terminal:\npython /workspace/clawd/tools/health_check.py');
+        }
+        
+        function viewLogs() {
+            alert('Check logs at:\n/tmp/openclaw/openclaw-$(date +%Y-%m-%d).log');
+        }
+        
+        function openWander() {
+            window.open('/wander/', '_blank');
+        }
+        
+        // Initialize
+        fetchWeather();
+        updateStats();
+        
+        // Update time
+        function updateTime() {
+            const now = new Date();
+            document.querySelector('.status-badge').innerHTML = `
+                <div class="status-dot"></div>
+                Online · ${now.toLocaleTimeString()}
+            `;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+</html>

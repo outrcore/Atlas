@@ -26,6 +26,19 @@
       "gitBranch": "",
       "projectPath": "/",
       "isSidechain": false
+    },
+    {
+      "sessionId": "737790f6-ecad-441f-9cb1-03788982d8ff",
+      "fullPath": "/root/.claude/projects/-/737790f6-ecad-441f-9cb1-03788982d8ff.jsonl",
+      "fileMtime": 1769919663000,
+      "firstPrompt": "hello",
+      "summary": "Claude Code API Authentication and Login Setup",
+      "messageCount": 4,
+      "created": "2026-01-30T23:31:51.347Z",
+      "modified": "2026-01-30T23:32:17.883Z",
+      "gitBranch": "",
+      "projectPath": "/",
+      "isSidechain": false
     }
   ],
   "originalPath": "/"

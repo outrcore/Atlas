@@ -201,6 +201,28 @@ Run daemon: `python -m brain.daemon --mode daemon`
 
 ---
 
+## Stability Rules (Learned 2026-02-01)
+
+**NEVER DO AGAIN:**
+1. **Don't spawn 3+ agents simultaneously** - Causes rate limiting and crashes
+2. **Don't use sessions_spawn for research** - Subagents can't do web searches
+3. **Don't use Claude Code for non-coding tasks** - It needs permissions it can't get in -p mode
+4. **Don't make parallel API-heavy calls** - One task at a time
+
+**DO INSTEAD:**
+1. **Research sequentially** - Use browser tool or web_fetch myself
+2. **Use Claude Code ONLY for coding** - Building apps, writing code
+3. **Spawn 1 subagent max** - And wait for it to complete
+4. **Check rate limits** - If seeing timeouts, slow down
+
+**Why I Crashed Feb 1:**
+- Spawned 3 sessions_spawn agents + 6 Claude Code screens
+- All hitting Anthropic API simultaneously
+- Rate limited → timeouts → Matt had to restart me
+- Lesson: Parallel work sounds efficient but causes instability
+
+---
+
 ## The Directive (Set 2026-01-31)
 
 **Inspiration:** Alex Finn's ClawdBot "Henry"

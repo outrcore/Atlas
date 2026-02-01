@@ -2,6 +2,13 @@
 
 When this heartbeat fires, check the following:
 
+## 🏥 Health Check (Every heartbeat - FIRST!)
+Run health check to catch issues early:
+```bash
+python /workspace/clawd/tools/health_check.py
+```
+If status is WARNING or CRITICAL, alert Matt unless it's late night.
+
 ## 🧠 Brain Maintenance (Every heartbeat)
 Run brain maintenance to process recent conversations:
 ```bash
@@ -23,6 +30,13 @@ asyncio.run(maintain())
 - Voice server running? `screen -ls | grep atlas-voice`
 - GPU memory OK? (< 95%)
 - Any errors in logs?
+
+## 🔧 Project Monitor (Every few heartbeats)
+Check project status for issues:
+```bash
+cd /workspace/clawd && python tools/project_monitor.py --alerts-only 2>/dev/null
+```
+Alert Matt if there are critical issues (uncommitted changes > 10, projects behind remote, etc.).
 
 ## 🔔 Only Alert If:
 - Something needs Matt's attention
