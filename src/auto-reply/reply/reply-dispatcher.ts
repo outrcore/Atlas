@@ -1,8 +1,54 @@
+import fs from "node:fs";
+import path from "node:path";
 import type { HumanDelayConfig } from "../../config/types.js";
 import type { GetReplyOptions, ReplyPayload } from "../types.js";
+
+// Brain activity logger for ATLAS memory system (assistant responses)
+function logAssistantToBrain(content: string, channel?: string, sessionKey?: string) {
+  try {
+    const BRAIN_ACTIVITY_DIR = "/workspace/clawd/brain_data/activity";
+    const MEMORY_DIR = "/workspace/clawd/memory";
+    const dateStr = new Date().toISOString().split("T")[0];
+    const timeStr = new Date().toISOString().split("T")[1]?.split(".")[0] || "";
+
+    if (!fs.existsSync(BRAIN_ACTIVITY_DIR)) {
+      fs.mkdirSync(BRAIN_ACTIVITY_DIR, { recursive: true });
+    }
+
+    // Log to activity JSONL
+    const logFile = path.join(BRAIN_ACTIVITY_DIR, `${dateStr}.jsonl`);
+    const entry = {
+      id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      timestamp: new Date().toISOString(),
+      type: "conversation",
+      content: `[assistant] ${content.substring(0, 2000)}`,
+      metadata: {
+        role: "assistant",
+        channel: channel || "unknown",
+        sessionKey: sessionKey || "unknown",
+      },
+    };
+    fs.appendFileSync(logFile, JSON.stringify(entry) + "\n");
+
+    // Also append to daily memory for main channels
+    const ch = (channel || "").toLowerCase();
+    if (ch === "telegram" || ch === "discord") {
+      if (!fs.existsSync(MEMORY_DIR)) {
+        fs.mkdirSync(MEMORY_DIR, { recursive: true });
+      }
+      const memFile = path.join(MEMORY_DIR, `${dateStr}.md`);
+      if (!fs.existsSync(memFile)) {
+        fs.writeFileSync(memFile, `# ${dateStr} Daily Log\n\n`);
+      }
+      const truncated = content.substring(0, 500) + (content.length > 500 ? "..." : "");
+      fs.appendFileSync(memFile, `**ATLAS:** ${truncated}\n\n`);
+    }
+  } catch {
+    // Silent fail
+  }
+}
 import type { ResponsePrefixContext } from "./response-prefix-template.js";
 import type { TypingController } from "./typing.js";
-import { sleep } from "../../utils.js";
 import { normalizeReplyPayload, type NormalizeReplySkipReason } from "./normalize-reply.js";
 
 export type ReplyDispatchKind = "tool" | "block" | "final";
@@ -25,18 +71,17 @@ const DEFAULT_HUMAN_DELAY_MAX_MS = 2500;
 /** Generate a random delay within the configured range. */
 function getHumanDelay(config: HumanDelayConfig | undefined): number {
   const mode = config?.mode ?? "off";
-  if (mode === "off") {
-    return 0;
-  }
+  if (mode === "off") return 0;
   const min =
     mode === "custom" ? (config?.minMs ?? DEFAULT_HUMAN_DELAY_MIN_MS) : DEFAULT_HUMAN_DELAY_MIN_MS;
   const max =
     mode === "custom" ? (config?.maxMs ?? DEFAULT_HUMAN_DELAY_MAX_MS) : DEFAULT_HUMAN_DELAY_MAX_MS;
-  if (max <= min) {
-    return min;
-  }
+  if (max <= min) return min;
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+/** Sleep for a given number of milliseconds. */
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export type ReplyDispatcherOptions = {
   deliver: ReplyDispatchDeliverer;
@@ -53,6 +98,10 @@ export type ReplyDispatcherOptions = {
   onSkip?: ReplyDispatchSkipHandler;
   /** Human-like delay between block replies for natural rhythm. */
   humanDelay?: HumanDelayConfig;
+  /** Channel for brain logging (telegram, discord, etc.) */
+  channel?: string;
+  /** Session key for brain logging */
+  sessionKey?: string;
 };
 
 export type ReplyDispatcherWithTypingOptions = Omit<ReplyDispatcherOptions, "onIdle"> & {
@@ -117,26 +166,26 @@ export function createReplyDispatcher(options: ReplyDispatcherOptions): ReplyDis
       onHeartbeatStrip: options.onHeartbeatStrip,
       onSkip: (reason) => options.onSkip?.(payload, { kind, reason }),
     });
-    if (!normalized) {
-      return false;
+    if (!normalized) return false;
+
+    // Log assistant response to ATLAS brain (only final replies to avoid tool spam)
+    if (kind === "final" && normalized.text) {
+      logAssistantToBrain(normalized.text, options.channel, options.sessionKey);
     }
+
     queuedCounts[kind] += 1;
     pending += 1;
 
     // Determine if we should add human-like delay (only for block replies after the first).
     const shouldDelay = kind === "block" && sentFirstBlock;
-    if (kind === "block") {
-      sentFirstBlock = true;
-    }
+    if (kind === "block") sentFirstBlock = true;
 
     sendChain = sendChain
       .then(async () => {
         // Add human-like delay between block replies for natural rhythm.
         if (shouldDelay) {
           const delayMs = getHumanDelay(options.humanDelay);
-          if (delayMs > 0) {
-            await sleep(delayMs);
-          }
+          if (delayMs > 0) await sleep(delayMs);
         }
         await options.deliver(normalized, { kind });
       })
