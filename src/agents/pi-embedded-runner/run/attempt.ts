@@ -85,6 +85,9 @@ import { getGlobalHookRunner } from "../../../plugins/hook-runner-global.js";
 import { MAX_IMAGE_BYTES } from "../../../media/constants.js";
 import type { EmbeddedRunAttemptParams, EmbeddedRunAttemptResult } from "./types.js";
 import { detectAndLoadPromptImages } from "./images.js";
+import { maybeInjectRagContext } from "./auto-rag.js";
+import { getProactiveContext, shouldRunProactiveRecall } from "./proactive-recall.js";
+import { triggerMemoryExtraction } from "./auto-memory.js";
 
 export function injectHistoryImagesIntoMessages(
   messages: AgentMessage[],
@@ -181,7 +184,7 @@ export async function runEmbeddedAttempt(
     });
 
     const sessionLabel = params.sessionKey ?? params.sessionId;
-    const { bootstrapFiles: hookAdjustedBootstrapFiles, contextFiles } =
+    const { bootstrapFiles: hookAdjustedBootstrapFiles, contextFiles: baseContextFiles } =
       await resolveBootstrapContextForRun({
         workspaceDir: effectiveWorkspace,
         config: params.config,
@@ -189,6 +192,35 @@ export async function runEmbeddedAttempt(
         sessionId: params.sessionId,
         warn: makeBootstrapWarn({ sessionLabel, warn: (message) => log.warn(message) }),
       });
+
+    // Auto-RAG: Inject relevant context from memory/knowledge based on user's message
+    let { contextFiles, ragInjected } = await maybeInjectRagContext({
+      userMessage: params.prompt,
+      cfg: params.config,
+      sessionKey: params.sessionKey,
+      contextFiles: baseContextFiles,
+    });
+    if (ragInjected) {
+      log.debug(`auto-rag: injected context for sessionKey=${sessionLabel}`);
+    }
+
+    // Proactive Recall: Additional context from MEMORY.md, recent logs, and entity matching
+    if (shouldRunProactiveRecall(params.prompt)) {
+      const proactiveContext = await getProactiveContext({
+        query: params.prompt,
+        cfg: params.config,
+        sessionKey: params.sessionKey,
+      });
+      if (proactiveContext) {
+        // Inject proactive recall context as an additional context file
+        contextFiles = [
+          { path: "PROACTIVE_RECALL.md", content: proactiveContext },
+          ...contextFiles,
+        ];
+        log.debug(`proactive-recall: injected context for sessionKey=${sessionLabel}`);
+      }
+    }
+
     const workspaceNotes = hookAdjustedBootstrapFiles.some(
       (file) => file.name === DEFAULT_BOOTSTRAP_FILENAME && !file.missing,
     )
@@ -850,6 +882,35 @@ export async function runEmbeddedAttempt(
             typeof entry.toolName === "string" && entry.toolName.trim().length > 0,
         )
         .map((entry) => ({ toolName: entry.toolName, meta: entry.meta }));
+
+      // Auto-Memory: Extract and save memorable content (fire-and-forget, non-blocking)
+      if (assistantTexts.length > 0 && !aborted && !timedOut) {
+        // Build conversation context from recent messages (last 8 turns)
+        const contextMessages: { role: "user" | "assistant"; content: string }[] = [];
+        const recentMessages = messagesSnapshot.slice(-16); // Last 8 turns = 16 messages
+        for (const msg of recentMessages) {
+          if (msg.role === "user" || msg.role === "assistant") {
+            let content = "";
+            if (Array.isArray(msg.content)) {
+              const textBlock = msg.content.find((c) => c.type === "text");
+              content = textBlock && "text" in textBlock ? textBlock.text : "";
+            } else if (typeof msg.content === "string") {
+              content = msg.content;
+            }
+            if (content && content.length > 0) {
+              contextMessages.push({ role: msg.role, content });
+            }
+          }
+        }
+
+        triggerMemoryExtraction({
+          userMessage: params.prompt,
+          assistantResponse: assistantTexts.join("\n"),
+          cfg: params.config,
+          sessionKey: params.sessionKey,
+          conversationContext: contextMessages.slice(0, -2), // Exclude current exchange (already passed separately)
+        });
+      }
 
       return {
         aborted,

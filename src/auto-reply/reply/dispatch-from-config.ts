@@ -1,5 +1,56 @@
 import type { OpenClawConfig } from "../../config/config.js";
 import { resolveSessionAgentId } from "../../agents/agent-scope.js";
+import fs from "node:fs";
+import path from "node:path";
+
+// Brain activity logger for ATLAS memory system
+const BRAIN_ACTIVITY_DIR = "/workspace/clawd/brain_data/activity";
+const MEMORY_DIR = "/workspace/clawd/memory";
+
+function logToBrain(
+  role: "user" | "assistant",
+  content: string,
+  channel: string,
+  sessionKey: string,
+) {
+  try {
+    const dateStr = new Date().toISOString().split("T")[0];
+    const timeStr = new Date().toISOString().split("T")[1]?.split(".")[0] || "";
+
+    // Ensure directories exist
+    if (!fs.existsSync(BRAIN_ACTIVITY_DIR)) {
+      fs.mkdirSync(BRAIN_ACTIVITY_DIR, { recursive: true });
+    }
+    if (!fs.existsSync(MEMORY_DIR)) {
+      fs.mkdirSync(MEMORY_DIR, { recursive: true });
+    }
+
+    // Log to activity JSONL
+    const logFile = path.join(BRAIN_ACTIVITY_DIR, `${dateStr}.jsonl`);
+    const entry = {
+      id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      timestamp: new Date().toISOString(),
+      type: "conversation",
+      content: `[${role}] ${content.substring(0, 2000)}`,
+      metadata: { role, channel, sessionKey },
+    };
+    fs.appendFileSync(logFile, JSON.stringify(entry) + "\n");
+
+    // Also append to daily memory for main channels
+    if (channel === "telegram" || channel === "discord") {
+      const memFile = path.join(MEMORY_DIR, `${dateStr}.md`);
+      if (!fs.existsSync(memFile)) {
+        fs.writeFileSync(memFile, `# ${dateStr} Daily Log\n\n`);
+      }
+      const prefix = role === "user" ? "**User:**" : "**ATLAS:**";
+      const truncated = content.substring(0, 500) + (content.length > 500 ? "..." : "");
+      fs.appendFileSync(memFile, `### ${channel} (${timeStr} UTC)\n${prefix} ${truncated}\n\n`);
+    }
+  } catch (err) {
+    // Silent fail - don't break message flow
+    logVerbose?.(`brain-logger: ${String(err)}`);
+  }
+}
 import { loadSessionStore, resolveStorePath } from "../../config/sessions.js";
 import { logVerbose } from "../../globals.js";
 import { isDiagnosticsEnabled } from "../../infra/diagnostic-events.js";
@@ -181,6 +232,23 @@ export async function dispatchReplyFromConfig(params: {
       .catch((err) => {
         logVerbose(`dispatch-from-config: message_received hook failed: ${String(err)}`);
       });
+  }
+
+  // Log to ATLAS brain activity system
+  {
+    const msgContent =
+      typeof ctx.BodyForCommands === "string"
+        ? ctx.BodyForCommands
+        : typeof ctx.RawBody === "string"
+          ? ctx.RawBody
+          : typeof ctx.Body === "string"
+            ? ctx.Body
+            : "";
+    const channel = (ctx.OriginatingChannel ?? ctx.Surface ?? ctx.Provider ?? "").toLowerCase();
+    const sessionKey = ctx.SessionKey ?? "unknown";
+    if (msgContent && msgContent.length > 0) {
+      logToBrain("user", msgContent, channel, sessionKey);
+    }
   }
 
   // Check if we should route replies to originating channel instead of dispatcher.

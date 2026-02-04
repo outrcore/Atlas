@@ -233,6 +233,10 @@ export type MemorySearchConfig = {
     /** Enable session transcript indexing (experimental, default: false). */
     sessionMemory?: boolean;
   };
+  /** Auto-inject relevant context from memory/knowledge before each agent turn (default: false). */
+  autoInject?: boolean;
+  /** Auto-extract memories from conversations and write to daily memory files (default: false). */
+  autoExtract?: boolean;
   /** Embedding provider mode. */
   provider?: "openai" | "gemini" | "local";
   remote?: {
