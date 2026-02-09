@@ -1,0 +1,172 @@
+[
+  {
+    "name": "Dashboard project",
+    "sources": [
+      "chatgpt",
+      "claude"
+    ],
+    "first_mentioned": "2023-08-15",
+    "last_mentioned": "2026-01-14",
+    "conversation_count": 16,
+    "conversation_ids": [
+      "346d654d-9d68-4b1a-911a-74fef105e33d",
+      "0c75ec76-befb-43d2-be64-769e5b99ee16",
+      "f851394e-803c-4ffe-9c6d-48e303c6f83e",
+      "9b9d6f32-6b8d-4bfb-85dd-91ec9883a2fe",
+      "e031ad09-80dc-43e7-b1b2-52134ee65ced",
+      "89aec714-4299-4792-a525-f1e88db7b616",
+      "c95fbfed-a83d-463b-9d10-c71be15d438f",
+      "d0042b97-9e63-41a2-92e2-5466fe2ae802",
+      "6903fb72-1354-8320-b8bd-8eae25c36407",
+      "68e690fd-896c-832e-9f88-40b7fbb32268",
+      "68d2af0d-78e8-832d-89bd-7710d040875f",
+      "68cc5867-1528-832e-91e7-5336346d7141",
+      "6880f222-b450-8332-a5be-44c81cdf650f",
+      "6838a5ce-daac-8011-9be7-3a5fba43bfa2",
+      "677beac3-4f8c-8011-98bd-55197c6c8d25",
+      "a1ad810c-885b-451d-a000-b34453e44c60"
+    ],
+    "description": "Dashboard project"
+  },
+  {
+    "name": "AI Swarm",
+    "sources": [
+      "chatgpt",
+      "claude"
+    ],
+    "first_mentioned": "2023-05-17",
+    "last_mentioned": "2026-02-01",
+    "conversation_count": 13,
+    "conversation_ids": [
+      "346d654d-9d68-4b1a-911a-74fef105e33d",
+      "5cd4fc1b-cfa4-44fb-a277-3a6e522aceb0",
+      "5cd4fc1b-cfa4-44fb-a277-3a6e522aceb0",
+      "b82ee325-2383-47ec-9d99-d6a08896d024",
+      "623e47d8-2865-4f77-98a0-0e8046fc28f7",
+      "623e47d8-2865-4f77-98a0-0e8046fc28f7",
+      "6ffdfad0-1b74-4043-a52c-1f8fd928c6a6",
+      "6ffdfad0-1b74-4043-a52c-1f8fd928c6a6",
+      "55d8a7d6-2fdb-473c-af27-a2150dbea03e",
+      "d14d1f8d-a617-436b-8b58-20debef53593",
+      "3a71e784-7b6f-4f91-8faf-b19cbee4b86d",
+      "67d03872-fdcc-8011-8ab7-d94dd6262460",
+      "943b6bfc-ea18-43ce-926c-384500401195"
+    ],
+    "description": "AI Swarm - Multi-agent system"
+  },
+  {
+    "name": "Jarvis",
+    "sources": [
+      "chatgpt",
+      "claude"
+    ],
+    "first_mentioned": "2023-12-29",
+    "last_mentioned": "2026-02-04",
+    "conversation_count": 4,
+    "conversation_ids": [
+      "d14d1f8d-a617-436b-8b58-20debef53593",
+      "71861d85-a77e-4533-ab93-47b89b17a35f",
+      "fbf1417b-7aa9-410a-baab-8f2482f32bf0",
+      "90018c64-1e10-45d3-b3a6-6749f1d2e03d"
+    ],
+    "description": "Jarvis - AI assistant"
+  },
+  {
+    "name": "Voice Stack",
+    "sources": [
+      "chatgpt"
+    ],
+    "first_mentioned": "2024-01-11",
+    "last_mentioned": "2025-05-09",
+    "conversation_count": 3,
+    "conversation_ids": [
+      "681e2d18-7008-8011-9077-48432d0ab62e",
+      "67b78598-4d44-8011-97ad-2f0b2c9477aa",
+      "6ff25507-4970-4d6d-8bc9-e949027979da"
+    ],
+    "description": "Voice Stack - TTS/STT services"
+  },
+  {
+    "name": "BetBots",
+    "sources": [
+      "chatgpt"
+    ],
+    "first_mentioned": "2023-04-24",
+    "last_mentioned": "2023-04-24",
+    "conversation_count": 3,
+    "conversation_ids": [
+      "3c34d34e-8b0b-4de0-910e-fc9ed8f25f76",
+      "b1033c5d-ccf1-4393-9eeb-0096b3a097c8",
+      "ba3a25f0-32c7-44f8-ac60-f4287c6e63fa"
+    ],
+    "description": "BetBots - Automated betting bots"
+  },
+  {
+    "name": "Clawd",
+    "sources": [
+      "claude"
+    ],
+    "first_mentioned": "2026-01-27",
+    "last_mentioned": "2026-02-04",
+    "conversation_count": 2,
+    "conversation_ids": [
+      "71861d85-a77e-4533-ab93-47b89b17a35f",
+      "fbf1417b-7aa9-410a-baab-8f2482f32bf0"
+    ],
+    "description": "Clawd - ATLAS workspace/config"
+  },
+  {
+    "name": "OpenClaw",
+    "sources": [
+      "claude"
+    ],
+    "first_mentioned": "2026-01-27",
+    "last_mentioned": "2026-02-04",
+    "conversation_count": 2,
+    "conversation_ids": [
+      "71861d85-a77e-4533-ab93-47b89b17a35f",
+      "fbf1417b-7aa9-410a-baab-8f2482f32bf0"
+    ],
+    "description": "OpenClaw - AI agent platform"
+  },
+  {
+    "name": "OnlyLocks",
+    "sources": [
+      "chatgpt"
+    ],
+    "first_mentioned": "2023-08-10",
+    "last_mentioned": "2023-08-15",
+    "conversation_count": 2,
+    "conversation_ids": [
+      "a1ad810c-885b-451d-a000-b34453e44c60",
+      "40b7bd70-8080-4ebe-9190-17d67e92bebf"
+    ],
+    "description": "OnlyLocks - Sports betting/picks platform"
+  },
+  {
+    "name": "ATLAS",
+    "sources": [
+      "claude"
+    ],
+    "first_mentioned": "2026-02-04",
+    "last_mentioned": "2026-02-04",
+    "conversation_count": 1,
+    "conversation_ids": [
+      "fbf1417b-7aa9-410a-baab-8f2482f32bf0"
+    ],
+    "description": "ATLAS - AI assistant system"
+  },
+  {
+    "name": "Copilot project",
+    "sources": [
+      "chatgpt"
+    ],
+    "first_mentioned": "2025-07-10",
+    "last_mentioned": "2025-07-10",
+    "conversation_count": 1,
+    "conversation_ids": [
+      "686fd305-eb9c-8011-8551-a67dd2c319fe"
+    ],
+    "description": "Copilot project"
+  }
+]
