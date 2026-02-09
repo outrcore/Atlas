@@ -16,3 +16,5 @@ data/vector_db*/
 
 # Debug sessions
 .claude/projects/*/subagents/
+knowledge/700-chat-exports/chunks.jsonl
+knowledge/700-chat-exports/chunks/
