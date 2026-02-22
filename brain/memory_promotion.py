@@ -148,7 +148,7 @@ class MemoryPromoter:
             "lesson learned", "mistake", "success", "breakthrough",
             "decision:", "goal:", "preference:", "rule:",
             "api key", "password", "token", "secret",
-            "matt wants", "matt said", "matt prefers",
+            "user wants", "user said", "user prefers",
         ]
         
         # Medium importance signals
@@ -213,7 +213,7 @@ class MemoryPromoter:
             return "decision"
         elif any(x in content_lower for x in ["prefers", "likes", "wants", "preference"]):
             return "preference"
-        elif any(x in content_lower for x in ["matt", "user", "human"]):
+        elif any(x in content_lower for x in ["user", "human"]):
             return "user_info"
         elif any(x in content_lower for x in ["built", "created", "implemented", "fixed"]):
             return "event"
@@ -398,7 +398,7 @@ class MemoryPromoter:
         section_titles = {
             "credential": "## Credentials",
             "preference": "## Preferences",
-            "user_info": "## About Matt",
+            "user_info": "## About the User",
             "decision": "## Decisions",
             "lesson": "## Lessons Learned",
             "event": "## Events",

@@ -233,12 +233,12 @@ if __name__ == "__main__":
     # Test candidates
     candidates = [
         Candidate(
-            content="Matt decided to use SQLite for the graph",
+            content="User decided to use SQLite for the graph",
             source="memory/2026-02-06.md",
             timestamp=datetime.now()
         ),
         Candidate(
-            content="iWander uses Supabase for the backend",
+            content="ProjectAlpha uses Supabase for the backend",
             source="knowledge/100-projects/wander/PROJECT.md"
         ),
         Candidate(
@@ -248,7 +248,7 @@ if __name__ == "__main__":
         ),
     ]
     
-    results = scorer.score(candidates, query_entities=['Matt', 'SQLite'])
+    results = scorer.score(candidates, query_entities=['User', 'SQLite'])
     
     print("Scored memories:")
     for r in results:

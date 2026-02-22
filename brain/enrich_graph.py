@@ -26,8 +26,8 @@ GRAPH_DB = Path(__file__).parent / "graph.db"
 # Keywords that indicate high-value chunks
 HIGH_VALUE_KEYWORDS = [
     # Project names (known)
-    r'\biwander\b', r'\bbetbots?\b', r'\bbotbets?\b', r'\batlas\b', r'\bpersonaplex\b',
-    r'\bpromptwizz\b', r'\bvalodin\b', r'\bmemu\b', r'\bonlylocks\b', r'\bbotgames\b',
+    r'\bproject_alpha\b', r'\bproject_beta?\b', r'\bbotbets?\b', r'\batlas\b', r'\bpersonaplex\b',
+    r'\bproject_a\b', r'\bproject_b\b', r'\bmemu\b', r'\byour_project\b', r'\bbotgames\b',
     r'\bopenClaw\b', r'\bopenclaw\b',
     # Decision indicators
     r'\bdecided\b', r'\bwe.?ll go with\b', r'\blet.?s use\b', r'\bswitching to\b',
@@ -132,15 +132,15 @@ def extract_entities_regex(text):
     
     # Known project names
     project_patterns = {
-        'iWander': r'\biwander\b',
-        'BetBots': r'\bbetbots?\b',
+        'ProjectAlpha': r'\bproject_alpha\b',
+        'ProjectBeta': r'\bproject_beta?\b',
         'BotBets': r'\bbotbets?\b',
         'ATLAS': r'\batlas\b',
         'PersonaPlex': r'\bpersonaplex\b',
-        'PromptWizz': r'\bpromptwizz\b',
-        'Valodin': r'\bvalodin\b',
+        'ProjectGamma': r'\bproject_gamma\b',
+        'YourProject': r'\byourproject\b',
         'memU': r'\bmemu\b',
-        'OnlyLocks': r'\bonlylocks\b',
+        'YourProject': r'\byour_project\b',
         'BotGames': r'\bbotgames\b',
         'OpenClaw': r'\bopenclaw\b',
         'Brain v2': r'\bbrain v2\b',
@@ -152,7 +152,7 @@ def extract_entities_regex(text):
     
     # People - look for capitalized names near action verbs
     people_patterns = {
-        'Matt': r'\bmatt\b',
+        # 'YourName': r'\bmatt\b',
         'Alex Finn': r'\balex\s*finn\b',
         'Henry': r'\bhenry\b',
         'Ethan Lipnik': r'\bethan\s*lipnik\b',
@@ -277,7 +277,7 @@ def pass3_merge(all_entities):
     
     # Add people
     for person, count in all_entities['people'].most_common():
-        if count < 2 and person not in {'Matt', 'Alex Finn', 'Henry', 'Ethan Lipnik', 'Boris Cherny'}:
+        if count < 2 and person not in {'User', 'Alex Finn', 'Henry'}:
             continue  # Skip one-off mentions
         ensure_node('person', person, {'mention_count': count}, importance=0.6)
     

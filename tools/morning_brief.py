@@ -2,8 +2,8 @@
 """
 🌅 ATLAS Morning Briefing
 
-A personalized morning report for Matt.
-Run this when Matt wakes up for a summary of:
+A personalized morning report for the user.
+Run this when the user wakes up for a summary of:
 - Weather in Chicago
 - What ATLAS built overnight
 - System status
@@ -132,7 +132,7 @@ def get_motivational():
     quotes = [
         "\"The only way to do great work is to love what you do.\" - Steve Jobs",
         "\"Move fast and break things. Unless you are breaking stuff, you are not moving fast enough.\" - Mark Zuckerberg",
-        "\"We should be the best duo on the planet.\" - Matt, 2026",
+        "Rise and build.",
         "\"Build something people want.\" - Y Combinator",
         "\"The best time to plant a tree was 20 years ago. The second best time is now.\"",
         "\"Done is better than perfect.\" - Sheryl Sandberg",
@@ -208,7 +208,7 @@ def print_briefing():
     print()
     
     print(f"{Colors.CYAN}───────────────────────────────────────────────────────────────{Colors.END}")
-    print(f"   {Colors.BOLD}Good morning, Matt. Ready when you are.{Colors.END}")
+    print(f"   {Colors.BOLD}Good morning. Ready when you are.{Colors.END}")
     print(f"{Colors.CYAN}───────────────────────────────────────────────────────────────{Colors.END}")
     print()
 

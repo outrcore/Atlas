@@ -180,18 +180,18 @@ class GraphExtractor:
         
         # Handle common aliases
         aliases = {
-            'matt': 'Matt',
-            'matt (@mythicalsoup)': 'Matt',
-            'matt campbell': 'Matt',
-            'mythicalsoup': 'MythicalSoup',
+            'user': 'User',
+            'user (@handle)': 'User',
+            'your name': 'User',
+            'your_handle': 'YourHandle',
             'mattcampbell': 'mattcampbell',
             'outrcore': 'outrcore',
             'atlas': 'ATLAS',
-            'iwander': 'iWander',
-            'iwander.app': 'iWander',
-            'wander': 'iWander',
-            'betbots': 'BetBots',
-            'promptwizz': 'PromptWizz',
+            'project_a': 'ProjectA',
+            'project_a.app': 'ProjectA',
+            'wander': 'ProjectAlpha',
+            'project_b': 'ProjectB',
+            'project_c': 'ProjectC',
             'uma': 'Unified Memory Architecture',
             'claude': 'Claude',
             'supabase': 'Supabase',
@@ -214,12 +214,12 @@ class GraphExtractor:
         edges = []
         text_lower = text.lower()
         
-        # Find Matt and ATLAS nodes if present
+        # Find User and ATLAS nodes if present
         matt_node = None
         atlas_node = None
         
         for node in nodes:
-            if node['name'] == 'Matt':
+            if node['name'] == 'User':
                 matt_node = node
             elif node['name'] == 'ATLAS':
                 atlas_node = node
@@ -234,11 +234,11 @@ class GraphExtractor:
             (r'(\w+)\s+depends?\s+on\s+(\w+)', 'depends_on'),
         ]
         
-        # Project nodes get linked to Matt as creator if mentioned together
+        # Project nodes get linked to User as creator if mentioned together
         for node in nodes:
             if node['type'] == 'project' and matt_node:
-                # Check if this looks like Matt's project
-                if any(kw in text_lower for kw in ['my project', 'i built', 'i created', "matt's"]):
+                # Check if this looks like user's project
+                if any(kw in text_lower for kw in ['my project', 'i built', 'i created', "user's"]):
                     edge_id = self.graph.add_edge(
                         matt_node['id'],
                         node['id'],
@@ -271,7 +271,7 @@ class GraphExtractor:
             # Decisions get linked to who made them
             if node['type'] == 'decision':
                 # Check context for who decided
-                if matt_node and any(kw in text_lower for kw in ['matt decided', 'i decided', 'let\'s', 'we should', 'matt wants', 'matt asked']):
+                if user_node and any(kw in text_lower for kw in ['user decided', 'i decided', 'let\'s', 'we should', 'user wants', 'user asked']):
                     edge_id = self.graph.add_edge(
                         matt_node['id'],
                         node['id'],
@@ -433,7 +433,7 @@ if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: python graph_extractor.py <text or file path>")
         print("\nExamples:")
-        print("  python graph_extractor.py 'Matt built iWander using Supabase'")
+        print("  python graph_extractor.py 'User built ProjectA using Supabase'")
         print("  python graph_extractor.py memory/2026-02-06.md")
         sys.exit(1)
     

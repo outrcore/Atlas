@@ -55,7 +55,7 @@ def parse_telegram_export(file_path: str) -> list:
 def extract_insights_with_claude(conversation_text: str) -> dict:
     """Use Claude to extract important information from conversation."""
     
-    prompt = f"""Analyze this conversation history between Matt and ATLAS (his AI assistant).
+    prompt = f"""Analyze this conversation history between the user and ATLAS (his AI assistant).
 Extract the most important information that ATLAS should remember.
 
 <conversation>

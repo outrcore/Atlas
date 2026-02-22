@@ -143,7 +143,7 @@ class RLMProcessor:
         important_keywords = [
             'important', 'critical', 'lesson', 'learned', 'decision',
             'created', 'built', 'fixed', 'completed', 'milestone',
-            'goal', 'preference', 'matt', 'api key', 'token',
+            'goal', 'preference', 'user', 'api key', 'token',
         ]
         
         for line in lines:

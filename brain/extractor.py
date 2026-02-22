@@ -23,7 +23,7 @@ EXTRACTION_PROMPT = """Analyze this conversation and extract structured informat
 
 Extract the following (return empty lists if nothing found):
 
-1. **Facts**: Concrete facts learned (e.g., "Matt lives in Chicago", "Uses iCloud for email")
+1. **Facts**: Concrete facts learned (e.g., "User lives in Portland", "Uses Gmail for email")
 2. **Preferences**: User preferences discovered (e.g., "Prefers Fahrenheit", "Trying to quit Zyn")
 3. **Decisions**: Decisions made during the conversation
 4. **Action Items**: Things to do or follow up on

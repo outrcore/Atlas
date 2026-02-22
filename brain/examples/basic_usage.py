@@ -44,7 +44,7 @@ async def main():
     # Add some memories
     print("\n💾 Adding memories...")
     await brain.link_memory(
-        "Matt prefers Fahrenheit over Celsius for temperature display",
+        "User prefers Fahrenheit over Celsius for temperature display",
         category="300-personal",
         metadata={"type": "preference", "confidence": "high"}
     )
@@ -57,7 +57,7 @@ async def main():
     
     # Search for related memories
     print("\n🔍 Searching memories...")
-    results = await brain.find_related("What temperature units does Matt prefer?")
+    results = await brain.find_related("What temperature units does the user prefer?")
     print(f"✓ Found {len(results)} related memories")
     for r in results:
         print(f"   - {r['content'][:60]}... (score: {r['score']:.2f})")

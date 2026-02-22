@@ -51,7 +51,7 @@ async def test_semantic_linker():
     
     # Add some memories
     id1 = await linker.add_and_link(
-        "Matt lives in Chicago and works as a trader",
+        "User lives in a city and works professionally",
         category="300-personal",
     )
     print(f"✓ Added memory: {id1}")
@@ -69,7 +69,7 @@ async def test_semantic_linker():
     print(f"✓ Added memory: {id3}")
     
     # Search
-    results = await linker.search("What city does Matt live in?")
+    results = await linker.search("What city does the user live in?")
     print(f"✓ Search found {len(results)} results")
     if results:
         print(f"  Top result: {results[0]['content'][:50]}... (score: {results[0]['score']:.2f})")

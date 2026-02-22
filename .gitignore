@@ -15,21 +15,16 @@ TOOLS.md
 .index_state.json
 
 # Large data & databases
-data/vector_db*/
+data/
 brain_data/
 brain/graph.db
 *.lance
 *.db
 *.jsonl
 
-# Knowledge chat exports (large personal data)
-knowledge/700-chat-exports/
-
-# Personal knowledge (users create their own)
-knowledge/300-personal/brain-dump-*.md
-knowledge/300-personal/gaps-to-fill.md
-knowledge/300-personal/peptide-*.md
-knowledge/300-personal/matt-profile.md
+# Personal data directories (users populate their own)
+memory/
+knowledge/
 
 # Claude Code internal state
 .claude/cache/
@@ -53,20 +48,6 @@ __pycache__/
 *.egg-info/
 .eggs/
 *.egg
-
-# Memory daily logs (personal, keep only examples)
-# Note: memory/example-*.md files ARE tracked as examples
-memory/2026-*.md
-memory/STAGING.md
-memory/voice_memos/
-memory/heartbeat-state.json
-memory/*.json
-memory/botgames-credentials.md
-memory/telegram-export-verification-*.md
-memory/DEDUP-REPORT-*.md
-memory/weekly-digest-*.md
-memory/crash-analysis-*.md
-memory/nightly-builds.md
 
 # Generated/temp files
 *.bsp

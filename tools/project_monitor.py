@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 ATLAS Project Monitor
-Tracks the status of Matt's various projects and provides proactive insights.
+Tracks the status of the user's various projects and provides proactive insights.
 
 Built by ATLAS during autonomous improvement session.
 2026-02-01
@@ -16,7 +16,7 @@ from typing import Optional, Dict, List, Any
 
 class ProjectMonitor:
     """
-    Monitors Matt's projects for:
+    Monitors the user's projects for:
     - Git status (uncommitted changes, branches)
     - Build status (errors, warnings)
     - Activity (last modified times)

@@ -17,13 +17,13 @@ def seed_graph():
     # Core People
     # ─────────────────────────────────────────────────────────────
     
-    matt = graph.add_node('person', 'Matt', {
+    user_node = graph.add_node('person', 'User', {
         'full_name': 'YOUR_NAME',
         'location': 'YOUR_CITY, YOUR_STATE',
         'role': 'creator',
         'github': 'outrcore',
         'discord_id': '395265690170294303',
-        'telegram': '@MythicalSoup'
+        'telegram': '@YourHandle'
     }, importance=1.0)
     
     atlas = graph.add_node('person', 'ATLAS', {
@@ -36,28 +36,28 @@ def seed_graph():
     # Projects
     # ─────────────────────────────────────────────────────────────
     
-    iwander = graph.add_node('project', 'iWander', {
-        'url': 'iwander.app',
+    project_alpha = graph.add_node('project', 'ProjectAlpha', {
+        'url': 'project_alpha.app',
         'description': 'AI-powered travel/exploration app',
         'stack': 'Next.js, Node, Supabase',
         'status': 'active',
         'version': '1.5'
     }, importance=0.9)
     
-    betbots = graph.add_node('project', 'BetBots', {
-        'url': 'betbots.io',
+    project_beta = graph.add_node('project', 'ProjectBeta', {
+        'url': 'YOUR_PROJECT_URL',
         'description': 'Prediction market for AI agents',
         'launched': '2026-02-03',
         'status': 'active'
     }, importance=0.85)
     
-    promptwizz = graph.add_node('project', 'PromptWizz', {
-        'url': 'promptwizz.com',
+    project_gamma = graph.add_node('project', 'ProjectGamma', {
+        'url': 'YOUR_PROJECT_URL',
         'description': 'AI prompt optimizer tool',
         'status': 'early'
     }, importance=0.6)
     
-    valodin = graph.add_node('project', 'Valodin', {
+    project_c = graph.add_node('project', 'YourProject', {
         'description': 'iOS app for peptide tracking',
         'status': 'in_progress'
     }, importance=0.5)
@@ -91,7 +91,7 @@ def seed_graph():
     
     supabase = graph.add_node('tool', 'Supabase', {
         'type': 'database',
-        'use': 'iWander backend'
+        'use': 'ProjectAlpha backend'
     }, importance=0.7)
     
     openclaw = graph.add_node('tool', 'OpenClaw', {
@@ -116,25 +116,25 @@ def seed_graph():
     # Relationships
     # ─────────────────────────────────────────────────────────────
     
-    # Matt's relationships
-    graph.add_edge(matt, iwander, 'created')
-    graph.add_edge(matt, betbots, 'created')
-    graph.add_edge(matt, promptwizz, 'created')
-    graph.add_edge(matt, valodin, 'created')
-    graph.add_edge(matt, atlas, 'created')
-    graph.add_edge(matt, uma, 'decided', evidence='memory/2026-02-06.md')
+    # User's relationships
+    graph.add_edge(user_node, project_alpha, 'created')
+    graph.add_edge(user_node, project_beta, 'created')
+    graph.add_edge(user_node, project_gamma, 'created')
+    graph.add_edge(user_node, project_c, 'created')
+    graph.add_edge(user_node, atlas, 'created')
+    graph.add_edge(user_node, uma, 'decided', evidence='memory/2026-02-06.md')
     
     # ATLAS's relationships
-    graph.add_edge(atlas, iwander, 'works_on')
-    graph.add_edge(atlas, betbots, 'works_on')
+    graph.add_edge(atlas, project_alpha, 'works_on')
+    graph.add_edge(atlas, project_beta, 'works_on')
     graph.add_edge(atlas, brain, 'works_on')
     graph.add_edge(atlas, uma, 'works_on')
     graph.add_edge(atlas, openclaw, 'depends_on')
     graph.add_edge(atlas, claude, 'depends_on')
     
     # Project dependencies
-    graph.add_edge(iwander, supabase, 'depends_on')
-    graph.add_edge(iwander, sse, 'related_to')
+    graph.add_edge(project_alpha, supabase, 'depends_on')
+    graph.add_edge(project_alpha, sse, 'related_to')
     graph.add_edge(brain, lancedb, 'depends_on')
     graph.add_edge(uma, brain, 'supersedes')
     graph.add_edge(uma, lnn, 'related_to')

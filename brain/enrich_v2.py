@@ -52,8 +52,8 @@ def score_chunk(text):
     tl = text.lower()
     
     # Specific project names
-    for kw in ['iwander', 'betbots', 'botbets', 'valodin', 'personaplex', 'promptwizz', 
-                'onlylocks', 'botgames', 'openclaw', 'memu', 'codegpt', 'earthai']:
+    for kw in ['project_a', 'project_b', 'project_c', 'project_d', 'project_e', 'project_f', 
+                'your_project', 'botgames', 'openclaw', 'memu', 'codegpt', 'earthai']:
         if kw in tl:
             score += 3
     
@@ -70,7 +70,7 @@ def score_chunk(text):
             score += 1
     
     # People
-    for kw in ['matt', 'henry', 'ethan', 'alex finn', 'boris']:
+    for kw in ['user', 'henry', 'alex finn']:
         if kw in tl:
             score += 1
     
@@ -88,7 +88,7 @@ def kimi_extract(texts_batch):
         # Trim each chunk
         combined += f"\n--- CHUNK {chunk_name} ---\n{text[:2000]}\n"
     
-    prompt = f"""Extract entities from these conversation chunks. These are chat logs between a user (Matt) and AI assistants about his projects.
+    prompt = f"""Extract entities from these conversation chunks. These are chat logs between a user and AI assistants about his projects.
 
 {combined}
 
@@ -97,7 +97,7 @@ Return JSON with these fields:
 - people: list of named people (NOT "user" or "someone")  
 - decisions: list of objects with "text" (specific consequential decision), "chunk" (which chunk), "date" (if available)
 - locations: list of specific locations mentioned
-- relationships: list of objects with "from", "to", "relation" (e.g. "Matt" -> "iWander" -> "created")
+- relationships: list of objects with "from", "to", "relation" (e.g. "User" -> "ProjectA" -> "created")
 
 Only include specific, consequential items. Skip generic concepts.
 JSON only:"""
@@ -226,7 +226,7 @@ def main():
             ensure_node('project', proj, {'mention_count': count, 'source': 'chat_export'}, 0.7)
     
     # Add people (min 2 mentions or known)
-    known_people = {'Matt', 'Henry', 'Alex Finn', 'Ethan Lipnik', 'Boris Cherny'}
+    known_people = {'User', 'Henry', 'Alex Finn'}
     for person, count in all_people.most_common():
         if count >= 2 or person in known_people:
             ensure_node('person', person, {'mention_count': count, 'source': 'chat_export'}, 0.6)

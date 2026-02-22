@@ -168,8 +168,8 @@ class SmartConsolidator:
         existing_lower = existing_knowledge.lower()
         
         # Check if it references known entities
-        known_entities = ['matt', 'atlas', 'brain', 'memory', 'mac studio', 
-                         'wander', 'promptwizz', 'valodin', 'runpod']
+        known_entities = ['user', 'atlas', 'brain', 'memory', 
+                         'project_a', 'project_b', 'project_c', 'runpod']
         
         mentions_known = [e for e in known_entities if e in candidate_lower]
         
@@ -306,11 +306,11 @@ async def test_smart_consolidation():
     consolidator = SmartConsolidator()
     
     test_candidates = [
-        "Matt's goal is to earn the Mac Studio M4 Max",  # Likely duplicate
+        "User has set a goal for the AI",  # Likely duplicate
         "ATLAS completed Brain v2 with 5 phases today",  # New info
         "The weather in Chicago is cold",  # Low value
         "LESSON: Always check for duplicates before promoting memories",  # High value
-        "Matt prefers Fahrenheit over Celsius",  # Likely duplicate
+        "User prefers Fahrenheit over Celsius",  # Likely duplicate
     ]
     
     print("Testing smart consolidation...\n")

@@ -17,9 +17,9 @@ GRAPH_DB = "/workspace/clawd/brain/graph.db"
 # High-value keywords for scoring
 SCORE_KEYWORDS = {
     # People (weight 3)
-    'matt': 3, 'atlas': 2,
+    'user': 3, 'atlas': 2,
     # Projects (weight 2)
-    'iwander': 2, 'betbots': 2, 'promptwizz': 2, 'valodin': 2, 'openclaw': 2,
+    'project_a': 2, 'project_b': 2, 'project_c': 2, 'project_d': 2, 'openclaw': 2,
     'earthai': 2, 'flip frenzy': 2, 'aimerica': 2, 'voice stack': 2,
     'brain': 1, 'memory': 1,
     # Decision signals (weight 2)
@@ -67,7 +67,7 @@ def score_chunk(frontmatter, content_start):
     
     # Penalty for generic coding tutorials
     if isinstance(frontmatter, dict) and frontmatter.get('category') == 'coding' and not any(
-        p in text for p in ['iwander', 'betbots', 'promptwizz', 'valodin', 
+        p in text for p in ['project_a', 'project_b', 'project_c', 'project_d', 
                             'openclaw', 'earthai', 'atlas', 'brain']):
         score -= 2
     
@@ -104,7 +104,7 @@ def extract_entities_local(content_full):
     
     # Person detection - look for names mentioned in context
     known_people = {
-        'matt': ('person', 'Matt', 0.9),
+        'user': ('person', 'User', 0.9),
         'atlas': ('person', 'ATLAS', 0.8),
         'alex finn': ('person', 'Alex Finn', 0.5),
         'sonnet': ('tool', 'Sonnet', 0.5),
@@ -113,10 +113,10 @@ def extract_entities_local(content_full):
     }
     
     known_projects = {
-        'iwander': ('project', 'iWander', 0.9),
-        'betbots': ('project', 'BetBots', 0.8),
-        'promptwizz': ('project', 'PromptWizz', 0.7),
-        'valodin': ('project', 'Valodin', 0.7),
+        'project_alpha': ('project', 'ProjectAlpha', 0.9),
+        'project_beta': ('project', 'ProjectBeta', 0.8),
+        'project_gamma': ('project', 'ProjectGamma', 0.7),
+        'project_d': ('project', 'ProjectD', 0.7),
         'openclaw': ('project', 'OpenClaw', 0.8),
         'earthai': ('project', 'EarthAI', 0.7),
         'earth ai': ('project', 'EarthAI', 0.7),

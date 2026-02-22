@@ -152,7 +152,7 @@ if __name__ == "__main__":
             return
         
         text = """
-        Matt and I worked on the Unified Memory Architecture today.
+        The user and I worked on the Unified Memory Architecture today.
         We decided to use SQLite for the entity graph and keep LanceDB for vectors.
         Key insight: combining graphs + vectors beats either alone.
         Tools used: Python, SQLite, Claude for testing.

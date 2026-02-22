@@ -147,8 +147,8 @@ def main():
     print(f"Time: {elapsed:.1f}s")
     
     # Test search
-    print(f"\n--- Test Search: 'BetBots fee structure' ---")
-    q = embedder.embed("BetBots fee structure")
+    print(f"\n--- Test Search: 'ProjectBeta fee structure' ---")
+    q = embedder.embed("ProjectBeta fee structure")
     results = tbl.search(q.tolist()).limit(5).to_list()
     for r in results:
         print(f"  {r['content'][:80]}  ({r['source']})")

@@ -62,7 +62,7 @@ def create_agent():
     agent = MemoryAgent(
         llm_client=client,
         agent_id="atlas",
-        user_id="matt",
+        user_id="user",
         memory_dir=MEMORY_DIR,
         enable_embeddings=True
     )

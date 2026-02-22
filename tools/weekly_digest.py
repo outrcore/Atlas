@@ -25,11 +25,11 @@ NIGHTLY_BUILDS = MEMORY_DIR / "nightly-builds.md"
 
 # Projects to scan (name, path)
 PROJECTS = [
-    ("iWander", PROJECTS_DIR / "wander"),
-    ("Crewsmith", PROJECTS_DIR / "crewsmith"),
+    ("ProjectAlpha", PROJECTS_DIR / "wander"),
+    ("ProjectDelta", PROJECTS_DIR / "project_delta"),
     ("HyperClaude Trading", PROJECTS_DIR / "HyperClaude-AMT-Atlas"),
     ("ATLAS Desktop", PROJECTS_DIR / "atlas-desktop-app"),
-    ("BetBots", None),  # Remote only — skip git
+    ("ProjectBeta", None),  # Remote only — skip git
     ("OpenClaw Config", CLAWD_DIR),
 ]
 

@@ -108,7 +108,7 @@
     "emailAddress": "mythicalsouo@gmail.com",
     "organizationUuid": "cc867727-aa95-4ef6-9fb9-858ff3bf7e6a",
     "hasExtraUsageEnabled": true,
-    "displayName": "Matt",
+    "displayName": "User",
     "organizationRole": "admin",
     "workspaceRole": null,
     "organizationName": "mythicalsouo@gmail.com's Organization"
@@ -207,7 +207,7 @@
         "packageManager": null
       }
     },
-    "/workspace/projects/promptwizz-tools": {
+    "/workspace/projects/example-tools": {
       "allowedTools": [],
       "mcpContextUris": [],
       "mcpServers": {},

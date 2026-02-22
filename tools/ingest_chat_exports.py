@@ -26,7 +26,7 @@ CATEGORIES = {
         "binance", "coinbase", "deribit", "profit", "loss", "pnl", "roi",
         "signal", "indicator", "macd", "rsi", "bollinger", "moving average",
         "leverage", "margin", "liquidat", "forex", "betting", "odds",
-        "sportsbook", "wager", "parlay", "onlylocks", "betbots", "sportsbetting",
+        "sportsbook", "wager", "parlay", "your_project", "project_beta", "sportsbetting",
         "kelly criterion", "expected value", "ev+", "sharp", "bookie",
     ],
     "projects": [
@@ -71,7 +71,7 @@ CATEGORIES = {
 
 # Known project names to look for
 PROJECT_PATTERNS = [
-    r"onlylocks", r"betbots", r"iwander", r"i-wander", r"atlas",
+    r"your_project", r"project_beta", r"project_alpha", r"project-alpha", r"atlas",
     r"voice.?stack", r"brain.?daemon", r"clawd", r"openclaw",
     r"swarm", r"jarvis", r"copilot", r"dashboard",
 ]
@@ -308,16 +308,16 @@ def generate_category_markdown(category, convos):
     return "\n".join(lines)
 
 
-def find_onlylocks_references(all_convos):
-    """Find all OnlyLocks references across conversations."""
+def find_your_project_references(all_convos):
+    """Find all YourProject references across conversations."""
     refs = []
     for c in all_convos:
         full_text = c["title"].lower() + " " + " ".join(m["text"].lower() for m in c["messages"])
-        if "onlylocks" in full_text or "only locks" in full_text or "only-locks" in full_text:
+        if "your_project" in full_text or "only locks" in full_text or "only-locks" in full_text:
             # Extract relevant snippets
             snippets = []
             for m in c["messages"]:
-                if any(kw in m["text"].lower() for kw in ["onlylocks", "only locks", "only-locks"]):
+                if any(kw in m["text"].lower() for kw in ["your_project", "only locks", "only-locks"]):
                     snippets.append(m["text"][:500])
             refs.append({
                 "title": c["title"],
@@ -376,15 +376,15 @@ def build_project_inventory(all_convos):
     
     # Extended project detection
     project_names = {
-        "onlylocks": "OnlyLocks - Sports betting/picks platform",
-        "only locks": "OnlyLocks - Sports betting/picks platform",
-        "betbots": "BetBots - Automated betting bots",
-        "bet bots": "BetBots - Automated betting bots",
-        "betbot": "BetBots - Automated betting bots",
-        "iwander": "iWander - AI-powered travel/walking guide app",
-        "i-wander": "iWander - AI-powered travel/walking guide app",
-        "i wander": "iWander - AI-powered travel/walking guide app",
-        "wander app": "iWander - AI-powered travel/walking guide app",
+        "your_project": "YourProject - Sports betting/picks platform",
+        "only locks": "YourProject - Sports betting/picks platform",
+        "project_beta": "ProjectBeta - Automated betting bots",
+        "project beta": "ProjectBeta - Automated betting bots",
+        "project_beta": "ProjectBeta - Automated betting bots",
+        "project_alpha": "ProjectAlpha - AI-powered travel/walking guide app",
+        "project-alpha": "ProjectAlpha - AI-powered travel/walking guide app",
+        "project alpha": "ProjectAlpha - AI-powered travel/walking guide app",
+        "project alpha app": "ProjectAlpha - AI-powered travel/walking guide app",
         "atlas": "ATLAS - AI assistant system",
         "clawd": "Clawd - ATLAS workspace/config",
         "openclaw": "OpenClaw - AI agent platform",
@@ -503,8 +503,8 @@ def main():
     # Specific extractions
     print("\n[5/7] Running specific extractions...")
     
-    onlylocks = find_onlylocks_references(all_convos)
-    print(f"  → OnlyLocks references: {len(onlylocks)} conversations")
+    your_project = find_your_project_references(all_convos)
+    print(f"  → YourProject references: {len(your_project)} conversations")
     
     trading_strategies = find_trading_strategies(all_convos)
     print(f"  → Trading strategy discussions: {len(trading_strategies)}")
@@ -515,15 +515,15 @@ def main():
     # Write special extractions file
     special_md = ["# Special Extractions\n"]
     
-    special_md.append("## OnlyLocks References\n")
-    if onlylocks:
-        for ref in onlylocks:
+    special_md.append("## YourProject References\n")
+    if your_project:
+        for ref in your_project:
             special_md.append(f"### [{ref['date']}] {ref['title']} ({ref['source'].upper()})")
             special_md.append(f"*{ref['message_count']} messages*\n")
             for snip in ref["snippets"][:3]:
                 special_md.append(f"> {snip[:300]}...\n")
     else:
-        special_md.append("*No OnlyLocks references found.*\n")
+        special_md.append("*No YourProject references found.*\n")
     
     special_md.append("## Trading Strategy Discussions\n")
     for ts in trading_strategies:
@@ -606,7 +606,7 @@ def main():
     
     index.append("")
     index.append("## Special Files\n")
-    index.append("- [special-extractions.md](special-extractions.md) — OnlyLocks, trading strategies, project ideas")
+    index.append("- [special-extractions.md](special-extractions.md) — YourProject, trading strategies, project ideas")
     if claude_memories:
         index.append("- [claude-memories.md](claude-memories.md) — Extracted Claude memories")
     if claude_projects:
@@ -616,13 +616,13 @@ def main():
     for p in inventory[:15]:
         index.append(f"- **{p['name']}** — {p['description']} ({p['conversation_count']} convos, {p['first_mentioned']} → {p['last_mentioned']})")
     
-    index.append(f"\n## OnlyLocks References\n")
-    if onlylocks:
-        index.append(f"Found **{len(onlylocks)}** conversations mentioning OnlyLocks:\n")
-        for ref in onlylocks:
+    index.append(f"\n## YourProject References\n")
+    if your_project:
+        index.append(f"Found **{len(your_project)}** conversations mentioning YourProject:\n")
+        for ref in your_project:
             index.append(f"- [{ref['date']}] {ref['title']} ({ref['source'].upper()}, {ref['message_count']} msgs)")
     else:
-        index.append("*No OnlyLocks references found in conversation exports.*")
+        index.append("*No YourProject references found in conversation exports.*")
     
     with open(os.path.join(OUTPUT_DIR, "INDEX.md"), "w") as f:
         f.write("\n".join(index))

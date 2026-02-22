@@ -14,12 +14,12 @@ JSONL_PATH = Path("/workspace/clawd/knowledge/700-chat-exports/chunks.jsonl")
 
 # Category detection
 CATEGORIES = {
-    "trading": ["trading", "kalshi", "corn", "futures", "stock", "market", "bet", "onlylocks", "betbots", "spread", "odds", "wager", "commodity", "option"],
+    "trading": ["trading", "kalshi", "corn", "futures", "stock", "market", "bet", "your_project", "project_beta", "spread", "odds", "wager", "commodity", "option"],
     "ai-ml": ["gpt", "llm", "neural", "neat", "model", "train", "embedding", "transformer", "agent", "ai ", "machine learning", "deep learning", "reinforcement"],
     "health": ["peptide", "bpc-157", "tb-500", "dosing", "health", "supplement", "workout", "diet", "testosterone", "semaglutide"],
     "coding": ["python", "javascript", "react", "api", "database", "deploy", "docker", "server", "code", "function", "debug", "error"],
     "personal": ["budget", "finance", "car", "house", "move", "travel", "family", "plan"],
-    "projects": ["iwander", "atlas", "openclaw", "betbots", "onlylocks", "voice", "discord"],
+    "projects": ["project_alpha", "atlas", "openclaw", "project_beta", "your_project", "voice", "discord"],
 }
 
 def categorize(text: str) -> str:

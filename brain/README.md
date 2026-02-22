@@ -68,12 +68,12 @@ LanceDB-based vector storage for semantic search. Automatically links related me
 ```python
 # Add a memory
 memory_id = await brain.link_memory(
-    "Matt prefers Fahrenheit for temperatures",
+    "User prefers Fahrenheit for temperatures",
     category="300-personal"
 )
 
 # Search for related
-results = await brain.find_related("What units does Matt prefer?")
+results = await brain.find_related("What units does the user prefer?")
 ```
 
 ### IntentPredictor (`predictor.py`)

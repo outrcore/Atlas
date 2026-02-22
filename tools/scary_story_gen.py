@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 ShortyStorys Script Generator
-Generates scary story scripts for Matt's YouTube channel @ShortyStorys
+Generates scary story scripts for the user's YouTube channel @ShortyStorys
 
 Built by ATLAS during first autonomous build session.
 2026-02-01

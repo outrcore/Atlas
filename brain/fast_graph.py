@@ -443,10 +443,10 @@ if __name__ == "__main__":
     stats = fast.get_stats()
     print(f"Graph: {stats['nodes']} nodes, {stats['edges']} edges\n")
     
-    # Find Matt
-    matt = fast.find_node('person', 'Matt')
-    if not matt:
-        print("Matt not found!")
+    # Find user node
+    user_node = fast.find_node('person', 'User')
+    if not user_node:
+        print("User not found!")
         exit(1)
     
     # Test 1: Get neighbors
@@ -454,12 +454,12 @@ if __name__ == "__main__":
     
     start = time.time()
     for _ in range(10):
-        fast_neighbors = fast.get_neighbors(matt.id, depth=2)
+        fast_neighbors = fast.get_neighbors(user_node.id, depth=2)
     fast_time = (time.time() - start) * 100  # ms per call
     
     start = time.time()
     for _ in range(10):
-        slow_neighbors = slow.get_neighbors(matt.id, depth=2)
+        slow_neighbors = slow.get_neighbors(user_node.id, depth=2)
     slow_time = (time.time() - start) * 100
     
     print(f"  FastGraph: {fast_time:.1f}ms (found {len(fast_neighbors)} neighbors)")
@@ -467,18 +467,18 @@ if __name__ == "__main__":
     print(f"  Speedup:   {slow_time/fast_time:.1f}x\n")
     
     # Test 2: Find path
-    betbots = fast.find_node('project', 'BetBots')
-    if betbots:
-        print("Test 2: Find path (Matt → BetBots)")
+    project_beta = fast.find_node('project', 'ProjectBeta')
+    if project_beta:
+        print("Test 2: Find path (User → ProjectBeta)")
         
         start = time.time()
         for _ in range(10):
-            fast_path = fast.find_path(matt.id, betbots.id)
+            fast_path = fast.find_path(user_node.id, project_beta.id)
         fast_time = (time.time() - start) * 100
         
         start = time.time()
         for _ in range(10):
-            slow_path = slow.find_path(matt.id, betbots.id)
+            slow_path = slow.find_path(user_node.id, project_beta.id)
         slow_time = (time.time() - start) * 100
         
         print(f"  FastGraph: {fast_time:.1f}ms")
@@ -489,7 +489,7 @@ if __name__ == "__main__":
     print("Test 3: Connection strength check")
     start = time.time()
     for _ in range(100):
-        strength = fast.connection_strength(matt.id, betbots.id if betbots else matt.id)
+        strength = fast.connection_strength(user_node.id, project_beta.id if project_beta else user_node.id)
     fast_time = (time.time() - start) * 10
     print(f"  FastGraph: {fast_time:.2f}ms per 100 checks")
-    print(f"  Strength Matt→BetBots: {strength}")
+    print(f"  Strength User→ProjectBeta: {strength}")

@@ -51,7 +51,7 @@ def parse_log_highlights(log_file: Path) -> Dict[str, Any]:
                 highlights["lessons_learned"].append(line.strip()[:100])
             if any(x in line_lower for x in ['decided', 'decision', 'chose', 'going with']):
                 highlights["decisions_made"].append(line.strip()[:100])
-            if any(x in line_lower for x in ['iwander', 'wander', 'project', 'repo']):
+            if any(x in line_lower for x in ['project_alpha', 'wander', 'project', 'repo']):
                 highlights["projects_touched"].append(line.strip()[:100])
                 
     except Exception as e:

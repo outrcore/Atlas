@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-BetBots Swarm - Improved parallel task execution with context and validation.
+ProjectBeta Swarm - Improved parallel task execution with context and validation.
 """
 
 import json
@@ -10,9 +10,9 @@ from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
 from fireworks_orchestrator import FireworksOrchestrator
 
-# BetBots codebase context
+# ProjectBeta codebase context
 CODEBASE_CONTEXT = """
-## BetBots Codebase Context
+## ProjectBeta Codebase Context
 
 **Stack:**
 - Backend: Express.js + better-sqlite3 (SYNCHRONOUS, not async)
@@ -139,7 +139,7 @@ class SwarmResult:
     cost: float
     
 
-def run_betbots_swarm(tasks: List[SwarmTask], max_workers: int = 4) -> List[SwarmResult]:
+def run_project_beta_swarm(tasks: List[SwarmTask], max_workers: int = 4) -> List[SwarmResult]:
     """Run a swarm of tasks with context injection and validation."""
     
     orch = FireworksOrchestrator(model="kimi-k2.5", max_tokens=2000)
@@ -154,7 +154,7 @@ def run_betbots_swarm(tasks: List[SwarmTask], max_workers: int = 4) -> List[Swar
             "_task_type": task.task_type
         })
     
-    print(f"🚀 BetBots Swarm: {len(tasks)} tasks")
+    print(f"🚀 ProjectBeta Swarm: {len(tasks)} tasks")
     start = time.time()
     
     # Run parallel
@@ -272,10 +272,10 @@ Also export: broadcastMarketUpdate(wss, marketId, poolYes, poolNo) for pool chan
         )
     ]
     
-    results = run_betbots_swarm(tasks)
+    results = run_project_beta_swarm(tasks)
     
     # Save results
-    with open("/tmp/betbots_swarm.json", "w") as f:
+    with open("/tmp/project_beta_swarm.json", "w") as f:
         json.dump([{
             "label": r.label,
             "code": r.code,
@@ -284,4 +284,4 @@ Also export: broadcastMarketUpdate(wss, marketId, poolYes, poolNo) for pool chan
             "cost": r.cost
         } for r in results], f, indent=2)
     
-    print("\n📁 Saved to /tmp/betbots_swarm.json")
+    print("\n📁 Saved to /tmp/project_beta_swarm.json")

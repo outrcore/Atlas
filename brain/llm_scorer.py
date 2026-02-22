@@ -62,7 +62,7 @@ class LLMScorer:
 Your job is to evaluate memories and decide what's worth keeping long-term.
 
 CONTEXT:
-- ATLAS serves Matt, a 30-year-old trader in Chicago
+- ATLAS serves the user
 - ATLAS wakes up fresh each session, so persistent memory is crucial
 - Memory space is limited - only keep what truly matters
 
@@ -83,7 +83,7 @@ EVALUATION CRITERIA:
 4. CATEGORY: One of:
    - credential (API keys, passwords, tokens)
    - preference (likes, dislikes, opinions)
-   - user_info (facts about Matt)
+   - user_info (facts about the user)
    - decision (choices made, reasoning)
    - lesson (things learned, mistakes)
    - project (work on specific projects)
@@ -295,7 +295,7 @@ class HybridScorer:
             "api key", "token", "password", "secret", "credential",
             "important", "critical", "remember", "don't forget",
             "lesson", "learned", "mistake", "decision",
-            "matt wants", "matt said", "matt prefers",
+            "user wants", "user said", "user prefers",
             "goal", "objective", "milestone",
         ]):
             score = max(score, 0.8)
@@ -407,13 +407,13 @@ class HybridScorer:
 async def test_scorer():
     """Test the LLM scorer."""
     test_memories = [
-        "Matt's Perplexity API key is YOUR_PERPLEXITY_API_KEY",
+        "User's Perplexity API key is YOUR_PERPLEXITY_API_KEY",
         "Ran heartbeat check, everything normal.",
-        "Matt said he wants to quit Zyn and I should encourage healthy habits.",
+        "User has health goals the AI should support.",
         "Built the memory promotion system using human-like consolidation.",
         "Checked git status, no changes.",
         "LESSON LEARNED: Don't spawn too many agents at once, causes rate limiting.",
-        "Matt's goal is to earn the Mac Studio M4 Max by me being awesome.",
+        "User has set performance goals for the AI.",
     ]
     
     print("Testing HybridScorer...\n")

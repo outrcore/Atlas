@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
 ATLAS Content Idea Generator
-Generates content ideas for Matt's YouTube channels and other ventures.
+Generates content ideas for the user's YouTube channels and other ventures.
 
 Channels:
-- @CampbellSoupMatt - AI/tech content
+- @YOUR_CHANNEL - AI/tech content
 - @ShortyStorys - Scary story narration
 
 Built by ATLAS during autonomous improvement session.
@@ -27,7 +27,7 @@ except ImportError:
 
 
 class ContentIdeaGenerator:
-    """Generate content ideas for Matt's channels."""
+    """Generate content ideas for the user's channels."""
     
     # Trending AI topics (update periodically)
     AI_TRENDING_TOPICS = [
@@ -104,7 +104,7 @@ class ContentIdeaGenerator:
             self.client = None
     
     def generate_tech_ideas(self, count: int = 5, use_ai: bool = True) -> List[Dict]:
-        """Generate ideas for @CampbellSoupMatt."""
+        """Generate ideas for @YOUR_CHANNEL."""
         ideas = []
         
         if use_ai and self.client:
@@ -116,7 +116,7 @@ class ContentIdeaGenerator:
                         "role": "user",
                         "content": f"""Generate {count} YouTube video ideas for a tech/AI channel.
                         
-The channel is @CampbellSoupMatt. Focus areas:
+The channel is @YOUR_CHANNEL. Focus areas:
 - Claude Code and AI coding tools
 - Building things with AI
 - AI automation
@@ -143,7 +143,7 @@ Output as JSON array."""
                 
                 ai_ideas = json.loads(text)
                 for idea in ai_ideas[:count]:
-                    idea["channel"] = "@CampbellSoupMatt"
+                    idea["channel"] = "@YOUR_CHANNEL"
                     idea["category"] = "tech"
                     idea["generated_at"] = datetime.now().isoformat()
                     ideas.append(idea)
@@ -161,7 +161,7 @@ Output as JSON array."""
                     "title": f"{format_type.split(' - ')[0]}: {topic}",
                     "topic": topic,
                     "format": format_type,
-                    "channel": "@CampbellSoupMatt",
+                    "channel": "@YOUR_CHANNEL",
                     "category": "tech",
                     "generated_at": datetime.now().isoformat(),
                     "effort": random.choice(["low", "medium", "high"]),

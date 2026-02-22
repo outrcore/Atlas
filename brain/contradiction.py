@@ -120,7 +120,7 @@ class ContradictionDetector:
             similarity = float(self.embedder.cosine_similarity(new_embedding, old_embedding))
             
             # Same-day filter: high similarity on the same day = corroboration, not contradiction
-            # This handles the instruction→completion pattern (Matt asks, ATLAS confirms)
+            # This handles the instruction→completion pattern (User asks, ATLAS confirms)
             if old_date and new_date and old_date == new_date and similarity >= CONTRADICTION_THRESHOLD:
                 continue
             

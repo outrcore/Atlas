@@ -12,7 +12,7 @@ from pathlib import Path
 HIMALAYA_CONFIG = """
 [accounts.icloud]
 email = "{email}"
-display-name = "Matt"
+display-name = "User"
 default = true
 
 backend.type = "imap"

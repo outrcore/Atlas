@@ -77,7 +77,7 @@ class TieredSynthesis:
         - New facts and decisions
         - Lessons learned
         - Completed tasks
-        - New information about Matt/projects
+        - New information about the user/projects
         """
         logs = self.get_logs_for_period(1)  # Yesterday only
         
@@ -134,7 +134,7 @@ class TieredSynthesis:
             
             # Track key topics
             topics = ['brain', 'memory', 'wander', 'voice', 'discord', 
-                     'claude', 'api', 'matt', 'project', 'build']
+                     'claude', 'api', 'user', 'project', 'build']
             
             for topic in topics:
                 if topic in content:
@@ -236,7 +236,7 @@ Be concise - bullet points only.
             "weekly": f"""Analyze this week's activity logs and identify:
 1. Recurring themes (topics that came up multiple days)
 2. Project evolution (how did projects progress?)
-3. Patterns in Matt's requests or interests
+3. Patterns in the user's requests or interests
 4. Cross-day connections (things mentioned separately that relate)
 5. Emerging priorities
 

@@ -14,16 +14,16 @@ from typing import Optional
 
 # Test queries that would benefit from memory
 TEST_QUERIES = [
-    "What's the BetBots API key?",
-    "How do I SSH into the BetBots server?",
-    "What are Matt's development rules?",
-    "Tell me about the iWander project",
+    "What's the ProjectBeta API key?",
+    "How do I SSH into the ProjectBeta server?",
+    "What are the user's development rules?",
+    "Tell me about the ProjectAlpha project",
     "What's the Perplexity API key?",
     "What did we work on yesterday?",
     "What's the WWHD framework?",
     "How do I deploy to production?",
     "What are the brain daemon modules?",
-    "What's Matt's daily routine?",
+    "What's the user's daily routine?",
 ]
 
 WORKSPACE = "/workspace/clawd"

@@ -77,11 +77,11 @@ def main():
         print(f"\n📅 {date}: {len(msgs)} messages")
         
         # Show sample of topics discussed
-        matt_msgs = [m['text'] for m in msgs if 'Matt' in m['from']][:5]
+        matt_msgs = [m['text'] for m in msgs if 'User' in m['from']][:5]
         atlas_msgs = [m['text'] for m in msgs if 'Atlas' in m['from']][:5]
         
         if matt_msgs:
-            print(f"  Matt samples:")
+            print(f"  User samples:")
             for m in matt_msgs[:3]:
                 print(f"    - {m[:100]}...")
         

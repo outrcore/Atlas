@@ -90,7 +90,7 @@ class Agent:
                 "threshold": 0.3,  # Low bar for keeping
                 "keywords_keep": [
                     "learned", "discovered", "created", "built", "decision",
-                    "matt", "preference", "important", "remember", "note",
+                    "user", "preference", "important", "remember", "note",
                 ],
                 "keywords_discard": [],
                 "description": "Preserves information for future reference.",
@@ -199,7 +199,7 @@ class Agent:
             return "lesson"
         elif any(x in memory_lower for x in ["decided", "decision", "chose"]):
             return "decision"
-        elif any(x in memory_lower for x in ["matt", "prefers", "wants", "likes"]):
+        elif any(x in memory_lower for x in ["user", "prefers", "wants", "likes"]):
             return "preference"
         elif any(x in memory_lower for x in ["built", "created", "completed"]):
             return "achievement"
@@ -401,10 +401,10 @@ async def test_council():
     print("🏛️ Testing Agent Council - Phase 4\n")
     
     test_memories = [
-        "Matt's Perplexity API key is YOUR_PERPLEXITY_API_KEY",
+        "User's Perplexity API key is YOUR_PERPLEXITY_API_KEY",
         "Ran heartbeat check, everything normal.",
         "LESSON LEARNED: Don't spawn too many agents at once, causes rate limiting.",
-        "Matt prefers British butler voice like Alfred from Batman.",
+        "User prefers a specific voice like Alfred from Batman.",
         "Checked git status, no changes.",
         "Built the memory promotion system using human-like consolidation hierarchy.",
         "Random thought about the weather.",

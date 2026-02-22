@@ -429,7 +429,7 @@ async def test_proactive_recall():
     recaller = ProactiveRecaller()
     
     test_queries = [
-        "What's Matt's Perplexity API key?",
+        "What's User's Perplexity API key?",
         "How do I run Claude Code?",
         "What did we work on yesterday?",
         "Mac Studio configuration",

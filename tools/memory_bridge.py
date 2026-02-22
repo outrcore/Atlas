@@ -376,7 +376,7 @@ class MemoryBridge:
         if not relevant:
             # Include key sections anyway (credentials, rules)
             for section in sections:
-                if any(h in section for h in ["## Credentials", "## Matt's Rules", "## Technical"]):
+                if any(h in section for h in ["## Credentials", "## User's Rules", "## Technical"]):
                     relevant.append((section.strip(), 0.3))
         
         if relevant:
@@ -731,7 +731,7 @@ def what_do_we_know(topic: str, detailed: bool = False) -> str:
         Summary of what's known about the topic
     
     Example:
-        info = what_do_we_know("iWander project")
+        info = what_do_we_know("ProjectAlpha project")
     """
     bridge = _get_bridge()
     

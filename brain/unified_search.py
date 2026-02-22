@@ -567,7 +567,7 @@ if __name__ == "__main__":
     async def main():
         if len(sys.argv) < 2:
             print("Usage: python unified_search.py <query>")
-            print("\nExample: python unified_search.py 'What did Matt decide about BetBots?'")
+            print("\nExample: python unified_search.py 'What did the user decide about ProjectBeta?'")
             return
         
         query = " ".join(sys.argv[1:])
