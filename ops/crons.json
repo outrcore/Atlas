@@ -1,0 +1,20 @@
+[
+  {
+    "id": "heartbeat",
+    "schedule": "*/30 * * * *",
+    "description": "Heartbeat check — email, calendar, notifications",
+    "enabled": true
+  },
+  {
+    "id": "brain-daemon",
+    "schedule": "*/15 * * * *",
+    "description": "Brain memory consolidation daemon cycle",
+    "enabled": true
+  },
+  {
+    "id": "daily-briefing",
+    "schedule": "0 13 * * *",
+    "description": "Morning briefing (8 AM CT)",
+    "enabled": false
+  }
+]

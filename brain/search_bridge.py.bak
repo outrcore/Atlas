@@ -1,0 +1,485 @@
+#!/usr/bin/env python3
+"""
+UMA Search Bridge - Phase 4
+
+Provides a CLI + HTTP interface for the unified search system.
+Called by OpenClaw's proactive-recall.ts to get graph-enhanced results.
+
+Usage:
+  CLI:    python search_bridge.py "query here" [--limit 5] [--json]
+  HTTP:   python search_bridge.py --serve [--port 18790]
+
+Created: 2026-02-06
+"""
+
+import asyncio
+import json
+import sys
+import os
+import time
+from pathlib import Path
+from typing import Optional
+
+# Add brain to path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from brain.unified_search import UnifiedSearch, SearchResult, get_unified_search
+from brain.fast_graph import get_fast_graph
+from brain.embedder import get_embedder
+from brain.maintenance import get_maintenance
+from brain.graph_rag import get_graph_rag
+
+
+WORKSPACE = Path("/workspace/clawd")
+# Directories to search for source files
+SEARCH_DIRS = [
+    WORKSPACE / "memory",
+    WORKSPACE / "knowledge",
+    WORKSPACE,
+]
+# Max chars per snippet
+SNIPPET_MAX_CHARS = 500
+# Max snippets total
+MAX_SNIPPETS = 5
+
+
+def drilldown(query: str, sources: list, entities: list) -> list:
+    """
+    Tier 3: Read source files and grep for relevant context.
+    
+    Strategy:
+    1. If sources provided, read those files and find relevant sections
+    2. If entities provided, grep memory/knowledge files for mentions
+    3. Return text snippets with source attribution
+    """
+    snippets = []
+    seen_content = set()
+    
+    # Strategy 1: Read provided source files
+    for source in sources[:5]:
+        file_snippets = _read_source_file(source, query, entities)
+        for s in file_snippets:
+            key = s["text"][:100]
+            if key not in seen_content:
+                snippets.append(s)
+                seen_content.add(key)
+    
+    # Strategy 2: Grep for entity mentions in memory/knowledge
+    if len(snippets) < MAX_SNIPPETS and entities:
+        for entity in entities[:3]:
+            grep_snippets = _grep_for_entity(entity, query)
+            for s in grep_snippets:
+                key = s["text"][:100]
+                if key not in seen_content and len(snippets) < MAX_SNIPPETS:
+                    snippets.append(s)
+                    seen_content.add(key)
+    
+    return snippets[:MAX_SNIPPETS]
+
+
+def _resolve_source_path(source: str) -> Optional[Path]:
+    """Resolve a source reference to an actual file path."""
+    # Direct path
+    p = Path(source)
+    if p.is_absolute() and p.exists():
+        return p
+    
+    # Relative to workspace
+    p = WORKSPACE / source
+    if p.exists():
+        return p
+    
+    # Try common patterns
+    for pattern in [
+        f"memory/{source}",
+        f"knowledge/{source}",
+        source.replace("memory/", ""),
+    ]:
+        p = WORKSPACE / pattern
+        if p.exists():
+            return p
+    
+    return None
+
+
+def _read_source_file(source: str, query: str, entities: list) -> list:
+    """Read a source file and extract relevant sections."""
+    path = _resolve_source_path(source)
+    if not path or not path.exists() or path.stat().st_size > 500_000:
+        return []
+    
+    try:
+        content = path.read_text(encoding="utf-8", errors="ignore")
+    except Exception:
+        return []
+    
+    lines = content.split("\n")
+    snippets = []
+    
+    # Find lines mentioning entities or query terms
+    search_terms = [t.lower() for t in entities + query.lower().split() if len(t) > 2]
+    
+    for i, line in enumerate(lines):
+        line_lower = line.lower()
+        if any(term in line_lower for term in search_terms):
+            # Grab context: 2 lines before, the match, 2 lines after
+            start = max(0, i - 2)
+            end = min(len(lines), i + 3)
+            snippet_text = "\n".join(lines[start:end]).strip()
+            
+            if snippet_text and len(snippet_text) > 20:
+                snippets.append({
+                    "text": snippet_text[:SNIPPET_MAX_CHARS],
+                    "source": str(path.relative_to(WORKSPACE)),
+                    "line": i + 1,
+                })
+    
+    # Deduplicate overlapping snippets (keep first occurrence)
+    filtered = []
+    covered_lines = set()
+    for s in snippets:
+        line = s["line"]
+        if line not in covered_lines:
+            filtered.append(s)
+            # Mark nearby lines as covered
+            for l in range(line - 3, line + 4):
+                covered_lines.add(l)
+    
+    return filtered[:3]  # Max 3 snippets per file
+
+
+def _grep_for_entity(entity: str, query: str) -> list:
+    """Grep memory and knowledge files for entity mentions."""
+    import subprocess
+    
+    snippets = []
+    entity_lower = entity.lower()
+    
+    for search_dir in SEARCH_DIRS[:2]:  # memory/ and knowledge/ only
+        if not search_dir.exists():
+            continue
+        
+        try:
+            result = subprocess.run(
+                ["grep", "-rl", "-i", entity, str(search_dir),
+                 "--include=*.md", "--include=*.txt"],
+                capture_output=True, text=True, timeout=3
+            )
+            
+            files = [f.strip() for f in result.stdout.strip().split("\n") if f.strip()]
+            
+            for filepath in files[:5]:
+                file_snippets = _read_source_file(filepath, query, [entity])
+                snippets.extend(file_snippets)
+                if len(snippets) >= 3:
+                    break
+                    
+        except (subprocess.TimeoutExpired, Exception):
+            continue
+    
+    return snippets[:3]
+
+
+def format_result(result: SearchResult, as_json: bool = False) -> str:
+    """Format search result for output."""
+    if as_json:
+        return json.dumps({
+            "memories": [
+                {
+                    "content": m.content,
+                    "source": m.source,
+                    "score": round(m.final_score, 3),
+                    "scores": {
+                        "semantic": round(m.semantic_score, 3),
+                        "recency": round(m.recency_score, 3),
+                        "relationship": round(m.relationship_score, 3),
+                        "importance": round(m.importance_score, 3),
+                    }
+                }
+                for m in result.memories
+            ],
+            "graph_context": result.graph_context,
+            "entities": result.query_entities,
+            "method": result.method,
+            "confidence": round(result.confidence, 3)
+        })
+    
+    lines = []
+    for i, mem in enumerate(result.memories, 1):
+        lines.append(f"- {mem.content} ({mem.source})")
+    
+    if result.graph_context.get("relationships"):
+        lines.append("")
+        lines.append("Graph relationships:")
+        for rel in result.graph_context["relationships"][:5]:
+            lines.append(f"  - {rel['from']} {rel['relation']} {rel['to']}")
+    
+    return "\n".join(lines)
+
+
+def _get_node_embeddings():
+    """Pre-compute embeddings for all graph node names."""
+    embedder = get_embedder()
+    graph = get_fast_graph()
+    node_embeddings = {}
+    nodes = list(graph._node_cache.values())
+    if nodes:
+        names = [n.name for n in nodes]
+        vecs = embedder.embed_batch(names)
+        for n, v in zip(nodes, vecs):
+            node_embeddings[n.id] = v
+    print(f"Pre-embedded {len(node_embeddings)} graph nodes.")
+    return node_embeddings
+
+_node_embeddings_cache = None
+
+def get_node_embeddings():
+    global _node_embeddings_cache
+    if _node_embeddings_cache is None:
+        _node_embeddings_cache = _get_node_embeddings()
+    return _node_embeddings_cache
+
+
+async def cli_search(query: str, limit: int = 5, as_json: bool = False):
+    """Run a search from CLI."""
+    embedder = get_embedder()
+    query_embedding = embedder.embed(query)
+    node_embs = get_node_embeddings()
+    result = await get_unified_search().search(
+        query, limit=limit,
+        query_embedding=query_embedding,
+        node_embeddings=node_embs
+    )
+    print(format_result(result, as_json=as_json))
+
+
+def serve(port: int = 18790):
+    """Run HTTP server for search queries."""
+    from http.server import HTTPServer, BaseHTTPRequestHandler
+    import urllib.parse
+    
+    search_instance = get_unified_search()
+    embedder = get_embedder()
+    node_embs = get_node_embeddings()
+    loop = asyncio.new_event_loop()
+    
+    class SearchHandler(BaseHTTPRequestHandler):
+        def do_GET(self):
+            parsed = urllib.parse.urlparse(self.path)
+            params = urllib.parse.parse_qs(parsed.query)
+            
+            if parsed.path == "/embed":
+                text = params.get("text", [""])[0]
+                if not text:
+                    self.send_response(400)
+                    self.send_header("Content-Type", "application/json")
+                    self.end_headers()
+                    self.wfile.write(b'{"error": "Missing text parameter"}')
+                    return
+                vec = embedder.embed(text)
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({
+                    "text": text,
+                    "dim": len(vec),
+                    "vector": vec[:5].tolist(),
+                    "note": "truncated to 5 dims"
+                }).encode())
+                return
+            
+            if parsed.path == "/health":
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                graph = get_fast_graph()
+                stats = graph.get_stats()
+                self.wfile.write(json.dumps({
+                    "status": "ok",
+                    "nodes": stats.get("nodes", 0),
+                    "edges": stats.get("edges", 0)
+                }).encode())
+                return
+            
+            if parsed.path == "/entities":
+                # Tier 1: Return all entity names for client-side caching
+                graph = get_fast_graph()
+                nodes = graph.search_nodes("", limit=1000)
+                
+                # Short names (< 60 chars, skip long decision strings)
+                names = sorted(set(
+                    n.name.lower() for n in nodes if len(n.name) < 60
+                ))
+                
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json")
+                self.send_header("Cache-Control", "max-age=300")
+                self.end_headers()
+                self.wfile.write(json.dumps({
+                    "entities": names,
+                    "count": len(names)
+                }).encode())
+                return
+            
+            if parsed.path == "/graph-rag/stats":
+                try:
+                    rag = get_graph_rag()
+                    stats = rag.get_stats()
+                    # Make top_central JSON-serializable
+                    stats["top_central"] = [
+                        {"name": name, "score": round(score, 6)}
+                        for name, score in stats.get("top_central", [])
+                    ]
+                    self.send_response(200)
+                    self.send_header("Content-Type", "application/json")
+                    self.end_headers()
+                    self.wfile.write(json.dumps(stats).encode())
+                except Exception as e:
+                    self.send_response(500)
+                    self.send_header("Content-Type", "application/json")
+                    self.end_headers()
+                    self.wfile.write(json.dumps({"error": str(e)}).encode())
+                return
+            
+            if parsed.path == "/maintenance":
+                # Run maintenance tasks
+                include_consol = params.get("consolidate", ["0"])[0] == "1"
+                try:
+                    maintenance = get_maintenance()
+                    stats = maintenance.run_all(include_consolidation=include_consol)
+                    # Also recompute Graph RAG caches
+                    try:
+                        rag = get_graph_rag()
+                        rag.recompute()
+                        stats["graph_rag_recomputed"] = True
+                    except Exception as e:
+                        stats["graph_rag_error"] = str(e)
+                    self.send_response(200)
+                    self.send_header("Content-Type", "application/json")
+                    self.end_headers()
+                    self.wfile.write(json.dumps(stats).encode())
+                except Exception as e:
+                    self.send_response(500)
+                    self.send_header("Content-Type", "application/json")
+                    self.end_headers()
+                    self.wfile.write(json.dumps({"error": str(e)}).encode())
+                return
+            
+            if parsed.path == "/drilldown":
+                # Tier 3: Agentic drill-down - read source files for deeper context
+                query = params.get("q", [""])[0]
+                sources_raw = params.get("sources", [""])[0]
+                entities_raw = params.get("entities", [""])[0]
+                
+                if not query:
+                    self.send_response(400)
+                    self.send_header("Content-Type", "application/json")
+                    self.end_headers()
+                    self.wfile.write(b'{"error": "Missing query parameter q"}')
+                    return
+                
+                start = time.time()
+                sources = [s.strip() for s in sources_raw.split(",") if s.strip()] if sources_raw else []
+                entities = [e.strip() for e in entities_raw.split(",") if e.strip()] if entities_raw else []
+                
+                snippets = drilldown(query, sources, entities)
+                elapsed_ms = (time.time() - start) * 1000
+                
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({
+                    "snippets": snippets,
+                    "count": len(snippets),
+                    "elapsed_ms": round(elapsed_ms, 1)
+                }).encode())
+                return
+            
+            if parsed.path == "/search":
+                query = params.get("q", [""])[0]
+                limit = int(params.get("limit", ["5"])[0])
+                
+                if not query:
+                    self.send_response(400)
+                    self.send_header("Content-Type", "application/json")
+                    self.end_headers()
+                    self.wfile.write(b'{"error": "Missing query parameter q"}')
+                    return
+                
+                start = time.time()
+                q_emb = embedder.embed(query)
+                result = loop.run_until_complete(
+                    search_instance.search(query, limit=limit,
+                                           query_embedding=q_emb,
+                                           node_embeddings=node_embs)
+                )
+                elapsed_ms = (time.time() - start) * 1000
+                
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                
+                # Hebbian boost: strengthen connections between accessed nodes
+                if result.memories:
+                    accessed_ids = [
+                        m.source for m in result.memories 
+                        if m.source and m.source != "graph"
+                    ][:10]
+                    if len(accessed_ids) >= 2:
+                        try:
+                            get_maintenance().record_access(accessed_ids)
+                        except Exception:
+                            pass  # Non-critical
+                
+                response = {
+                    "memories": [
+                        {
+                            "content": m.content,
+                            "source": m.source,
+                            "score": round(m.final_score, 3),
+                        }
+                        for m in result.memories
+                    ],
+                    "graph_context": result.graph_context,
+                    "entities": result.query_entities,
+                    "method": result.method,
+                    "confidence": round(result.confidence, 3),
+                    "elapsed_ms": round(elapsed_ms, 1)
+                }
+                self.wfile.write(json.dumps(response).encode())
+                return
+            
+            self.send_response(404)
+            self.end_headers()
+        
+        def log_message(self, format, *args):
+            pass  # Silence logs
+    
+    server = HTTPServer(("127.0.0.1", port), SearchHandler)
+    print(f"UMA Search Bridge running on http://127.0.0.1:{port}")
+    print(f"  GET /search?q=<query>&limit=5")
+    print(f"  GET /health")
+    server.serve_forever()
+
+
+if __name__ == "__main__":
+    args = sys.argv[1:]
+    
+    if "--serve" in args:
+        port = 18790
+        if "--port" in args:
+            idx = args.index("--port")
+            port = int(args[idx + 1])
+        serve(port)
+    elif len(args) >= 1 and not args[0].startswith("--"):
+        query = args[0]
+        limit = 5
+        as_json = "--json" in args
+        if "--limit" in args:
+            idx = args.index("--limit")
+            limit = int(args[idx + 1])
+        asyncio.run(cli_search(query, limit, as_json))
+    else:
+        print("Usage:")
+        print("  python search_bridge.py 'query' [--limit 5] [--json]")
+        print("  python search_bridge.py --serve [--port 18790]")

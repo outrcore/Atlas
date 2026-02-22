@@ -1,0 +1,702 @@
+{
+  "nodes": [
+    {
+      "id": "amt-project",
+      "title": "AMT Trading Bot",
+      "status": "in_progress",
+      "detail": "Hyperliquid BTC trading bot - Auction Market Theory",
+      "priority": "high",
+      "created": "2026-02-07T00:00:00Z",
+      "started": "2026-02-07T00:00:00Z",
+      "dependsOn": []
+    },
+    {
+      "id": "amt-engine",
+      "title": "Build rule engine",
+      "status": "completed",
+      "detail": "9 files, deterministic AMT signals",
+      "priority": "high",
+      "completed": "2026-02-07T04:00:00Z",
+      "dependsOn": [
+        "amt-project"
+      ]
+    },
+    {
+      "id": "amt-backtest",
+      "title": "Build GPU backtester",
+      "status": "completed",
+      "detail": "34s runs on RTX 4090, 2yr data",
+      "priority": "high",
+      "completed": "2026-02-07T05:00:00Z",
+      "dependsOn": [
+        "amt-project"
+      ]
+    },
+    {
+      "id": "amt-v4",
+      "title": "V4 optimization",
+      "status": "completed",
+      "detail": "+37.3% return, 2.80 Sharpe, 5.0% DD",
+      "priority": "high",
+      "completed": "2026-02-07T06:00:00Z",
+      "dependsOn": [
+        "amt-engine",
+        "amt-backtest"
+      ]
+    },
+    {
+      "id": "amt-dryrun",
+      "title": "Monitor dry-run bot",
+      "status": "in_progress",
+      "detail": "Streaming real BTC data, validating signals",
+      "priority": "high",
+      "started": "2026-02-07T06:00:00Z",
+      "dependsOn": [
+        "amt-v4"
+      ]
+    },
+    {
+      "id": "amt-testnet-wallet",
+      "title": "Set up testnet wallet",
+      "status": "blocked",
+      "detail": "Matt needs VPN to create hl_config.json",
+      "priority": "high",
+      "dependsOn": [
+        "amt-dryrun"
+      ]
+    },
+    {
+      "id": "amt-testnet-live",
+      "title": "Run testnet live trading",
+      "status": "pending",
+      "detail": "python run_testnet.py --live",
+      "priority": "high",
+      "dependsOn": [
+        "amt-testnet-wallet"
+      ]
+    },
+    {
+      "id": "amt-paper",
+      "title": "3-5 day paper trade validation",
+      "status": "pending",
+      "detail": "Monitor testnet performance",
+      "priority": "high",
+      "dependsOn": [
+        "amt-testnet-live"
+      ]
+    },
+    {
+      "id": "amt-mainnet",
+      "title": "Deploy to mainnet",
+      "status": "pending",
+      "detail": "Move to real trading on DigitalOcean",
+      "priority": "high",
+      "dependsOn": [
+        "amt-paper"
+      ]
+    },
+    {
+      "id": "amt-multi-asset",
+      "title": "Multi-asset expansion",
+      "status": "pending",
+      "detail": "ETH/SOL after BTC profitable",
+      "priority": "low",
+      "dependsOn": [
+        "amt-mainnet"
+      ]
+    },
+    {
+      "id": "amt-multi-strat",
+      "title": "Multi-strategy accounts",
+      "status": "pending",
+      "detail": "Williams Alligator, Ichimoku on separate sub-accounts",
+      "priority": "low",
+      "dependsOn": [
+        "amt-mainnet"
+      ]
+    },
+    {
+      "id": "wander-project",
+      "title": "iWander",
+      "status": "in_progress",
+      "detail": "AI-powered travel/exploration app",
+      "priority": "high",
+      "created": "2026-01-30T00:00:00Z",
+      "started": "2026-01-30T00:00:00Z",
+      "dependsOn": []
+    },
+    {
+      "id": "wander-v15",
+      "title": "v1.5 shipped",
+      "status": "completed",
+      "detail": "UI overhaul, SSE streaming, stop cards, unified tour pages",
+      "priority": "high",
+      "completed": "2026-02-06T00:00:00Z",
+      "dependsOn": [
+        "wander-project"
+      ]
+    },
+    {
+      "id": "wander-seo",
+      "title": "SEO sitemap",
+      "status": "completed",
+      "detail": "285 URLs, auto-regenerates via cron",
+      "priority": "medium",
+      "completed": "2026-02-06T00:00:00Z",
+      "dependsOn": [
+        "wander-v15"
+      ]
+    },
+    {
+      "id": "wander-v16",
+      "title": "v1.6 planning",
+      "status": "pending",
+      "detail": "Next feature set TBD",
+      "priority": "medium",
+      "dependsOn": [
+        "wander-v15"
+      ]
+    },
+    {
+      "id": "brain-project",
+      "title": "ATLAS Brain (UMA)",
+      "status": "in_progress",
+      "detail": "Unified Memory Architecture - hybrid graph + vector",
+      "priority": "high",
+      "created": "2026-02-04T00:00:00Z",
+      "started": "2026-02-04T00:00:00Z",
+      "dependsOn": []
+    },
+    {
+      "id": "brain-phase1-4",
+      "title": "UMA Phase 1-4",
+      "status": "completed",
+      "detail": "Graph store, auto-extraction, scorer, integration",
+      "priority": "high",
+      "completed": "2026-02-05T00:00:00Z",
+      "dependsOn": [
+        "brain-project"
+      ]
+    },
+    {
+      "id": "brain-backfill",
+      "title": "Graph backfill",
+      "status": "completed",
+      "detail": "284 nodes, 720 edges",
+      "priority": "high",
+      "completed": "2026-02-05T00:00:00Z",
+      "dependsOn": [
+        "brain-phase1-4"
+      ]
+    },
+    {
+      "id": "brain-graph-rag",
+      "title": "Graph RAG",
+      "status": "completed",
+      "detail": "8 communities, path boosting, centrality weighting",
+      "priority": "high",
+      "completed": "2026-02-07T15:51:00Z",
+      "dependsOn": [
+        "brain-backfill"
+      ]
+    },
+    {
+      "id": "brain-scoring-fix",
+      "title": "Fix scoring pipeline",
+      "status": "completed",
+      "detail": "Embeddings flow to scorer, variance-based confidence",
+      "priority": "high",
+      "completed": "2026-02-07T16:02:00Z",
+      "dependsOn": [
+        "brain-graph-rag"
+      ]
+    },
+    {
+      "id": "brain-attribution",
+      "title": "Fix ATLAS attribution",
+      "status": "pending",
+      "detail": "ATLAS should get credit for implementation work in graph",
+      "priority": "medium",
+      "dependsOn": [
+        "brain-scoring-fix"
+      ]
+    },
+    {
+      "id": "desktop-project",
+      "title": "ATLAS Desktop App",
+      "status": "in_progress",
+      "detail": "Dashboard for brain, trading, ops visualization",
+      "priority": "medium",
+      "created": "2026-02-05T00:00:00Z",
+      "started": "2026-02-05T00:00:00Z",
+      "dependsOn": []
+    },
+    {
+      "id": "desktop-brain-tab",
+      "title": "Brain tab",
+      "status": "completed",
+      "detail": "Force-directed graph, search, maintenance controls",
+      "priority": "high",
+      "completed": "2026-02-06T00:00:00Z",
+      "dependsOn": [
+        "desktop-project"
+      ]
+    },
+    {
+      "id": "desktop-trading-tab",
+      "title": "Trading tab",
+      "status": "completed",
+      "detail": "Backtest/Live tabs, period filters, trade markers",
+      "priority": "high",
+      "completed": "2026-02-07T06:00:00Z",
+      "dependsOn": [
+        "desktop-project"
+      ]
+    },
+    {
+      "id": "desktop-ops-tab",
+      "title": "Operations DAG tab",
+      "status": "completed",
+      "detail": "DAG + list view, global search, cron jobs",
+      "priority": "high",
+      "completed": "2026-02-07T16:06:00Z",
+      "dependsOn": [
+        "desktop-project"
+      ]
+    },
+    {
+      "id": "desktop-cache-fix",
+      "title": "Fix dashboard caching",
+      "status": "pending",
+      "detail": "Matt reported stale files - static serving or browser cache",
+      "priority": "medium",
+      "dependsOn": [
+        "desktop-project"
+      ]
+    },
+    {
+      "id": "betbots-project",
+      "title": "BetBots",
+      "status": "in_progress",
+      "detail": "Prediction market for AI agents - betbots.io",
+      "priority": "medium",
+      "created": "2026-02-03T00:00:00Z",
+      "started": "2026-02-03T00:00:00Z",
+      "dependsOn": []
+    },
+    {
+      "id": "betbots-launch",
+      "title": "Beta launch",
+      "status": "completed",
+      "detail": "Paper money, bot registration, market voting",
+      "priority": "high",
+      "completed": "2026-02-03T00:00:00Z",
+      "dependsOn": [
+        "betbots-project"
+      ]
+    },
+    {
+      "id": "betbots-growth",
+      "title": "Grow bot userbase",
+      "status": "pending",
+      "detail": "Get more AI agents trading on the platform",
+      "priority": "medium",
+      "dependsOn": [
+        "betbots-launch"
+      ]
+    },
+    {
+      "id": "infra-project",
+      "title": "Infrastructure",
+      "status": "in_progress",
+      "detail": "OpenClaw, servers, auth, monitoring",
+      "priority": "medium",
+      "dependsOn": []
+    },
+    {
+      "id": "infra-openclaw-upgrade",
+      "title": "OpenClaw v2026.2.4 + Opus 4.6",
+      "status": "completed",
+      "detail": "Upgraded model and framework",
+      "priority": "high",
+      "completed": "2026-02-06T00:00:00Z",
+      "dependsOn": [
+        "infra-project"
+      ]
+    },
+    {
+      "id": "infra-oauth",
+      "title": "OAuth long-lived tokens",
+      "status": "completed",
+      "detail": "Auto-renewing refresh tokens, ~1yr lifetime",
+      "priority": "high",
+      "completed": "2026-02-06T00:00:00Z",
+      "dependsOn": [
+        "infra-project"
+      ]
+    },
+    {
+      "id": "amt-monte-carlo",
+      "title": "Monte Carlo simulation framework",
+      "status": "completed",
+      "detail": "LHS sampling, bootstrap analysis, regime toggle, parallel on GPU backtester",
+      "priority": "high",
+      "started": "2026-02-07T17:54:00Z",
+      "completed": "2026-02-07T17:58:00Z",
+      "dependsOn": [
+        "amt-v4"
+      ]
+    },
+    {
+      "id": "desktop-mc-tab",
+      "title": "Monte Carlo dashboard tab",
+      "status": "completed",
+      "detail": "Distribution histograms, parameter sensitivity, regime comparison, auto-refresh",
+      "priority": "high",
+      "started": "2026-02-07T17:54:00Z",
+      "completed": "2026-02-07T17:59:00Z",
+      "dependsOn": [
+        "desktop-trading-tab",
+        "amt-monte-carlo"
+      ]
+    },
+    {
+      "id": "amt-fft",
+      "title": "FFT Cycle Trading Strategy",
+      "status": "in_progress",
+      "detail": "Spectral analysis cycle detection. Best: +24.1%, 38% WR, 5% DD. Grid search running.",
+      "priority": "medium",
+      "started": "2026-02-08T01:17:00Z",
+      "dependsOn": [
+        "amt-v4"
+      ]
+    },
+    {
+      "id": "amt-regime-mc",
+      "title": "Regime toggle MC analysis",
+      "status": "completed",
+      "detail": "Regime ON: 94.1% robust, +18.4% avg. OFF: 52.8%, +4.8% avg. Definitive proof regime works.",
+      "priority": "high",
+      "started": "2026-02-07T21:30:00Z",
+      "completed": "2026-02-08T03:16:00Z",
+      "dependsOn": [
+        "amt-monte-carlo"
+      ]
+    },
+    {
+      "id": "amt-v5",
+      "title": "V5 config optimization",
+      "status": "pending",
+      "detail": "Apply MC findings: confidence 5-7, R:R 1.1-1.3, regime ON. Run focused 2000+ sim MC.",
+      "priority": "high",
+      "dependsOn": [
+        "amt-regime-mc"
+      ]
+    },
+    {
+      "id": "amt-v6-hmm",
+      "name": "V6: HMM Regime Detection",
+      "project": "HyperClaude-AMT",
+      "status": "in_progress",
+      "priority": "high",
+      "description": "Replace rule-based AMT regime calendar with HMM statistical regime detection. Learn market states from returns/volume/volatility. Faster regime shift detection via hmmlearn.",
+      "dependsOn": [
+        "amt-v5-live"
+      ]
+    },
+    {
+      "id": "amt-eco-state",
+      "name": "Eco State Macro Overlay",
+      "project": "HyperClaude-AMT",
+      "status": "planned",
+      "priority": "medium",
+      "description": "Weather-modeling-adapted economic state model as macro confidence overlay. Adjusts confidence/sizing based on macro regime (risk-on/risk-off).",
+      "dependsOn": [
+        "amt-v6-hmm"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "amt-project",
+      "to": "amt-engine"
+    },
+    {
+      "from": "amt-project",
+      "to": "amt-backtest"
+    },
+    {
+      "from": "amt-engine",
+      "to": "amt-v4"
+    },
+    {
+      "from": "amt-backtest",
+      "to": "amt-v4"
+    },
+    {
+      "from": "amt-v4",
+      "to": "amt-dryrun"
+    },
+    {
+      "from": "amt-dryrun",
+      "to": "amt-testnet-wallet"
+    },
+    {
+      "from": "amt-testnet-wallet",
+      "to": "amt-testnet-live"
+    },
+    {
+      "from": "amt-testnet-live",
+      "to": "amt-paper"
+    },
+    {
+      "from": "amt-paper",
+      "to": "amt-mainnet"
+    },
+    {
+      "from": "amt-mainnet",
+      "to": "amt-multi-asset"
+    },
+    {
+      "from": "amt-mainnet",
+      "to": "amt-multi-strat"
+    },
+    {
+      "from": "wander-project",
+      "to": "wander-v15"
+    },
+    {
+      "from": "wander-v15",
+      "to": "wander-seo"
+    },
+    {
+      "from": "wander-v15",
+      "to": "wander-v16"
+    },
+    {
+      "from": "brain-project",
+      "to": "brain-phase1-4"
+    },
+    {
+      "from": "brain-phase1-4",
+      "to": "brain-backfill"
+    },
+    {
+      "from": "brain-backfill",
+      "to": "brain-graph-rag"
+    },
+    {
+      "from": "brain-graph-rag",
+      "to": "brain-scoring-fix"
+    },
+    {
+      "from": "brain-scoring-fix",
+      "to": "brain-attribution"
+    },
+    {
+      "from": "desktop-project",
+      "to": "desktop-brain-tab"
+    },
+    {
+      "from": "desktop-project",
+      "to": "desktop-trading-tab"
+    },
+    {
+      "from": "desktop-project",
+      "to": "desktop-ops-tab"
+    },
+    {
+      "from": "desktop-project",
+      "to": "desktop-cache-fix"
+    },
+    {
+      "from": "betbots-project",
+      "to": "betbots-launch"
+    },
+    {
+      "from": "betbots-launch",
+      "to": "betbots-growth"
+    },
+    {
+      "from": "infra-project",
+      "to": "infra-openclaw-upgrade"
+    },
+    {
+      "from": "infra-project",
+      "to": "infra-oauth"
+    },
+    {
+      "from": "amt-v4",
+      "to": "amt-monte-carlo"
+    },
+    {
+      "from": "desktop-trading-tab",
+      "to": "desktop-mc-tab"
+    },
+    {
+      "from": "amt-monte-carlo",
+      "to": "desktop-mc-tab"
+    },
+    {
+      "from": "amt-v4",
+      "to": "amt-fft"
+    },
+    {
+      "from": "amt-monte-carlo",
+      "to": "amt-regime-mc"
+    },
+    {
+      "from": "amt-regime-mc",
+      "to": "amt-v5"
+    },
+    {
+      "from": "amt-v5-live",
+      "to": "amt-v6-hmm"
+    },
+    {
+      "from": "amt-v6-hmm",
+      "to": "amt-eco-state"
+    }
+  ],
+  "active": [
+    {
+      "id": "T005",
+      "title": "S3 Historical Data Backfill",
+      "type": "task",
+      "priority": "normal",
+      "status": "running",
+      "created": "2026-02-18T05:34:51.490276+00:00",
+      "updated": "2026-02-18T05:34:57.461663+00:00",
+      "agent": null,
+      "session_key": null,
+      "notes": [
+        {
+          "time": "2026-02-18T05:34:57.461704+00:00",
+          "text": "S3 backfill screen active"
+        }
+      ],
+      "result": null
+    }
+  ],
+  "completed": [
+    {
+      "id": "T001",
+      "title": "SNN Evaluation Suite",
+      "type": "project",
+      "priority": "high",
+      "status": "complete",
+      "created": "2026-02-18T05:34:51.001325+00:00",
+      "updated": "2026-02-18T05:40:05.249320+00:00",
+      "agent": "quasar-eval-suite",
+      "session_key": null,
+      "notes": [
+        {
+          "time": "2026-02-18T05:34:57.106436+00:00",
+          "text": "Sub-agent building evaluate.py"
+        }
+      ],
+      "result": "evaluate.py built (580 lines): confusion matrix, per-class P/R/F1, spike detection analysis, multi-threshold P&L backtest, variant comparison. Waiting for checkpoint.",
+      "completed_at": "2026-02-18T05:40:05.249290+00:00"
+    },
+    {
+      "id": "T002",
+      "title": "Live Inference Pipeline",
+      "type": "project",
+      "priority": "high",
+      "status": "complete",
+      "created": "2026-02-18T05:34:51.120988+00:00",
+      "updated": "2026-02-18T05:40:05.368052+00:00",
+      "agent": "quasar-inference-pipeline",
+      "session_key": null,
+      "notes": [
+        {
+          "time": "2026-02-18T05:34:57.225562+00:00",
+          "text": "Sub-agent building inference.py"
+        }
+      ],
+      "result": "inference.py built by sub-agent (1023 lines): InferenceEngine, MultiVariantEngine, TickBuffer, signal filtering, cooldowns, JSONL logging, CLI test mode with replay.",
+      "completed_at": "2026-02-18T05:40:05.368010+00:00"
+    },
+    {
+      "id": "T006",
+      "title": "Orchestration System",
+      "type": "project",
+      "priority": "normal",
+      "status": "complete",
+      "created": "2026-02-18T05:34:51.633989+00:00",
+      "updated": "2026-02-18T05:40:09.976269+00:00",
+      "agent": null,
+      "session_key": null,
+      "notes": [
+        {
+          "time": "2026-02-18T05:34:57.579826+00:00",
+          "text": "Building dispatch.py + session monitor"
+        },
+        {
+          "time": "2026-02-18T05:36:34.221382+00:00",
+          "text": "dispatch.py + monitor.py + session_start.py built and tested. HEARTBEAT.md updated."
+        }
+      ],
+      "result": "Built dispatch.py (CLI task tracker), monitor.py (screen/training/backfill checker), session_start.py (instant context loader). Updated HEARTBEAT.md with orchestration check.",
+      "completed_at": "2026-02-18T05:40:09.976240+00:00"
+    },
+    {
+      "id": "T003",
+      "title": "V2-Scalp Training (30 epochs)",
+      "type": "task",
+      "priority": "high",
+      "status": "complete",
+      "created": "2026-02-18T05:34:51.253498+00:00",
+      "updated": "2026-02-18T09:04:09.446818+00:00",
+      "agent": null,
+      "session_key": null,
+      "notes": [
+        {
+          "time": "2026-02-18T05:34:57.344925+00:00",
+          "text": "Epoch 18/30, val acc ~94%"
+        },
+        {
+          "time": "2026-02-18T05:40:05.489147+00:00",
+          "text": "Epoch 20/30, val acc 94.9%, ~34 min remaining"
+        },
+        {
+          "time": "2026-02-18T09:04:09.446748+00:00",
+          "text": "Auto-sync: scalp complete (30/30)"
+        }
+      ],
+      "result": "Scalp training finished (30/30). Final train loss 0.8080, val loss 0.8698, val acc 94.2%.",
+      "completed_at": "2026-02-18T09:01:25.341892+00:00"
+    },
+    {
+      "id": "T004",
+      "title": "V2-Momentum Training (queued)",
+      "type": "task",
+      "priority": "normal",
+      "status": "complete",
+      "created": "2026-02-18T05:34:51.376116+00:00",
+      "updated": "2026-02-18T10:00:07.985469+00:00",
+      "agent": null,
+      "session_key": null,
+      "notes": [
+        {
+          "time": "2026-02-18T09:01:25.454837+00:00",
+          "text": "Momentum training active (epoch 13/30, val acc 98.7%)"
+        },
+        {
+          "time": "2026-02-18T09:04:09.446866+00:00",
+          "text": "Auto-sync: momentum active (epoch 14/30, val acc 98.0%)"
+        },
+        {
+          "time": "2026-02-18T09:47:54.530987+00:00",
+          "text": "Auto-sync: momentum active (epoch 27/30, val acc 98.8%)"
+        },
+        {
+          "time": "2026-02-18T10:00:07.985544+00:00",
+          "text": "Auto-sync: momentum complete (30/30)"
+        }
+      ],
+      "result": "Momentum training finished (30/30), val acc 98.7%.",
+      "completed_at": "2026-02-18T10:00:07.985516+00:00"
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 # Secrets & credentials
 .env
+.env.*
 .secrets/
 brain_data/.anthropic_key
 .claude/.credentials.json
@@ -16,11 +17,16 @@ TOOLS.md
 
 # Large data & databases
 data/
+cache/
+cache_1m/
+cache_v2/
 brain_data/
 brain/graph.db
 *.lance
 *.db
 *.jsonl
+*.pt
+*.parquet
 
 # Personal data directories (users populate their own)
 memory/
@@ -49,6 +55,11 @@ __pycache__/
 .eggs/
 *.egg
 
+# Node / build artifacts
+node_modules/
+.next/
+*.tsbuildinfo
+
 # Generated/temp files
 *.bsp
 de421.bsp
@@ -56,6 +67,7 @@ tmp/
 outputs/
 logs/
 checkpoints/
+results/
 
 # Project-specific dirs (not part of framework)
 products/
@@ -63,7 +75,6 @@ company/
 content/
 dashboard/
 desktop-messages/
-docs/
 hooks/
 imports/
 memu_memory/
@@ -84,3 +95,6 @@ clawd
 
 # Ops state (generated)
 ops/discovered_projects.json
+
+# OpenClaw agent state
+.agent/
