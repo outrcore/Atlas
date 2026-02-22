@@ -24,14 +24,22 @@ You wake up fresh each session. These files are your continuity:
 
 Capture what matters. Decisions, context, things to remember. Skip the secrets unless asked to keep them.
 
-### 🧠 MEMORY.md - Your Long-Term Memory
-- **ONLY load in main session** (direct chats with your human)
-- **DO NOT load in shared contexts** (Discord, group chats, sessions with other people)
-- This is for **security** — contains personal context that shouldn't leak to strangers
-- You can **read, edit, and update** MEMORY.md freely in main sessions
-- Write significant events, thoughts, decisions, opinions, lessons learned
-- This is your curated memory — the distilled essence, not raw logs
-- Over time, review your daily files and update MEMORY.md with what's worth keeping
+### 🧠 Memory Architecture
+
+| Layer | Purpose | Size Limit |
+|-------|---------|------------|
+| **MEMORY.md** | Instant recall - credentials, core facts, active refs | <20KB |
+| **memory/YYYY-MM-DD.md** | Daily raw logs | Unlimited |
+| **memory/STAGING.md** | Candidates for manual review | Auto-cleared |
+| **knowledge/** | Project docs, references (Dewey Decimal) | Unlimited |
+| **brain/ vector DB** | Searchable via memory_search | Unlimited |
+
+**MEMORY.md Rules:**
+- **ONLY load in main session** (security - don't leak to group chats)
+- **Manually curated ONLY** — brain daemon writes to STAGING.md, not here
+- Keep under 20KB! Credentials, core facts, active project refs
+- NOT a log, NOT a knowledge base
+- Periodically review STAGING.md and promote worthy items here
 
 ### 📝 Write It Down - No "Mental Notes"!
 - **Memory is limited** — if you want to remember something, WRITE IT TO A FILE

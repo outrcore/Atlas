@@ -1,20 +1,105 @@
-# Secrets
+# Secrets & credentials
+.env
 .secrets/
-.claude/.credentials.json
 brain_data/.anthropic_key
+.claude/.credentials.json
+hl_config.json
 
-# Cache
-__pycache__/
-*.pyc
+# Personal data (users should create their own from templates)
+MEMORY.md
+USER.md
+TOOLS.md
+
+# Activity state (generated)
+.activity.json
+.index_state.json
+
+# Large data & databases
+data/vector_db*/
+brain_data/
+brain/graph.db
+*.lance
+*.db
+*.jsonl
+
+# Knowledge chat exports (large personal data)
+knowledge/700-chat-exports/
+
+# Personal knowledge (users create their own)
+knowledge/300-personal/brain-dump-*.md
+knowledge/300-personal/gaps-to-fill.md
+knowledge/300-personal/peptide-*.md
+knowledge/300-personal/matt-profile.md
+
+# Claude Code internal state
 .claude/cache/
 .claude/debug/
 .claude/todos/
 .claude/history.jsonl
+.claude/projects/
+.claude/backups/
+.claude/paste-cache/
+.claude/file-history/
+.claude/settings.json
+.claude/.claude
+.claude/stats-cache.json
+.claude/plugins/
+.claude/shell-snapshots/
 
-# Data that's too large
-data/vector_db*/
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+*.egg
 
-# Debug sessions
-.claude/projects/*/subagents/
-knowledge/700-chat-exports/chunks.jsonl
-knowledge/700-chat-exports/chunks/
+# Memory daily logs (personal, keep only examples)
+# Note: memory/example-*.md files ARE tracked as examples
+memory/2026-*.md
+memory/STAGING.md
+memory/voice_memos/
+memory/heartbeat-state.json
+memory/*.json
+memory/botgames-credentials.md
+memory/telegram-export-verification-*.md
+memory/DEDUP-REPORT-*.md
+memory/weekly-digest-*.md
+memory/crash-analysis-*.md
+memory/nightly-builds.md
+
+# Generated/temp files
+*.bsp
+de421.bsp
+tmp/
+outputs/
+logs/
+checkpoints/
+
+# Project-specific dirs (not part of framework)
+products/
+company/
+content/
+dashboard/
+desktop-messages/
+docs/
+hooks/
+imports/
+memu_memory/
+oauth_screenshots/
+pending_approvals/
+plugins/
+research/
+scratchpad/
+templates/
+uop/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Symlinks
+clawd
+
+# Ops state (generated)
+ops/discovered_projects.json

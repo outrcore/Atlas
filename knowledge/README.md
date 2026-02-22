@@ -10,6 +10,9 @@ Dewey Decimal-inspired organization for ATLAS's knowledge base.
 - **300-personal/** — Matt's preferences, health, goals
 - **400-technical/** — Code patterns, learnings, tech docs
 - **500-atlas/** — My identity, capabilities, lessons learned
+- **600-tools/** — Tools & software ecosystem
+  - `matt/` — Matt's external tools, services, software
+  - `atlas/` — ATLAS's scripts, integrations, internal tooling
 
 ## Usage
 

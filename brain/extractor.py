@@ -91,7 +91,7 @@ class MemoryExtractor:
         
         try:
             response = self.client.messages.create(
-                model="claude-sonnet-4-20250514",  # Use Sonnet for extraction (cheaper)
+                model="claude-sonnet-4-6",  # Use Sonnet for extraction (cheaper)
                 max_tokens=1500,
                 messages=[{"role": "user", "content": prompt}],
             )

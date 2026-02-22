@@ -101,7 +101,7 @@ class IntentPredictor:
         
         try:
             response = self.client.messages.create(
-                model="claude-sonnet-4-20250514",  # Sonnet for analysis
+                model="claude-sonnet-4-6",  # Sonnet for analysis
                 max_tokens=2000,
                 messages=[{"role": "user", "content": prompt}],
             )
@@ -185,7 +185,7 @@ Return as JSON array of strings:
 
         try:
             response = self.client.messages.create(
-                model="claude-sonnet-4-20250514",
+                model="claude-sonnet-4-6",
                 max_tokens=500,
                 messages=[{"role": "user", "content": prompt}],
             )

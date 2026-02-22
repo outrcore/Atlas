@@ -118,6 +118,19 @@ async def _extract_session_insights(brain, conversation: str, session_id: str):
                     "## Action Items (auto-extracted)\n" +
                     "\n".join(f"- [ ] {item}" for item in insights["action_items"])
                 )
+        
+        # === UMA Phase 2: Populate entity graph ===
+        try:
+            from .graph_extractor import extract_to_graph
+            today = datetime.now().strftime("%Y-%m-%d")
+            source = f"session:{session_id}:{today}"
+            
+            result = await extract_to_graph(conversation, source)
+            
+            if result.nodes:
+                print(f"[Graph] Added {len(result.nodes)} nodes, {len(result.edges)} edges from session")
+        except Exception as graph_err:
+            print(f"[Graph] Error populating graph: {graph_err}")
                 
     except Exception as e:
         print(f"Error extracting session insights: {e}")

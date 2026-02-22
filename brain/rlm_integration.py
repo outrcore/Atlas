@@ -40,7 +40,7 @@ class RLMBrain:
     def __init__(
         self,
         workspace: str = "/workspace/clawd",
-        model: str = "claude-sonnet-4-20250514",
+        model: str = "claude-sonnet-4-6",
         backend: str = "anthropic",
         verbose: bool = False,
         max_iterations: int = 30,

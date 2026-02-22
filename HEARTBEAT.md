@@ -9,8 +9,36 @@ python /workspace/clawd/tools/health_check.py
 ```
 If status is WARNING or CRITICAL, alert Matt unless it's late night.
 
+## 🔐 Auth Check (Every heartbeat)
+Check OAuth/API key status:
+```bash
+python /workspace/clawd/tools/auth_monitor.py
+```
+Alert Matt if:
+- OAuth token expired or expiring soon (< 2 hours)
+- OAuth profile in cooldown (means it failed)
+- Currently using API key instead of OAuth (costs money)
+
+**If OAuth needs refresh:** Tell Matt to run on the server:
+```bash
+# Generate new setup-token (requires browser auth)
+claude setup-token
+# Then paste into OpenClaw
+openclaw models auth paste-token --provider anthropic
+```
+
 ## 🧠 Brain Maintenance (Every heartbeat)
-Run brain maintenance to process recent conversations:
+
+### 1. Check brain daemon is running:
+```bash
+screen -ls | grep brain-daemon
+```
+If not running, restart it:
+```bash
+screen -dmS brain-daemon python -m brain.daemon --mode daemon
+```
+
+### 2. Run maintenance:
 ```bash
 cd /workspace/clawd && python -c "
 import asyncio
@@ -26,10 +54,48 @@ asyncio.run(maintain())
 " 2>/dev/null
 ```
 
+### 3. Memory Management
+- **Daily logs:** Write important context to `/workspace/clawd/memory/YYYY-MM-DD.md`
+- **STAGING review:** Check `/workspace/clawd/memory/STAGING.md` every few heartbeats
+  - If good candidates, manually promote to MEMORY.md or knowledge library
+  - Delete noise and duplicates
+- **MEMORY.md:** Only manually curated essentials (<20KB limit!)
+  - Don't auto-append — brain daemon writes to STAGING.md now
+  - Keep it small: credentials, core facts, active project refs
+
 ## 📊 Quick Status Check
 - Voice server running? `screen -ls | grep atlas-voice`
 - GPU memory OK? (< 95%)
 - Any errors in logs?
+
+## 🎯 Orchestration Check (Every heartbeat)
+Check active work and sub-agents:
+```bash
+python /workspace/clawd/ops/dispatch.py status
+python /workspace/clawd/ops/monitor.py
+```
+- Update task statuses based on monitor output
+- If a sub-agent finished, check its results via `sessions_history`
+- Complete tasks that are done: `python ops/dispatch.py complete <id> --result "..."`
+- If training completed, auto-launch next variant
+
+## 🧠 UMA Maintenance (Every few heartbeats)
+Run memory maintenance (decay + Hebbian boosting):
+```bash
+curl -s http://127.0.0.1:18790/maintenance | python -m json.tool 2>/dev/null
+```
+Run consolidation less frequently (once a day max):
+```bash
+curl -s "http://127.0.0.1:18790/maintenance?consolidate=1" | python -m json.tool 2>/dev/null
+```
+Only alert if consolidation merged nodes or if errors occur.
+
+## 📚 Knowledge Index (Every few heartbeats)
+Re-index knowledge library if files have changed:
+```bash
+python /workspace/clawd/scripts/auto_index.py
+```
+Only re-indexes when files actually changed - fast no-op otherwise.
 
 ## 🔧 Project Monitor (Every few heartbeats)
 Check project status for issues:

@@ -27,6 +27,13 @@ from .linker import SemanticLinker
 from .predictor import IntentPredictor
 from .suggester import ProactiveSuggester
 from .memory_sync import MemorySync
+from .memory_promotion import MemoryPromoter, MemoryCandidate, ConsolidationResult
+from .llm_scorer import LLMScorer, HybridScorer, LLMScore
+from .rlm_processor import RLMProcessor, MemoryRLM, RLMResult, ChunkResult
+from .agent_council import AgentCouncil, Agent, AgentRole, AgentVote, CouncilDecision
+from .proactive_recall import ProactiveRecaller, MemoryIndex, ProactiveContext, RecallResult, get_proactive_context
+from .smart_consolidation import SmartConsolidator
+from .tiered_synthesis import TieredSynthesis
 from . import hooks
 
 # Optional RLM integration (requires /workspace/projects/rlm)
@@ -51,6 +58,28 @@ __all__ = [
     "IntentPredictor",
     "ProactiveSuggester",
     "MemorySync",
+    "MemoryPromoter",
+    "MemoryCandidate",
+    "ConsolidationResult",
+    "LLMScorer",
+    "HybridScorer", 
+    "LLMScore",
+    "RLMProcessor",
+    "MemoryRLM",
+    "RLMResult",
+    "ChunkResult",
+    "AgentCouncil",
+    "Agent",
+    "AgentRole",
+    "AgentVote",
+    "CouncilDecision",
+    "ProactiveRecaller",
+    "MemoryIndex",
+    "ProactiveContext",
+    "RecallResult",
+    "get_proactive_context",
+    "SmartConsolidator",
+    "TieredSynthesis",
     "hooks",
     # RLM integration
     "RLMBrain",

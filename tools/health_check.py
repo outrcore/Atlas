@@ -28,6 +28,33 @@ def check_memory():
         "percent": round(pct, 1)
     }
 
+def check_disk():
+    """Check disk space - CRITICAL if root > 80% (causes spawn crashes)"""
+    result = subprocess.run(['df', '-h', '/'], capture_output=True, text=True)
+    lines = result.stdout.strip().split('\n')
+    if len(lines) < 2:
+        return {"check": "disk", "status": "UNKNOWN", "error": "Could not parse df output"}
+    
+    # Parse: Filesystem Size Used Avail Use% Mounted
+    parts = lines[1].split()
+    size = parts[1]
+    used = parts[2]
+    avail = parts[3]
+    pct_str = parts[4].rstrip('%')
+    pct = int(pct_str)
+    
+    # 80% warning, 90% critical (we crashed at 97%)
+    status = "OK" if pct < 80 else "WARNING" if pct < 90 else "CRITICAL"
+    return {
+        "check": "disk",
+        "status": status,
+        "size": size,
+        "used": used,
+        "available": avail,
+        "percent": pct,
+        "note": "Root filesystem >80% causes spawn crashes!" if pct >= 80 else None
+    }
+
 def check_screens():
     """Check core screen sessions are running"""
     result = subprocess.run(['screen', '-ls'], capture_output=True, text=True)
@@ -115,6 +142,7 @@ def main():
     print(f"=== ATLAS Health Check - {datetime.now().isoformat()} ===\n")
     
     checks = [
+        check_disk(),
         check_memory(),
         check_screens(),
         check_gateway(),

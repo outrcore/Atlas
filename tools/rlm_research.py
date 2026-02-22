@@ -28,7 +28,7 @@ def create_research_rlm(verbose: bool = True) -> RLM:
         backend="anthropic",
         backend_kwargs={
             "api_key": api_key,
-            "model_name": "claude-sonnet-4-20250514",
+            "model_name": "claude-sonnet-4-6",
             "max_tokens": 8192,
         },
         verbose=verbose,

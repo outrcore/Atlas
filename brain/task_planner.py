@@ -113,7 +113,7 @@ class TaskPlanner:
     def __init__(
         self,
         workspace: str = "/workspace/clawd",
-        model: str = "claude-sonnet-4-20250514",
+        model: str = "claude-sonnet-4-6",
     ):
         self.workspace = Path(workspace)
         self.plans_dir = self.workspace / "brain_data" / "task_plans"

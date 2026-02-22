@@ -76,6 +76,18 @@ class BrainDaemon:
             if (now - last_maintenance).total_seconds() >= self.maintenance_interval:
                 try:
                     await self.brain.run_maintenance()
+                    
+                    # Run alert checks
+                    try:
+                        from brain.alerts import run_alert_check
+                        alerts = run_alert_check()
+                        if alerts:
+                            print(f"🔔 {len(alerts)} alert(s) triggered")
+                            for alert in alerts:
+                                print(f"   [{alert['priority']}] {alert['type']}: {alert.get('message', '')[:80]}")
+                    except Exception as e:
+                        print(f"⚠️ Alert check error: {e}")
+                    
                     last_maintenance = now
                 except Exception as e:
                     print(f"❌ Maintenance error: {e}")

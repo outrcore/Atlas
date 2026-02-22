@@ -48,7 +48,7 @@ class SemanticLinker:
     def __init__(
         self,
         db_path: Path,
-        embedding_dim: int = 384,
+        embedding_dim: int = 768,
     ):
         self.db_path = Path(db_path)
         self.db_path.mkdir(parents=True, exist_ok=True)
@@ -67,9 +67,14 @@ class SemanticLinker:
         try:
             # Try importing - may fail due to version conflicts
             from sentence_transformers import SentenceTransformer
-            self.encoder = SentenceTransformer("all-MiniLM-L6-v2")
-            self.embedding_dim = 384  # MiniLM dimension
-            print("🧠 Using sentence-transformers for embeddings")
+            self.encoder = SentenceTransformer("nomic-ai/nomic-embed-text-v1.5", trust_remote_code=True)
+            if hasattr(self.encoder, "max_seq_length"):
+                self.encoder.max_seq_length = 8192
+            try:
+                self.embedding_dim = int(self.encoder.get_sentence_embedding_dimension())
+            except Exception:
+                self.embedding_dim = 768
+            print(f"🧠 Using sentence-transformers (Nomic) for embeddings ({self.embedding_dim} dims)")
         except Exception as e:
             print(f"⚠️ Using fallback hash embeddings: {e}")
             self.encoder = None
@@ -100,7 +105,22 @@ class SemanticLinker:
         
         if "memories" in existing_tables:
             self.table = self.db.open_table("memories")
-        else:
+            # Ensure vector dimension matches current embedding model
+            try:
+                vector_field = self.table.schema.field("vector")
+                existing_dim = getattr(vector_field.type, "list_size", None)
+                if existing_dim and existing_dim != self.embedding_dim:
+                    print(
+                        f"⚠️ Recreating memories table for embedding dim change "
+                        f"({existing_dim} -> {self.embedding_dim})"
+                    )
+                    self.db.drop_table("memories")
+                    self.table = None
+            except Exception:
+                # If schema inspection fails, keep existing table
+                pass
+
+        if self.table is None:
             # Create schema
             schema = pa.schema([
                 pa.field("id", pa.string()),
@@ -110,7 +130,7 @@ class SemanticLinker:
                 pa.field("created_at", pa.string()),
                 pa.field("vector", pa.list_(pa.float32(), self.embedding_dim)),
             ])
-            
+
             # Create empty table
             self.table = self.db.create_table(
                 "memories",

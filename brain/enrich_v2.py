@@ -14,7 +14,7 @@ from graph import EntityGraph
 CHUNKS_DIR = Path("/workspace/clawd/knowledge/700-chat-exports/chunks")
 GRAPH_DB = Path(__file__).parent / "graph.db"
 
-FIREWORKS_API_KEY = "fw_Noc4TJAZCNM1MGbXWr9xZ8"
+FIREWORKS_API_KEY = "YOUR_FIREWORKS_API_KEY"
 FIREWORKS_URL = "https://api.fireworks.ai/inference/v1/chat/completions"
 MODEL = "accounts/fireworks/models/kimi-k2-instruct-0905"
 
