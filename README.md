@@ -35,35 +35,31 @@ Atlas is an opinionated framework for running a persistent, proactive AI assista
 
 ## Quick Start (macOS)
 
-### 1. Prerequisites
+> **This repo IS the full OpenClaw platform + the Atlas workspace.** You don't need to install OpenClaw separately — just clone, install deps, and run.
+
+### 1. Install prerequisites
 
 ```bash
-# Install Node.js 22+
+# Install Homebrew (if you don't have it)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install Node.js 22+ and pnpm
 brew install node
+npm install -g pnpm
 
 # Install Python 3.11+ (for brain/tools)
 brew install python@3.11
 ```
 
-### 2. Install OpenClaw
+### 2. Clone and install
 
 ```bash
-npx openclaw@latest setup
+git clone https://github.com/outrcore/Atlas-private.git Atlas
+cd Atlas
+pnpm install
 ```
 
-Follow the prompts. This creates `~/.openclaw/` and sets up the gateway daemon.
-
-### 3. Clone Atlas into your workspace
-
-```bash
-cd ~/.openclaw
-git clone https://github.com/YOUR_USER/Atlas.git workspace
-cd workspace
-```
-
-> **Tip:** Fork this repo first, then clone your fork so you can push your own changes.
-
-### 4. Create your personal files from templates
+### 3. Create your personal files
 
 ```bash
 cp USER.template.md USER.md
@@ -71,47 +67,48 @@ cp TOOLS.template.md TOOLS.md
 cp MEMORY.template.md MEMORY.md
 ```
 
-### 5. Customize
+### 4. Make it yours
 
-- **`SOUL.md`** — Edit to define your AI's personality. This is the most fun part. Make it yours.
-- **`USER.md`** — Fill in your info so your AI knows who you are, what you do, your preferences.
-- **`TOOLS.md`** — Add your API keys, server details, and tool-specific notes.
-- **`HEARTBEAT.md`** — Configure what your AI should check periodically (email, calendar, etc).
+- **`SOUL.md`** — Your AI's personality. This is the fun part. Name it, give it a voice, set the vibe.
+- **`USER.md`** — Tell your AI who you are — name, location, job, interests, preferences.
+- **`TOOLS.md`** — Add API keys and tool configs as you set them up.
+- **`HEARTBEAT.md`** — What should your AI check periodically? Email, calendar, weather, etc.
 
-### 6. Get an API key
+### 5. Get an Anthropic API key
 
-Go to [console.anthropic.com](https://console.anthropic.com) and create an API key. You'll need this for the AI model.
+Go to [console.anthropic.com](https://console.anthropic.com), create an account, and generate an API key (~$20/mo for Pro tier with Claude Sonnet).
 
-### 7. Configure OpenClaw
-
-```bash
-openclaw setup
-```
-
-Add your Anthropic API key when prompted.
-
-### 8. Connect a channel
+### 6. Set up and connect a channel
 
 ```bash
-openclaw channels login
+# Run setup (adds your API key)
+node openclaw.mjs setup
+
+# Connect Telegram, Discord, or another channel
+node openclaw.mjs channels login
 ```
 
-Connect Telegram, Discord, or another supported channel. This is how you'll talk to your AI.
-
-### 9. Install Python dependencies (for brain/tools)
+### 7. Install Python dependencies (optional — for brain/tools)
 
 ```bash
 pip install lancedb sentence-transformers anthropic requests playwright
 python -m playwright install chromium
 ```
 
-### 10. Start
+### 8. Start
 
 ```bash
-openclaw gateway
+node openclaw.mjs gateway
 ```
 
 Your AI is now live. Message it through your connected channel.
+
+### Troubleshooting
+
+- **`pnpm install` fails?** Make sure you have Node 22+: `node --version`
+- **Gateway won't start?** Check your API key: `node openclaw.mjs setup`
+- **Can't connect a channel?** Run `node openclaw.mjs channels login` and follow the prompts
+- **Python tools not working?** The brain/tools are optional extras — the core AI works without them
 
 ---
 
